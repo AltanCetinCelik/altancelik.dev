@@ -335,28 +335,42 @@ export default function Home() {
           </section>
 
           <section className="section about-section" id="about">
-            <div className="about-copy">
-              <span className="eyebrow">About</span>
-              <h2>
-                Electrical engineering background.
-                <br />
-                Software-first execution.
-              </h2>
-              <p>
-                My work spans ML systems, agents, backend infrastructure, and
-                hardware-adjacent edge systems. I&apos;m especially interested in the
-                layer between a model&apos;s capability and the runtime decisions that
-                make that capability practical.
-              </p>
+            <div className="about-portrait">
+              <img
+                src="/altan-portrait.webp"
+                alt="Altan Çetin Çelik"
+                loading="lazy"
+              />
+              <div className="portrait-caption">
+                <span>Altan Çetin Çelik</span>
+                <span>AI / ML systems</span>
+              </div>
             </div>
 
-            <div className="stack-list">
-              {stack.map(([title, value]) => (
-                <div className="stack-row" key={title}>
-                  <span>{title}</span>
-                  <strong>{value}</strong>
-                </div>
-              ))}
+            <div className="about-main">
+              <div className="about-copy">
+                <span className="eyebrow">About</span>
+                <h2>
+                  Electrical engineering background.
+                  <br />
+                  Software-first execution.
+                </h2>
+                <p>
+                  My work spans ML systems, agents, backend infrastructure, and
+                  hardware-adjacent edge systems. I&apos;m especially interested in the
+                  layer between a model&apos;s capability and the runtime decisions that
+                  make that capability practical.
+                </p>
+              </div>
+
+              <div className="stack-list">
+                {stack.map(([title, value]) => (
+                  <div className="stack-row" key={title}>
+                    <span>{title}</span>
+                    <strong>{value}</strong>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
