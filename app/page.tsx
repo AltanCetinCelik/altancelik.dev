@@ -1,4 +1,18 @@
-const projects = [
+/* eslint-disable @next/next/no-img-element */
+
+type Project = {
+  label: string;
+  title: string;
+  description: string;
+  href: string;
+  tags: string[];
+  featured?: boolean;
+  note?: string;
+  image?: string;
+  imageAlt?: string;
+};
+
+const projects: Project[] = [
   {
     label: "01 / Research",
     title: "SelectiveLLM",
@@ -192,11 +206,11 @@ export default function Home() {
                     </span>
                   </div>
 
-                  {"image" in project && project.image ? (
+                  {project.image ? (
                     <div className="project-visual image-visual">
                       <img
                         src={project.image}
-                        alt={"imageAlt" in project ? project.imageAlt : project.title}
+                        alt={project.imageAlt ?? project.title}
                         loading="lazy"
                       />
                     </div>
