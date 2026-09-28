@@ -447,13 +447,50 @@ a {
 
 .about-section {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 90px;
+  grid-template-columns: minmax(250px, 0.72fr) 1.28fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.about-portrait {
+  position: sticky;
+  top: 104px;
+}
+
+.about-portrait > img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 38%;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  filter: saturate(0.82) contrast(1.03);
+}
+
+.portrait-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  color: #596267;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.about-main {
+  min-width: 0;
 }
 
 .about-copy > p {
   margin-top: 28px;
   max-width: 610px;
+}
+
+.about-main .stack-list {
+  margin-top: 56px;
 }
 
 .stack-list {
@@ -550,6 +587,11 @@ a {
   .about-section {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .about-portrait {
+    position: static;
+    max-width: 430px;
   }
 
   .hero-actions {
