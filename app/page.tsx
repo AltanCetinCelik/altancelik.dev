@@ -8,6 +8,9 @@ const projects = [
     tags: ["ML systems", "PEFT / LoRA", "adaptive inference", "routing"],
     featured: true,
     note: "Current focus: learned + calibrated capacity routing",
+    image:
+      "https://raw.githubusercontent.com/AltanCetinCelik/SelectiveLLM/main/results/real/latest/plots/real_quality_vs_memory.png",
+    imageAlt: "SelectiveLLM real quality versus memory benchmark",
   },
   {
     label: "02 / Agents",
@@ -24,6 +27,9 @@ const projects = [
       "Public engineering work around industrial telemetry, edge-side data handling, monitoring dashboards, backend services, and automation-oriented system design.",
     href: "https://github.com/AltanCetinCelik/My-Projects",
     tags: ["edge AI", "FastAPI", "telemetry", "IIoT"],
+    image:
+      "https://raw.githubusercontent.com/AltanCetinCelik/My-Projects/main/industrial-iot-edge-demo/screenshots/dashboard.png",
+    imageAlt: "Industrial IoT edge monitoring dashboard",
   },
   {
     label: "04 / Product",
@@ -185,6 +191,41 @@ export default function Home() {
                       <Arrow />
                     </span>
                   </div>
+
+                  {"image" in project && project.image ? (
+                    <div className="project-visual image-visual">
+                      <img
+                        src={project.image}
+                        alt={"imageAlt" in project ? project.imageAlt : project.title}
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : project.title === "seed-showcase" ? (
+                    <div className="project-visual seed-visual" aria-hidden="true">
+                      <div className="seed-node seed-goal">Goal</div>
+                      <span>→</span>
+                      <div className="seed-node seed-agent">Agent</div>
+                      <span>→</span>
+                      <div className="seed-node">Approval</div>
+                      <span>→</span>
+                      <div className="seed-node seed-run">Action</div>
+                    </div>
+                  ) : (
+                    <div className="project-visual luna-visual" aria-hidden="true">
+                      <div className="luna-window">
+                        <div className="luna-bar">
+                          <i />
+                          <i />
+                          <i />
+                        </div>
+                        <div className="luna-content">
+                          <span>memory</span>
+                          <strong>state → interaction → response</strong>
+                          <div className="luna-pulse" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
                   <div>
                     <h3>{project.title}</h3>
