@@ -70,8 +70,8 @@ export default function SectorInteractiveLab({
       {
         code: "KATMAN 03 · 22 µm",
         name: "Boya Dostu Akrilik Basınç Duyarlı Yapışkan Katman",
-        desc: "Yıllar sonra söküldüğünde dahi aracın orijinal verniğine zarar vermez, iz bırakmaz ve eksper kontrollerinde boya koruma olarak tam not alır.",
-        spec: "Güvenli Söküm Garantisi",
+        desc: "Doğru ekipmanla söküldüğünde aracın orijinal verniğine zarar vermez, iz bırakmaz ve eksper kontrollerinde boya koruma olarak net biçimde görülür.",
+        spec: "İz Bırakmayan Söküm",
         thickness: "22 Mikron",
       },
       {
@@ -233,29 +233,29 @@ export default function SectorInteractiveLab({
 
   if (business.sector === "dental") {
     const shades = [
-      { code: "BL1", name: "Hollywood Ekstra Beyaz", hex: "#FBFDFF", note: "Maksimum parlaklık ve yüksek estetik kontrast" },
+      { code: "BL1", name: "Hollywood Ekstra Beyaz", hex: "#FBFDFF", note: "Yüksek parlaklık ve estetik kontrast" },
       { code: "BL2", name: "Klinik Doğal Beyaz", hex: "#F7F9FC", note: "En çok tercih edilen dengeli ve aydınlık gülüş tonu" },
       { code: "A1", name: "Organik İnci Tonu", hex: "#F4F3EC", note: "Doğal diş minesinin ışık geçirgenliğiyle birebir uyum" },
-      { code: "A2", name: "Sıcak Doğal Mine", hex: "#EFECE1", note: "Yumuşak ve tamamen doğal görünüm isteyen danışanlar için" },
+      { code: "A2", name: "Sıcak Doğal Mine", hex: "#EFECE1", note: "Yumuşak ve doğal görünüm isteyen danışanlar için" },
     ];
     const protocols = [
       {
         title: "Zirkonyum & E-Max Gülüş Tasarımı",
         duration: "4 – 5 Gün (2–3 Randevu)",
-        warranty: "Dijital CAD/CAM Garantili",
+        warranty: "Dijital CAD/CAM Protokolü",
         summary: "3 boyutlu ağız içi tarayıcı ile ölçü alınır; geçici dişleriniz aynı gün takılarak sosyal hayatınız kesintiye uğramadan tamamlanır.",
       },
       {
         title: "Sertifikalı Dental İmplant Uygulaması",
         duration: "Tek Seans (20–30 Dk / İmplant)",
-        warranty: "Ömür Boyu İmplant Garantisi",
-        summary: "Lokal anestezi altında tamamen ağrısız uygulanır; biyouyumlu titanyum altyapı ile doğal diş kökünüzün fonksiyonunu birebir üstlenir.",
+        warranty: "Sertifikalı Titanyum Sistem",
+        summary: "Modern lokal anestezi altında konforlu biçimde uygulanır; biyouyumlu titanyum altyapı ile doğal diş kökünüzün fonksiyonunu üstlenir.",
       },
       {
         title: "Ofis Tipi Lazer Diş Beyazlatma",
         duration: "Tek Seans (45 Dakika)",
         warranty: "Mine Koruyucu Jel Protokolü",
-        summary: "Diş minesine aşındırma yapmadan klinik ortamda 3 ila 5 ton arasında kalıcı beyazlık sağlanır.",
+        summary: "Diş minesini koruyan klinik jel protokolü ile klinik ortamda daha aydınlık ve parlak diş tonu sağlanır.",
       },
     ];
 
@@ -361,7 +361,7 @@ export default function SectorInteractiveLab({
                     <div className="text-sm font-bold mt-1">{protocols[dentalTreatment].duration}</div>
                   </div>
                   <div style={{ backgroundColor: p.bg, border: `1px solid ${p.line}` }} className="p-3.5 rounded-xl">
-                    <div style={{ color: p.inkMuted }} className="text-[11px] uppercase">Klinik Güvence</div>
+                    <div style={{ color: p.inkMuted }} className="text-[11px] uppercase">Uygulama Standardı</div>
                     <div className="text-sm font-bold mt-1">{protocols[dentalTreatment].warranty}</div>
                   </div>
                 </div>
@@ -411,7 +411,7 @@ export default function SectorInteractiveLab({
               Sağlıklı Hedef Sürenizi ve VKİ Değerinizi Hesaplayın
             </h2>
             <p style={{ color: p.inkSecondary }} className="text-sm sm:text-base leading-relaxed m-0">
-              Kas kaybı yaşamadan, haftalık ortalama 0.7 – 1.0 kg saf yağ kaybı protokolüyle hedef kilonuza ne kadar sürede ulaşabileceğinizi inceleyin.
+              Kas kaybı yaşamadan, haftalık ortalama 0.7 – 1.0 kg sağlıklı yağ kaybı protokolüyle hedef kilonuza ne kadar sürede ulaşabileceğinizi inceleyin.
             </p>
 
             <div
@@ -523,7 +523,7 @@ export default function SectorInteractiveLab({
               style={{ color: p.accent, fontFamily: "'JetBrains Mono', monospace" }}
               className="text-xs uppercase tracking-widest block"
             >
-              ÜCRETSİZ GAYRİMENKUL DEĞERLEME (EKSPERTİZ) MODÜLÜ
+              GAYRİMENKUL EMSAL DEĞERLEME & PORTFÖY MODÜLÜ
             </span>
             <h2
               style={{ fontFamily: p.fontDisplay, letterSpacing: "-0.03em" }}
@@ -532,7 +532,7 @@ export default function SectorInteractiveLab({
               Denizli Bölge Analizi ve Mülk Değerleme Talebi
             </h2>
             <p style={{ color: p.inkSecondary }} className="text-sm sm:text-base leading-relaxed m-0">
-              Satmak, kiralamak veya yatırım yapmak istediğiniz bölgeyi ve mülk özelliklerini seçin; güncel tapu satış emsallerine dayalı ücretsiz ekspertiz raporumuzu paylaşalım.
+              Satmak, kiralamak veya yatırım yapmak istediğiniz bölgeyi ve mülk özelliklerini seçin; güncel tapu satış emsallerine dayalı değerleme çalışmamızı paylaşalım.
             </p>
 
             <div className="grid grid-cols-2 gap-2.5 pt-2">
@@ -598,19 +598,19 @@ export default function SectorInteractiveLab({
                   <div style={{ color: p.inkMuted }} className="text-[11px] uppercase">Seçili Bölge & Amortisman</div>
                   <div className="text-sm font-bold mt-0.5">{districts[reDistrict].name} · {districts[reDistrict].yieldYears}</div>
                 </div>
-                <span style={{ color: p.accent }} className="text-xs font-bold">Ücretsiz Rapor</span>
+                <span style={{ color: p.accent }} className="text-xs font-bold">Emsal Analizi</span>
               </div>
 
               <a
                 href={buildWaLink(
-                  `Merhaba ${business.shortName}, ${districts[reDistrict].name} bölgesindeki ${reSqm} m² ${reRooms} için ücretsiz piyasa değerlemesi (ekspertiz) / portföy bilgisi almak istiyorum.`
+                  `Merhaba ${business.shortName}, ${districts[reDistrict].name} bölgesindeki ${reSqm} m² ${reRooms} için piyasa değerlemesi / portföy bilgisi almak istiyorum.`
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ backgroundColor: p.accent, color: p.accentContrast }}
                 className="w-full inline-flex items-center justify-center gap-2 py-4 px-5 rounded-xl text-sm font-semibold transition hover:opacity-90"
               >
-                <span>Ücretsiz Ekspertiz & Portföy İsteyin</span>
+                <span>Değerleme & Portföy Bilgisi İsteyin</span>
                 <span aria-hidden="true">↗</span>
               </a>
             </div>
@@ -626,7 +626,7 @@ export default function SectorInteractiveLab({
         title: "4 Mevsim Buz Başlıklı Lazer Epilasyon",
         sessions: "6 – 8 Seans Paket",
         interval: "Ayda 1 Kontrol",
-        detail: "Soğutmalı safir başlık teknolojisi ile acısız, dört mevsim güvenli ve tüm kıl tiplerinde kalıcı pürüzsüzlük sağlayan protokol.",
+        detail: "Soğutmalı safir başlık teknolojisi ile konforlu, dört mevsim güvenli ve farklı kıl tiplerinde etkili protokol.",
       },
       {
         title: "Hydrafacial & Medikal Anti-Aging Cilt Bakımı",
@@ -638,7 +638,7 @@ export default function SectorInteractiveLab({
         title: "Bölgesel İncelme & Sıkılaşma (G5 / EMS)",
         sessions: "8 – 12 Seans Kür",
         interval: "Haftada 2 Seans",
-        detail: "Bölgesel dirençli yağ dokusunu hedefleyen, lenf drenaj ve kas stimülasyonu destekli sıkılaşma paketi.",
+        detail: "Bölgesel yağ dokusunu hedefleyen, lenf drenaj ve kas stimülasyonu destekli sıkılaşma paketi.",
       },
     ];
 
@@ -653,7 +653,7 @@ export default function SectorInteractiveLab({
               style={{ color: p.accent, fontFamily: "'JetBrains Mono', monospace" }}
               className="text-xs uppercase tracking-widest block"
             >
-              ÜCRETSİZ CİLT ANALİZİ & KÜR PLANLAYICI
+              CİLT ANALİZİ & KÜR PLANLAYICI
             </span>
             <h2
               style={{ fontFamily: p.fontDisplay, letterSpacing: "-0.03em" }}
@@ -662,7 +662,7 @@ export default function SectorInteractiveLab({
               İhtiyacınıza Uygun Bakım Kürünü Seçin
             </h2>
             <p style={{ color: p.inkSecondary }} className="text-sm sm:text-base leading-relaxed m-0">
-              Merkezimizde tüm uygulamalar öncesinde ücretsiz dijital cilt ve kıl kökü analizi yapılarak size en uygun seans sayısı belirlenir.
+              Merkezimizde tüm uygulamalar öncesinde dijital cilt ve kıl kökü analizi yapılarak size en uygun seans sayısı belirlenir.
             </p>
           </div>
 
@@ -708,14 +708,14 @@ export default function SectorInteractiveLab({
 
               <a
                 href={buildWaLink(
-                  `Merhaba ${business.shortName}, "${programs[beautyGoal].title}" kampanya fiyatları ve ücretsiz ön analiz randevusu için bilgi alabilir miyim?`
+                  `Merhaba ${business.shortName}, "${programs[beautyGoal].title}" paket fiyatları ve ön analiz randevusu için bilgi alabilir miyim?`
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ backgroundColor: p.accent, color: p.accentContrast }}
                 className="w-full inline-flex items-center justify-center gap-2 py-4 px-5 rounded-xl text-sm font-semibold transition hover:opacity-90"
               >
-                <span>Ücretsiz Ön Analiz & Kampanya Fiyatı Al</span>
+                <span>Ön Analiz & Paket Fiyatı Al</span>
                 <span aria-hidden="true">↗</span>
               </a>
             </div>
@@ -739,7 +739,7 @@ export default function SectorInteractiveLab({
     },
     {
       title: "Online Görüntülü Danışmanlık / Takip",
-      format: "Esnek Saatler · %100 Gizlilik",
+      format: "Esnek Saatler · Etik Gizlilik",
       note: "Şehir içi yoğunlukta veya şehir dışından kendi konfor alanınızda katılabileceğiniz birebir seanslar.",
     },
   ];

@@ -64,8 +64,8 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     metrics: [
       ["190 Mikron", "Kendini Onaran (Self-Healing) TPU Film"],
       ["9H Sertlik", "Kimyasal & UV Dirençli Kristal Seramik"],
-      ["Yazılı Garanti", "Sararma ve Kalkmaya Karşı Sertifikalı"],
-      ["Aynı Gün", "Ücretsiz Mikron Boya Ölçümü & Ekspertiz"],
+      ["Sertifikalı", "Kayıtlı ve Belgeli Film Uygulaması"],
+      ["Aynı Gün", "Dijital Mikron Boya Ölçümü & Analiz"],
     ],
     process: [
       [
@@ -80,13 +80,13 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
       ],
       [
         "03",
-        "Kürleşme & Garanti Teslimatı",
-        "Kapalı stüdyo ortamında PPF veya seramik kaplama uygulanır, kızılötesi kürleşme sonrası garanti belgesiyle teslim edilir.",
+        "Kürleşme & Kayıtlı Teslimat",
+        "Kapalı stüdyo ortamında PPF veya seramik kaplama uygulanır, kızılötesi kürleşme sonrası uygulama sertifikasıyla teslim edilir.",
       ],
     ],
     quotes: [
       {
-        text: "Sıfır kilometre aldığım aracımı bayiden çıkar çıkmaz teslim ettim. Kaput ve çamurluk köşe dönüşlerinde film olduğu dışarıdan kesinlikle anlaşılmıyor.",
+        text: "Sıfır kilometre aldığım aracımı bayiden çıkar çıkmaz teslim ettim. Kaput ve çamurluk köşe dönüşlerinde film olduğu dışarıdan hiç anlaşılmıyor.",
         author: "Emre K.",
         detail: "Komple TPU PPF Kaplama",
       },
@@ -99,15 +99,15 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     faqs: [
       [
         "TPU PPF kaplama sökülürken aracın orijinal boyasına zarar verir mi?",
-        "Hayır. Kullandığımız %100 poliüretan (TPU) filmler boya dostu akrilik yapışkan katmana sahiptir. Yıllar sonra söküldüğünde dahi orijinal fabrika verniğine zarar vermez ve iz bırakmaz.",
+        "Hayır. Kullandığımız %100 poliüretan (TPU) filmler boya dostu akrilik yapışkan katmana sahiptir. Doğru ekipmanla söküldüğünde orijinal fabrika verniğine zarar vermez ve iz bırakmaz.",
       ],
       [
         "Uygulama ne kadar sürüyor, aracı ne zaman teslim alabilirim?",
-        "Seramik kaplama ve polisaj işlemleri ortalama 1–2 iş günü, komple TPU PPF zırhlama ise kusursuz köşe dönüşleri ve kürleşme süreciyle birlikte 2–3 iş günü içinde yazılı garantisiyle teslim edilir.",
+        "Seramik kaplama ve polisaj işlemleri ortalama 1–2 iş günü, komple TPU PPF zırhlama ise köşe dönüşleri ve kürleşme süreciyle birlikte 2–3 iş günü içinde teslim edilir.",
       ],
       [
         "Ekspertizde PPF kaplama sorun yaratır mı?",
-        "Kesinlikle hayır. Şeffaf TPU PPF kaplama mikron ölçüm cihazlarında boya koruma filmi olarak net biçimde görülür ve aracınızın boyasız/orijinal değerini koruduğunu kanıtlar.",
+        "Hayır. Şeffaf TPU PPF kaplama mikron ölçüm cihazlarında boya koruma filmi olarak net biçimde görülür ve aracınızın orijinal boyasını koruduğunu gösterir.",
       ],
     ],
   },
@@ -147,8 +147,8 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     metrics: [
       ["3D CAD/CAM", "Dijital Ağız İçi Tarama & Hassas Ölçü"],
-      ["%100 Steril", "Uluslararası Otoklav & Hijyen Protokolü"],
-      ["Sertifikalı", "Ömür Boyu Garantili İmplant Sistemleri"],
+      ["Steril Klinik", "Uluslararası Otoklav & Hijyen Protokolü"],
+      ["Sertifikalı", "Biyouyumlu Titanyum İmplant Sistemleri"],
       ["Aynı Gün", "Hızlı Muayene & Şeffaf Tedavi Planı"],
     ],
     process: [
@@ -164,34 +164,34 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
       ],
       [
         "03",
-        "Ağrısız Tedavi & Periyodik Kontrol",
-        "Modern lokal anestezi altında konforlu uygulama tamamlanır ve düzenli kontrol randevularıyla uzun ömürlü kullanım güvenceye alınır.",
+        "Konforlu Tedavi & Periyodik Kontrol",
+        "Modern lokal anestezi altında konforlu uygulama tamamlanır ve düzenli kontrol randevularıyla ağız sağlığınız takip edilir.",
       ],
     ],
     quotes: [
       {
-        text: "Dişçi koltuğu korkumu tamamen yenmemi sağladılar. Zirkonyum kaplamalarım o kadar doğal oldu ki kimse işlem yapıldığını anlamıyor.",
+        text: "Dişçi koltuğu çekincemi tamamen yenmemi sağladılar. Zirkonyum kaplamalarım o kadar doğal oldu ki kimse işlem yapıldığını anlamıyor.",
         author: "Merve K.",
         detail: "Zirkonyum & Gülüş Tasarımı",
       },
       {
-        text: "İmplant sürecim beklediğimden çok daha rahat ve ağrısız geçti. Randevu saatlerine gösterilen özen ve klinik temizliği kusursuz.",
+        text: "İmplant sürecim beklediğimden çok daha rahat ve konforlu geçti. Randevu saatlerine gösterilen özen ve klinik temizliği çok iyi.",
         author: "Hakan T.",
         detail: "Dental İmplant Tedavisi",
       },
     ],
     faqs: [
       [
-        "İmplant ve zirkonyum işlemlerinde ağrı hisseder miyim?",
-        "Uygulamalarımız modern lokal anestezi altında tamamen ağrısız gerçekleştirilir. Tedavi sonrasında da konforunuz için gerekli tüm medikal protokoller adım adım planlanır.",
+        "İmplant ve zirkonyum işlemlerinde süreç nasıl ilerliyor?",
+        "Uygulamalarımız modern lokal anestezi altında hasta konforu ön planda tutularak gerçekleştirilir. Tedavi sonrasında da konforunuz için gerekli tüm medikal protokoller adım adım planlanır.",
       ],
       [
         "Zirkonyum gülüş tasarımı kaç günde tamamlanır?",
-        "Dijital ağız içi tarama ve prova süreçleriyle birlikte ortalama 4 ila 5 gün içerisinde yeni gülüşünüz prova edilerek teslim edilir.",
+        "Dijital ağız içi tarama ve prova süreçleriyle birlikte ortalama 4 ila 5 gün içerisinde yeni restorasyonlarınız prova edilerek tamamlanır.",
       ],
       [
-        "İlk muayenede tedavi planı ve maliyet netleşiyor mu?",
-        "Evet. İlk muayenede dijital görüntüleme sonrası ihtiyaç duyulan tüm işlemler şeffaf biçimde listelenir ve sürpriz maliyet olmadan net tedavi takvimi sunulur.",
+        "İlk muayenede tedavi planı netleşiyor mu?",
+        "Evet. İlk muayenede dijital görüntüleme sonrası ihtiyaç duyulan tüm işlemler şeffaf biçimde listelenir ve net tedavi takvimi sunulur.",
       ],
     ],
   },
@@ -314,7 +314,7 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
       },
     ],
     metrics: [
-      ["%100 Gizlilik", "Mesleki Etik İlkeler & Güvenli Danışan Alanı"],
+      ["Etik Gizlilik", "Mesleki Etik İlkeler & Güvenli Danışan Alanı"],
       ["Uzman Kadro", "Akademik ve Klinik Deneyimli Uygulayıcılar"],
       ["50 Dk Birebir", "Tamamen Size Ayrılmış Yapılandırılmış Seans"],
       ["Esnek Takvim", "Yüz Yüze ve Online Randevu Alternatifleri"],
@@ -350,8 +350,8 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     faqs: [
       [
-        "Seans içerikleri ve kişisel bilgilerim tamamen gizli tutuluyor mu?",
-        "Evet. Tüm görüşmelerimiz mesleki etik ilkeler ve KVKK kapsamında %100 gizlilik güvencesi altında gerçekleştirilir.",
+        "Seans içerikleri ve kişisel bilgilerim gizli tutuluyor mu?",
+        "Evet. Tüm görüşmelerimiz mesleki etik ilkeler ve KVKK kapsamında gizlilik prensibi altında gerçekleştirilir.",
       ],
       [
         "Seans süresi ne kadardır ve hangi sıklıkla planlanır?",
@@ -393,36 +393,36 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
       },
       {
         url: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=900&q=80",
-        caption: "Steril VIP Kabinler ve Ücretsiz Dijital Cilt Analizi",
+        caption: "Steril VIP Kabinler ve Dijital Cilt Analizi",
         tag: "03 / Butik Konfor",
       },
     ],
     metrics: [
-      ["FDA Onaylı", "Orijinal ve Yeni Nesil Cihaz Teknolojisi"],
-      ["Ücretsiz Analiz", "İşlem Öncesi Dijital Cilt & Kıl Köku Tespiti"],
+      ["Yeni Nesil", "Orijinal ve Güncel Cihaz Teknolojisi"],
+      ["Cilt Analizi", "İşlem Öncesi Dijital Cilt & Kıl Tipi Tespiti"],
       ["VIP Kabinler", "Tek Kullanımlık Hijyenik Uygulama Alanları"],
-      ["Garantili Paket", "Şeffaf Seans Planlaması & Kampanyalı Fiyat"],
+      ["Kişisel Paket", "Şeffaf Seans Planlaması & Avantajlı Paketler"],
     ],
     process: [
       [
         "01",
-        "Ücretsiz Cilt & Uygunluk Analizi",
-        "Uzman estetisyenlerimiz tarafından cilt ve kıl yapınız incelenir; ihtiyacınız olmayan hiçbir işlem önerilmeden en doğru protokol seçilir.",
+        "Cilt & Uygunluk Analizi",
+        "Uzman estetisyenlerimiz tarafından cilt ve kıl yapınız incelenir; ihtiyacınıza en uygun bakım veya cihaz protokolü belirlenir.",
       ],
       [
         "02",
         "Kişiye Özel Seans Uygulaması",
-        "Steril özel odalarda, soğutmalı ve acısız son teknoloji cihazlarla konforlu seansınız gerçekleştirilir.",
+        "Steril özel odalarda, soğutmalı son teknoloji cihazlarla konforlu seansınız gerçekleştirilir.",
       ],
       [
         "03",
         "Kontrol Seansı & Bakım Takibi",
-        "Uygulama sonrası gelişim takip edilir ve kalıcı etki için kontrol seanslarınız düzenli olarak planlanır.",
+        "Uygulama sonrası gelişim takip edilir ve düzenli kontrol seanslarınız planlanır.",
       ],
     ],
     quotes: [
       {
-        text: "Denizli'de gittiğim en temiz ve düzenli merkez. İlk ücretsiz cilt analizinden itibaren çok ilgiliydiler, ilk seansta bile cildimdeki ışıltı fark edildi.",
+        text: "Denizli'de gittiğim en temiz ve düzenli merkez. İlk cilt analizinden itibaren çok ilgiliydiler, ilk seansta bile cildimdeki ışıltı fark edildi.",
         author: "Zeynep D.",
         detail: "Hydrafacial & Lazer Epilasyon",
       },
@@ -434,8 +434,8 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     faqs: [
       [
-        "İşlem öncesinde ücretsiz cilt ve uygunluk analizi yapıyor musunuz?",
-        "Evet. Merkezimizde tüm işlemler öncesinde uzmanlarımız tarafından ücretsiz cilt ve kıl tipi analizi yapılır, size en uygun cihaz ve seans protokolü belirlenir.",
+        "İşlem öncesinde cilt ve uygunluk analizi yapıyor musunuz?",
+        "Evet. Merkezimizde tüm işlemler öncesinde uzmanlarımız tarafından cilt ve kıl tipi analizi yapılır, size en uygun cihaz ve seans protokolü belirlenir.",
       ],
       [
         "Lazer epilasyon dört mevsim uygulanabilir mi?",
@@ -443,7 +443,7 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
       ],
       [
         "Kabinlerde hijyen nasıl sağlanıyor?",
-        "Her danışanımız için tek kullanımlık örtü ve sarf malzemeleri kullanılır; tüm cihaz başlıkları her seans sonrasında medikal dezenfektanlarla sterilize edilir.",
+        "Her danışanımız için tek kullanımlık örtü ve sarf malzemeleri kullanılır; tüm cihaz başlıkları her seans sonrasında dezenfekte edilir.",
       ],
     ],
   },
@@ -461,7 +461,7 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     accentContrast: "#FFFFFF",
     accentSoft: "rgba(18, 91, 80, 0.08)",
     fontDisplay: "'Playfair Display', Georgia, serif",
-    kicker: "GAYRİMENKUL YATIRIM, PORTFÖY & EKSPERTİZ YÖNETİMİ",
+    kicker: "GAYRİMENKUL YATIRIM, PORTFÖY & DEĞERLEME YÖNETİMİ",
     heroPhoto:
       "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85",
     galleryPhotos: [
@@ -477,20 +477,20 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
       },
       {
         url: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80",
-        caption: "Ücretsiz Piyasa Değerlemesi ve Güvenli Tapu/Kredi Süreci",
-        tag: "03 / Şeffaf Ekspertiz",
+        caption: "Emsal Piyasa Değerlemesi ve Güvenli Tapu/Kredi Süreci",
+        tag: "03 / Şeffaf Değerleme",
       },
     ],
     metrics: [
-      ["Ücretsiz Ekspertiz", "Güncel Tapu Emsalleriyle Doğru Fiyatlandırma"],
+      ["Emsal Analizi", "Güncel Tapu Emsalleriyle Doğru Fiyatlandırma"],
       ["4K Çekim & Sunum", "Profesyonel Fotoğraf, Drone ve Dijital İlan"],
       ["Doğrudan Pazarlık", "Alıcı ve Satıcıyı Şeffaf Masada Buluşturma"],
-      ["Tam Güvence", "Kredi, Sözleşme ve Tapu Devir Takibi"],
+      ["Süreç Takibi", "Kredi, Sözleşme ve Tapu Devir Yönetimi"],
     ],
     process: [
       [
         "01",
-        "Ücretsiz Yerinde Değerleme (Ekspertiz)",
+        "Yerinde İnceleme & Emsal Değerleme",
         "Satmak veya kiralamak istediğiniz mülkü yerinde inceliyor, bölgedeki gerçek satış rakamlarına göre en doğru piyasa değerini raporluyoruz.",
       ],
       [
@@ -506,20 +506,20 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     quotes: [
       {
-        text: "Aylarca bekleyen dairemizi doğru ekspertiz fiyatı ve profesyonel tanıtımla 2 hafta içinde gerçek değerinden tapuya taşıdılar.",
+        text: "Aylarca bekleyen dairemizi doğru emsal fiyatlandırma ve profesyonel tanıtımla 2 hafta içinde gerçek değerinden tapuya taşıdılar.",
         author: "Murat B.",
         detail: "Konut Satışı — Merkezefendi",
       },
       {
-        text: "Denizli'nin prim yapan bölgelerine çok hakimler. Alıcı ve satıcıyı şeffaf şekilde bir araya getirip tüm tapu sürecini sorunsuz çözdüler.",
+        text: "Denizli'nin gelişen bölgelerine çok hakimler. Alıcı ve satıcıyı şeffaf şekilde bir araya getirip tüm tapu sürecini sorunsuz çözdüler.",
         author: "Serkan Ö.",
         detail: "Arsa & Yatırım Danışmanlığı",
       },
     ],
     faqs: [
       [
-        "Mülkümün değerini öğrenmek için ekspertiz ücreti ödüyor muyum?",
-        "Hayır. Denizli genelindeki konut, ticari mülk ve arsalarınız için sunduğumuz yerinde inceleme ve emsal değerleme hizmetimiz tamamen ücretsizdir.",
+        "Mülkümün piyasa değerini nasıl belirliyorsunuz?",
+        "Denizli genelindeki konut, ticari mülk ve arsalarınız için mahalle bazlı güncel tapu satış emsallerini ve yerinde inceleme kriterlerini baz alarak gerçekçi fiyat analizi sunuyoruz.",
       ],
       [
         "Mülkümü ne kadar sürede satabilir veya kiralayabilirsiniz?",

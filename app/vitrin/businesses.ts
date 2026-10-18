@@ -45,12 +45,12 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     heroTagline: "Aracınız İçin Kusursuz Zırh ve Ayna Parlaklığı",
     heroSubtitle:
       "Denizli Pamukkale'de %100 poliüretan TPU PPF şeffaf kaplama, 9H seramik kaplama, detaylı iç kuaför ve boya düzeltme merkezi.",
-    badges: ["Garantili TPU PPF", "9H Seramik Kaplama", "VIP Detailing"],
+    badges: ["Sertifikalı TPU PPF", "9H Seramik Kaplama", "VIP Detailing"],
     services: [
       {
         title: "TPU Şeffaf Boya Koruma (PPF)",
         desc: "Taş izi, sürtme ve güneş yanıklarına karşı kendini onaran (self-healing) %100 TPU film uygulaması.",
-        highlight: "5–10 Yıl Garantili",
+        highlight: "Sertifikalı Uygulama",
       },
       {
         title: "9H / 10H Kristal Seramik Kaplama",
@@ -85,11 +85,11 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     heroTagline: "Dijital Diş Hekimliği ile Özgüvenli Gülüşler",
     heroSubtitle:
       "Merkezefendi'de uzman hekim kadromuz ve steril klinik altyapımızla implant, zirkonyum gülüş tasarımı, kanal tedavisi ve çocuk diş hekimliği.",
-    badges: ["Dijital Gülüş Tasarımı", "Ağrısız İmplant", "Aynı Gün Randevu"],
+    badges: ["Dijital Gülüş Tasarımı", "Modern İmplantoloji", "Aynı Gün Randevu"],
     services: [
       {
         title: "İmplant & Çene Cerrahisi",
-        desc: "Eksik dişleriniz için 3D tomografi destekli, sertifikalı ve ömür boyu garantili dental implant uygulamaları.",
+        desc: "Eksik dişleriniz için 3D tomografi destekli ve sertifikalı dental implant uygulamaları.",
         highlight: "Sertifikalı İmplant",
       },
       {
@@ -99,12 +99,12 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
       },
       {
         title: "Lazerle Diş Beyazlatma (Bleaching)",
-        desc: "Diş minesine zarar vermeden tek seansta 3–5 ton daha beyaz ve parlak gülüş.",
-        highlight: "45 Dakikada Sonuç",
+        desc: "Diş minesini koruyan klinik protokollerle daha beyaz ve parlak gülüş.",
+        highlight: "Klinik Uygulama",
       },
       {
         title: "Kanal Tedavisi & Estetik Dolgu",
-        desc: "Modern endodontik cihazlarla ağrısız, tek seans kanal tedavisi ve kompozit bonding uygulamaları.",
+        desc: "Modern endodontik cihazlarla konforlu kanal tedavisi ve kompozit bonding uygulamaları.",
         highlight: "Konforlu Tedavi",
       },
     ],
@@ -144,7 +144,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
       },
       {
         title: "Çocuk Diş Hekimliği (Pedodonti)",
-        desc: "Çocuklar için korkusuz, eğlenceli ve koruyucu diş tedavileri, fissür örtücü uygulamalar.",
+        desc: "Çocuklar için koruyucu diş tedavileri ve fissür örtücü uygulamalar.",
         highlight: "Çocuk Dostu Klinik",
       },
     ],
@@ -163,28 +163,28 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     reviewCount: 118,
     heroTagline: "Sağlıklı ve Estetik Gülüşünüz İçin Yanınızdayız",
     heroSubtitle:
-      "Denizli'de modern diş hekimliği teknolojileriyle implant, zirkonyum kaplama, diş beyazlatma ve acil diş tedavilerinde hızlı randevu imkanı.",
+      "Denizli'de modern diş hekimliği teknolojileriyle implant, zirkonyum kaplama, diş beyazlatma ve diş tedavilerinde hızlı randevu imkanı.",
     badges: ["Modern Klinik", "Steril Teknoloji", "WhatsApp Randevu"],
     services: [
       {
         title: "İmplant Tedavisi",
         desc: "Eksik dişlerin yerine doğal diş konforunda sabit implant çözümleri.",
-        highlight: "Ömür Boyu Garanti",
+        highlight: "Sertifikalı Sistem",
       },
       {
         title: "Zirkonyum & Estetik Kaplama",
-        desc: "Metal desteksiz, diş eti uyumu mükemmel zirkonyum restorasyonlar.",
+        desc: "Metal desteksiz, diş eti uyumu yüksek zirkonyum restorasyonlar.",
         highlight: "Yüksek Estetik",
       },
       {
         title: "Ofis Tipi Diş Beyazlatma",
-        desc: "Klinik ortamda güvenli ve hızlı diş rengi açma uygulaması.",
-        highlight: "Tek Seans",
+        desc: "Klinik ortamda güvenli ve kontrollü diş rengi açma uygulaması.",
+        highlight: "Klinik Protokol",
       },
       {
         title: "Gömülü 20 Yaş Dişi & Kanal Tedavisi",
-        desc: "Ağrısız cerrahi çekimler ve mikroskop/cihaz destekli kanal tedavileri.",
-        highlight: "Ağrısız İşlem",
+        desc: "Cerrahi diş çekimleri ve modern cihaz destekli kanal tedavileri.",
+        highlight: "Konforlu Süreç",
       },
     ],
   },
@@ -213,17 +213,17 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
       {
         title: "İmplant & Protez",
         desc: "Tek diş eksikliklerinden tam dişsizliğe kadar sabit implant üstü protezler.",
-        highlight: "Yüksek Başarı",
+        highlight: "Uzman Uygulama",
       },
       {
         title: "Endodonti & Estetik Dolgu",
-        desc: "Doğal dişinizi kurtaran kanal tedavileri ve görünmez estetik dolgular.",
-        highlight: "Tek Seans",
+        desc: "Doğal dişinizi koruyan kanal tedavileri ve görünmez estetik dolgular.",
+        highlight: "Hassas Tedavi",
       },
       {
         title: "Diş Beyazlatma & Detartraj",
         desc: "Profesyonel diş taşı temizliği ve lazer destekli beyazlatma.",
-        highlight: "Anında Parlaklık",
+        highlight: "Periyodik Bakım",
       },
     ],
   },
@@ -242,7 +242,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     heroTagline: "Butik, Konforlu ve Birebir Diş Hekimliği Hizmeti",
     heroSubtitle:
       "Denizli'de sıra beklemeden, sakin ve steril muayenehane ortamında estetik diş hekimliği, dolgu, kanal ve protez tedavileri.",
-    badges: ["Birebir İlgi", "Randevulu Sistem", "Ağrısız Yaklaşım"],
+    badges: ["Birebir İlgi", "Randevulu Sistem", "Konforlu Yaklaşım"],
     services: [
       {
         title: "Estetik Ön Diş Restorasyonları",
@@ -362,16 +362,16 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     heroTagline: "Sağlıklı Yaşam ve İdeal Kilonuza Birlikte Ulaşalım",
     heroSubtitle:
       "Sevdiğiniz besinlerden vazgeçmeden, metabolizmanıza özel hazırlanan beslenme programları ile kalıcı incelme.",
-    badges: ["Kişiye Özel Diyet", "WhatsApp Takibi", "Ücretsiz Ön Görüşme"],
+    badges: ["Kişiye Özel Diyet", "WhatsApp Takibi", "Ön Görüşme & Analiz"],
     services: [
       {
         title: "Sağlıklı Zayıflama & Kilo Koruma",
         desc: "Jo-jo etkisi olmadan, sadece yağ dokusundan kayıp sağlayan bilimsel diyet listeleri.",
-        highlight: "Kalıcı Sonuç",
+        highlight: "Sürdürülebilir Plan",
       },
       {
         title: "İnsülin Direnci & PCOS Beslenmesi",
-        desc: "Hormonal dengeyi destekleyen ve tatlı krizlerini bitiren fonksiyonel beslenme.",
+        desc: "Hormonal dengeyi destekleyen ve tatlı krizlerini dengeleyen fonksiyonel beslenme.",
         highlight: "Kan Tahlili Odaklı",
       },
       {
@@ -421,8 +421,8 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
       },
       {
         title: "Detoks & Ödem Atım Programları",
-        desc: "Direnç kilolarını kıran kısa süreli metabolizma canlandırma listeleri.",
-        highlight: "Direnç Kırıcı",
+        desc: "Direnç kilolarına yönelik kısa süreli metabolizma destek listeleri.",
+        highlight: "Metabolik Destek",
       },
     ],
   },
@@ -442,7 +442,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     heroTagline: "Çocuk, Ergen ve Aile İçi İletişimde Güvenli Alanınız",
     heroSubtitle:
       "Denizli'de oyun terapisi, ergen sınav kaygısı, dikkat geliştirme ve aile/çift danışmanlığında bilimsel ve gizlilik esaslı destek.",
-    badges: ["Çocuk & Ergen Uzmanlığı", "Aile Danışmanlığı", "%100 Gizlilik"],
+    badges: ["Çocuk & Ergen Uzmanlığı", "Aile Danışmanlığı", "Etik Gizlilik"],
     services: [
       {
         title: "Çocuk & Oyun Terapisi",
@@ -559,15 +559,15 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     instagram: "@denizli.fizyoform",
     rating: "4.9",
     reviewCount: 124,
-    heroTagline: "Ağrısız Hareket ve Sağlıklı Omurga İçin Uzman Fizyoterapi",
+    heroTagline: "Konforlu Hareket ve Sağlıklı Omurga İçin Uzman Fizyoterapi",
     heroSubtitle:
       "Merkezefendi Gerzele'de bel-boyun fıtığı, duruş bozuklukları, manuel terapi ve fizyoterapist eşliğinde birebir Reformer Pilates.",
     badges: ["Uzman Fizyoterapist", "Manuel Terapi", "Klinik Reformer Pilates"],
     services: [
       {
         title: "Manuel Terapi & Bel-Boyun Fıtığı",
-        desc: "Ameliyatsız fıtık, eklem kısıtlılığı ve kas spazmlarında kanıta dayalı manuel terapi uygulamaları.",
-        highlight: "Ücretsiz İlk Değerlendirme",
+        desc: "Fıtık, eklem kısıtlılığı ve kas spazmlarında kanıta dayalı manuel terapi uygulamaları.",
+        highlight: "Detaylı Ön Değerlendirme",
       },
       {
         title: "Fizyoterapist Eşliğinde Reformer Pilates",
@@ -602,12 +602,12 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     heroTagline: "Servergazi'de Butik Reformer Pilates Deneyimi",
     heroSubtitle:
       "Ferah stüdyo ortamında uzman eğitmenlerle birebir ve grup Reformer/Cadillac Pilates dersleriyle sıkılaşın, esneyin ve yenilenin.",
-    badges: ["Deneme Dersi İmkanı", "Birebir & Düet Ders", "Servergazi"],
+    badges: ["Tanışma Dersi İmkanı", "Birebir & Düet Ders", "Servergazi"],
     services: [
       {
         title: "Birebir (Private) Reformer Pilates",
         desc: "Vücut analizinize ve hedeflerinize göre tamamen size özel planlanan 50 dakikalık aletli pilates.",
-        highlight: "Maksimum Verim",
+        highlight: "Kişisel Program",
       },
       {
         title: "Düet (2 Kişilik) Pilates Paketleri",
@@ -617,7 +617,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
       {
         title: "Duruş Düzeltme & Sıkılaşma",
         desc: "Core bölgesini güçlendiren, sırt ağrılarını azaltan ve tüm vücudu şekillendiren programlar.",
-        highlight: "8 Haftada Fark",
+        highlight: "Düzenli Takip",
       },
       {
         title: "Hamile Pilatesi",
@@ -639,25 +639,25 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     instagram: "@fztsaidyildizsmhb",
     rating: "4.9",
     reviewCount: 73,
-    heroTagline: "Kronik Ağrılarınıza Bilimsel Fizyoterapi Çözümleri",
+    heroTagline: "Kas ve Eklem Sağlığınız İçin Bilimsel Fizyoterapi Çözümleri",
     heroSubtitle:
       "Denizli Sırakapılar'da fasya distorsiyon modeli (FDM), manuel terapi, kupa/kuru iğneleme ve kişiye özel egzersiz yaklaşımları.",
-    badges: ["FDM & Manuel Terapi", "Ağrı Yönetimi", "Merkezi Konum"],
+    badges: ["FDM & Manuel Terapi", "Omurga Sağlığı", "Merkezi Konum"],
     services: [
       {
         title: "Bel ve Boyun Fıtığı Rehabilitasyonu",
         desc: "Sinir basısını azaltan manuel teknikler ve omurga stabilizasyon egzersizleri.",
-        highlight: "Hızlı Rahatlama",
+        highlight: "Klinik Uygulama",
       },
       {
         title: "Fasya Distorsiyon Modeli (FDM)",
-        desc: "Omuz donması, topuk dikeni, tenisçi dirseği ve kas-iskelet ağrılarında hedefe yönelik uygulama.",
+        desc: "Omuz donması, topuk dikeni, tenisçi dirseği ve kas-iskelet problemlerinde hedefe yönelik uygulama.",
         highlight: "Etkin Yöntem",
       },
       {
         title: "Klinik Egzersiz & Postür Analizi",
-        desc: "Ağrının tekrarlamasını önleyen kişiye özel güçlendirme ve esneklik programı.",
-        highlight: "Kalıcı İyileşme",
+        desc: "Problemlerin tekrarlamasını önleyen kişiye özel güçlendirme ve esneklik programı.",
+        highlight: "Sürdürülebilir Gelişim",
       },
       {
         title: "Evde Fizyoterapi Hizmeti",
@@ -681,22 +681,22 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     heroTagline: "Çamlık Bulvarı'nda Cildinize Hak Ettiği Işıltıyı Verin",
     heroSubtitle:
       "Denizli Çamlık'ta son teknoloji buz lazer epilasyon, Hydrafacial medikal cilt bakımı, bölgesel incelme (G5 / EMS) ve kalıcı makyaj.",
-    badges: ["Çamlık Bulvarı", "FDA Onaylı Cihazlar", "Ücretsiz Cilt Analizi"],
+    badges: ["Çamlık Bulvarı", "Yeni Nesil Cihazlar", "Cilt Analizi & Planlama"],
     services: [
       {
         title: "4 Mevsim Buz Lazer Epilasyon",
-        desc: "Acısız, hızlı ve tüm kıl tiplerinde etkili son nesil soğutmalı lazer epilasyon paketleri.",
-        highlight: "Kampanyalı Paket",
+        desc: "Konforlu, hızlı ve farklı kıl tiplerinde etkili son nesil soğutmalı lazer epilasyon paketleri.",
+        highlight: "Avantajlı Paket",
       },
       {
         title: "Hydrafacial & Medikal Cilt Bakımı",
         desc: "Derinlemesine gözenek temizliği, leke/akne protokolleri ve kolajen gençleştirme bakımı.",
-        highlight: "İlk Seansta Parlaklık",
+        highlight: "Canlı & Parlak Cilt",
       },
       {
         title: "Bölgesel İncelme (G5 & Heykeltraş)",
-        desc: "Selülit giderici ve sıkılaştırıcı cihaz protokolleriyle ameliyatsız incelme.",
-        highlight: "Ölçü Garantili",
+        desc: "Selülit karşıtı ve sıkılaştırıcı cihaz protokolleriyle bölgesel incelme.",
+        highlight: "Kişisel Program",
       },
       {
         title: "İpek Kirpik, Kaş Laminasyon & Kalıcı Makyaj",
@@ -717,19 +717,19 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     district: "Sırakapılar, Merkezefendi / Denizli",
     rating: "4.8",
     reviewCount: 134,
-    heroTagline: "Medikal Estetik ve Saç Ekiminde Klinik Güvence",
+    heroTagline: "Medikal Estetik ve Saç Ekiminde Klinik Altyapı",
     heroSubtitle:
-      "Denizli Merkezefendi'de steril hastane/klinik altyapısıyla Safir FUE & DHI saç ekimi, mezoterapi, PRP ve medikal cilt gençleştirme.",
-    badges: ["Safir FUE & DHI Saç Ekimi", "Klinik Güvence", "Ücretsiz Ön Analiz"],
+      "Denizli Merkezefendi'de steril klinik altyapısıyla Safir FUE & DHI saç ekimi, mezoterapi, PRP ve medikal cilt gençleştirme.",
+    badges: ["Safir FUE & DHI Saç Ekimi", "Steril Altyapı", "Ön Analiz & Planlama"],
     services: [
       {
         title: "Safir FUE & DHI Saç Ekimi",
-        desc: "Doğal saç çizgisi tasarımı ve maksimum greft yoğunluğu ile iz bırakmayan saç ekimi.",
-        highlight: "Garantili Sertifika",
+        desc: "Doğal saç çizgisi tasarımı ve yüksek greft yoğunluğu ile planlanan saç ekimi.",
+        highlight: "Klinik Uygulama",
       },
       {
         title: "Saç & Yüz Mezoterapisi / PRP",
-        desc: "Saç dökülmesini durduran ve cildi yenileyen vitamin, somon DNA ve gençlik aşısı uygulamaları.",
+        desc: "Saç köklerini destekleyen ve cildi yenileyen vitamin, somon DNA ve gençlik protokolleri.",
         highlight: "Hızlı Yenilenme",
       },
       {
@@ -765,22 +765,22 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
       {
         title: "Koruyucu Hekimlik & Aşı Takvimi",
         desc: "Kedi ve köpekleriniz için mikroçip, iç-dış parazit ve periyodik karma/kuduz aşı takibi.",
-        highlight: "SMS Hatırlatma",
+        highlight: "Periyodik Takip",
       },
       {
         title: "Teşhis, Röntgen & Kan Laboratuvarı",
-        desc: "Dakikalar içinde sonuç veren hemogram, biyokimya, ultrason ve dijital röntgen görüntüleme.",
-        highlight: "15 Dk Tanı",
+        desc: "Hızlı sonuç veren hemogram, biyokimya, ultrason ve dijital röntgen görüntüleme.",
+        highlight: "Hızlı Tanı",
       },
       {
         title: "Steril Cerrahi & Kısırlaştırma",
-        desc: "Gaz anestezisi ve yoğun bakım ünitesi güvencesiyle kısırlaştırma ve yumuşak doku/ortopedi cerrahisi.",
+        desc: "Gaz anestezisi ve yoğun bakım ünitesi eşliğinde kısırlaştırma ve yumuşak doku/ortopedi cerrahisi.",
         highlight: "Güvenli Anestezi",
       },
       {
         title: "Pet Kuaför & Ağız Diş Bakımı",
-        desc: "Anestezisiz makas/makine tıraşı, banyo ve ultrasonik diş taşı temizliği.",
-        highlight: "Stressiz Bakım",
+        desc: "Makas/makine tıraşı, banyo ve ultrasonik diş taşı temizliği.",
+        highlight: "Konforlu Bakım",
       },
     ],
   },
@@ -798,8 +798,8 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     reviewCount: 88,
     heroTagline: "Denizli'de Doğru Fiyatlı Konut, Arsa ve Ticari Yatırımlar",
     heroSubtitle:
-      "Merkezefendi ve Pamukkale bölgesinde satılık/kiralık daire, villa, arsa portföyü ve ücretsiz güncel ekspertiz (değerleme) hizmeti.",
-    badges: ["Ücretsiz Ekspertiz", "Hızlı Satış & Kiralama", "Güvenilir Tapu Süreci"],
+      "Merkezefendi ve Pamukkale bölgesinde satılık/kiralık daire, villa, arsa portföyü ve güncel emsal değerleme hizmeti.",
+    badges: ["Emsal Değerleme", "Hızlı Satış & Kiralama", "Güvenilir Tapu Süreci"],
     services: [
       {
         title: "Satılık & Kiralık Konut Portföyü",
@@ -807,19 +807,19 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
         highlight: "Güncel Portföy",
       },
       {
-        title: "Ücretsiz Gayrimenkul Değerleme",
+        title: "Gayrimenkul Emsal Değerleme",
         desc: "Mülkünüzün gerçek piyasa değerini bölge emsalleriyle analiz edip en doğru fiyattan pazarlıyoruz.",
-        highlight: "24 Saatte Rapor",
+        highlight: "Detaylı Analiz",
       },
       {
         title: "Arsa & Ticari Gayrimenkul Yatırımı",
-        desc: "Yüksek prim potansiyelli imarlı arsalar, dükkanlar ve sanayi/depo yatırımları.",
-        highlight: "Yüksek Getiri",
+        desc: "Yüksek potansiyelli imarlı arsalar, dükkanlar ve sanayi/depo yatırımları.",
+        highlight: "Yatırım Odaklı",
       },
       {
         title: "Profesyonel Drone Çekimi & Pazarlama",
         desc: "4K video çekimi, ilan portalları ve yatırımcı ağımızla mülkünüzü en kısa sürede sonuca ulaştırıyoruz.",
-        highlight: "Anahtar Teslim",
+        highlight: "Profesyonel Sunum",
       },
     ],
   },
@@ -852,7 +852,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
       },
       {
         title: "Arsa & Tarla Yatırımları",
-        desc: "Gelişim aksındaki bölgelerde orta ve uzun vadede yüksek kazanç sağlayan arsa portföyü.",
+        desc: "Gelişim aksındaki bölgelerde orta ve uzun vadede yüksek potansiyelli arsa portföyü.",
         highlight: "Yatırım Fırsatı",
       },
       {
@@ -877,7 +877,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     heroTagline: "Gayrimenkul Yatırımlarınıza Yeni Bir Vizyon Katıyoruz",
     heroSubtitle:
       "Denizli'de lüks konut, ticari dükkan, arsa yatırımı ve portföy yönetiminde uzman danışman kadromuzla yanınızdayız.",
-    badges: ["Portföy Yönetimi", "Ücretsiz Ekspertiz", "Hızlı Tapu"],
+    badges: ["Portföy Yönetimi", "Emsal Değerleme", "Hızlı Tapu"],
     services: [
       {
         title: "Lüks Konut & Villa Portföyü",
@@ -895,8 +895,8 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
         highlight: "Uzman Analiz",
       },
       {
-        title: "Ücretsiz Fiyat Analizi",
-        desc: "Satmak istediğiniz mülkün güncel piyasa değerini aynı gün ücretsiz belirliyoruz.",
+        title: "Piyasa Fiyat Analizi",
+        desc: "Satmak istediğiniz mülkün güncel piyasa değerini bölge emsallerine göre belirliyoruz.",
         highlight: "Aynı Gün Dönüş",
       },
     ],
@@ -916,7 +916,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     heroTagline: "Denizli'de Yılların Tecrübesiyle Güvenilir Gayrimenkul Hizmeti",
     heroSubtitle:
       "Alıcı ve satıcıyı doğrudan, şeffaf koşullarda buluşturan yerel piyasa hakimiyeti ve sorunsuz tapu danışmanlığı.",
-    badges: ["Yerel Uzmanlık", "Birebir Pazarlık", "Tam Güvence"],
+    badges: ["Yerel Uzmanlık", "Birebir Pazarlık", "Şeffaf Süreç"],
     services: [
       {
         title: "Satılık Daire & Müstakil Ev",
@@ -925,7 +925,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
       },
       {
         title: "Yatırımlık Arsa & Arazi",
-        desc: "Ada/parsel sorgusu yapılmış, temiz tapulu ve prim potansiyeli yüksek arsalar.",
+        desc: "Ada/parsel sorgusu yapılmış, temiz tapulu ve gelişim potansiyeli yüksek arsalar.",
         highlight: "Temiz Tapu",
       },
       {
@@ -936,7 +936,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
       {
         title: "Mülk Satış & Değerleme",
         desc: "Evinizi veya arsanızı değerinde ve hızla nakde çevirmek için bizimle iletişime geçin.",
-        highlight: "Ücretsiz Ekspertiz",
+        highlight: "Emsal Analizi",
       },
     ],
   },
@@ -954,28 +954,28 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     reviewCount: 79,
     heroTagline: "7/24 Ulaşılabilir, Hızlı ve Sonuç Odaklı Gayrimenkul Çözümleri",
     heroSubtitle:
-      "Denizli'de konut, aparat, arsa ve ticari mülk alım-satım süreçlerinizde günün her saati yanınızdayız.",
+      "Denizli'de konut, apart, arsa ve ticari mülk alım-satım süreçlerinizde günün her saati yanınızdayız.",
     badges: ["7/24 İletişim", "Hızlı Pazarlama", "Denizli Uzmanı"],
     services: [
       {
-        title: "Acil Satılık & Fırsat İlanları",
-        desc: "Piyasa değerinin altında, yatırımcısına anında kazandıran güncel fırsat daire ve arsalar.",
+        title: "Satılık & Yatırımlık İlanlar",
+        desc: "Yatırımcısına değer kazandıran güncel daire, dükkan ve arsa seçenekleri.",
         highlight: "Fırsat Portföyü",
       },
       {
         title: "1+1, 2+1, 3+1 Satılık/Kiralık Daireler",
         desc: "Kınıklı, Çamlık, Bağbaşı ve Merkezefendi'de yüksek kira getirili konutlar.",
-        highlight: "Yüksek Kira Çarpanı",
+        highlight: "Kira Çarpanı Analizi",
       },
       {
         title: "Tapu ve Konut Kredisi Danışmanlığı",
         desc: "Banka kredi süreçleri ve tapu randevularınızın baştan sona takibi.",
-        highlight: "Sıfır Zahmet",
+        highlight: "Profesyonel Takip",
       },
       {
-        title: "Ücretsiz İlan & Ekspertiz",
-        desc: "Mülkünüzü WhatsApp'tan gönderin, aynı gün yerinde inceleyip satışa çıkaralım.",
-        highlight: "Hızlı Satış",
+        title: "Portföy Kayıt & Değerleme",
+        desc: "Mülkünüzü WhatsApp'tan gönderin, yerinde inceleyip profesyonel sunumla satışa çıkaralım.",
+        highlight: "Hızlı Pazarlama",
       },
     ],
   },
@@ -1004,7 +1004,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
       {
         title: "Arsa, Bağ & Bahçe Yatırımı",
         desc: "Denizli ve çevresinde geleceğe dönük imarlı arsa ve müstakil yaşam alanları.",
-        highlight: "Prim Garantili",
+        highlight: "Yüksek Potansiyel",
       },
       {
         title: "Ticari Mülk & Yatırım Danışmanlığı",
@@ -1013,7 +1013,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
       },
       {
         title: "Mülkünüzü Değerinde Satıyoruz",
-        desc: "Ücretsiz ekspertiz ve profesyonel tanıtımla mülkünüzü gerçek değerinde satıyoruz.",
+        desc: "Bölge emsal analizi ve profesyonel tanıtımla mülkünüzü gerçek değerinde pazarlıyoruz.",
         highlight: "Hemen Başvurun",
       },
     ],
