@@ -1,1176 +1,1272 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import type { BusinessLead, SectorType } from "../businesses";
 
-/* -------------------------------------------------------------------------- */
-/*  INLINE ARCHITECTURAL SVG ICONS (ui-ux-pro-max: ZERO EMOJIS ALLOWED)       */
-/* -------------------------------------------------------------------------- */
-const Icons = {
-  Phone: ({ className = "w-4 h-4" }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-    </svg>
-  ),
-  WhatsApp: ({ className = "w-4 h-4" }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-    </svg>
-  ),
-  MapPin: ({ className = "w-4 h-4" }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-  ),
-  Star: ({ className = "w-3.5 h-3.5" }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1.5">
-      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-    </svg>
-  ),
-  Check: ({ className = "w-4 h-4" }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  ),
-  ArrowUpRight: ({ className = "w-4 h-4" }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="7" y1="17" x2="17" y2="7" />
-      <polyline points="7 7 17 7 17 17" />
-    </svg>
-  ),
-  Shield: ({ className = "w-4 h-4" }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      <path d="m9 12 2 2 4-4" />
-    </svg>
-  ),
-  Clock: ({ className = "w-4 h-4" }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
-    </svg>
-  ),
-  Sliders: ({ className = "w-4 h-4" }: { className?: string }) => (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="4" y1="21" x2="4" y2="14" />
-      <line x1="4" y1="10" x2="4" y2="3" />
-      <line x1="12" y1="21" x2="12" y2="12" />
-      <line x1="12" y1="8" x2="12" y2="3" />
-      <line x1="20" y1="21" x2="20" y2="16" />
-      <line x1="20" y1="12" x2="20" y2="3" />
-      <line x1="2" y1="14" x2="6" y2="14" />
-      <line x1="10" y1="8" x2="14" y2="8" />
-      <line x1="18" y1="16" x2="22" y2="16" />
-    </svg>
-  ),
-};
-
-/* -------------------------------------------------------------------------- */
-/*  UI-UX-PRO-MAX SECTOR DESIGN TOKENS (LIGHT EDITORIAL + STUDIO CARBON)      */
-/* -------------------------------------------------------------------------- */
-interface SectorDesignSystem {
-  isDark: boolean;
-  pageBg: string;
-  surfaceBg: string;
-  cardBg: string;
-  textPrimary: string;
-  textSecondary: string;
-  textMuted: string;
-  borderSubtle: string;
-  primaryBtn: string;
-  secondaryBtn: string;
-  accentColor: string;
-  accentBadge: string;
-  headingFontClass: string;
-  heroImage: string;
-  secondaryImage: string;
-  editorialKicker: string;
-  ctaLabel: string;
-  formTitle: string;
-  testimonials: { name: string; role: string; quote: string }[];
-  processSteps: { num: string; title: string; detail: string }[];
+interface EditorialPalette {
+  bg: string;
+  surface: string;
+  surfaceAlt: string;
+  ink: string;
+  inkSecondary: string;
+  inkMuted: string;
+  line: string;
+  lineStrong: string;
+  accent: string;
+  accentContrast: string;
+  accentSoft: string;
+  fontDisplay: string;
+  kicker: string;
+  heroPhoto: string;
+  galleryPhotos: { url: string; caption: string; tag: string }[];
+  metrics: [string, string][];
+  process: [string, string, string][];
+  quotes: { text: string; author: string; detail: string }[];
 }
 
-const DESIGN_SYSTEMS: Record<SectorType, SectorDesignSystem> = {
-  dental: {
-    isDark: false,
-    pageBg: "bg-[#F8FAFC]",
-    surfaceBg: "bg-[#F1F5F9]",
-    cardBg: "bg-white shadow-[0_12px_32px_-8px_rgba(15,23,42,0.06)]",
-    textPrimary: "text-[#0F172A]",
-    textSecondary: "text-[#334155]",
-    textMuted: "text-[#64748B]",
-    borderSubtle: "border-[#E2E8F0]",
-    primaryBtn: "bg-[#0284C7] hover:bg-[#0369A1] text-white shadow-sm",
-    secondaryBtn: "bg-white hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1]",
-    accentColor: "text-[#0284C7]",
-    accentBadge: "bg-[#E0F2FE] text-[#0369A1] border-[#BAE6FD]",
-    headingFontClass: "font-sans tracking-tight",
-    heroImage:
-      "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=85",
-    secondaryImage:
-      "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=900&q=80",
-    editorialKicker: "KLİNİK Mükemmeliyet & Dijital Protokol",
-    ctaLabel: "Muayene Randevusu Oluştur",
-    formTitle: "Hızlı Klinik Randevu & Ön Değerlendirme",
-    testimonials: [
-      {
-        name: "Merve K.",
-        role: "Zirkonyum & Gülüş Tasarımı Danışanı",
-        quote:
-          "İlk muayeneden prova sürecine kadar her aşama dijital olarak gösterildi. Doğallığı ve klinik hijyeni gerçekten üst düzey.",
-      },
-      {
-        name: "Hakan T.",
-        role: "İmplant Tedavisi",
-        quote:
-          "Hiç ağrı hissetmeden aynı gün içinde işlemim tamamlandı. Randevu saatlerine dakikası dakikasına uyuluyor.",
-      },
-    ],
-    processSteps: [
-      {
-        num: "01",
-        title: "Dijital Görüntüleme & Analiz",
-        detail: "Panoramik röntgen ve 3 boyutlu ağız içi tarama ile milimetrik teşhis.",
-      },
-      {
-        num: "02",
-        title: "Şeffaf Tedavi Planlaması",
-        detail: "İşlem süresi, kullanılacak sertifikalı materyaller ve maliyetin netleştirilmesi.",
-      },
-      {
-        num: "03",
-        title: "Ağrısız & Steril Uygulama",
-        detail: "Modern lokal anestezi ve tek kullanımlık steril protokollerle konforlu süreç.",
-      },
-    ],
-  },
-  diet: {
-    isDark: false,
-    pageBg: "bg-[#FAF8F5]",
-    surfaceBg: "bg-[#F2EFE9]",
-    cardBg: "bg-white shadow-[0_14px_34px_-10px_rgba(20,51,38,0.06)]",
-    textPrimary: "text-[#143326]",
-    textSecondary: "text-[#3D5245]",
-    textMuted: "text-[#697A70]",
-    borderSubtle: "border-[#E3DFD5]",
-    primaryBtn: "bg-[#15803D] hover:bg-[#166534] text-white shadow-sm",
-    secondaryBtn: "bg-white hover:bg-[#F2EFE9] text-[#143326] border border-[#D5CFC2]",
-    accentColor: "text-[#15803D]",
-    accentBadge: "bg-[#DCFCE7] text-[#166534] border-[#BBF7D0]",
-    headingFontClass: "font-serif tracking-tight",
-    heroImage:
-      "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=85",
-    secondaryImage:
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
-    editorialKicker: "BİLİMSEL BESLENME & METABOLİK DENGE",
-    ctaLabel: "Ücretsiz Ön Görüşme Planla",
-    formTitle: "Kişisel Beslenme & InBody Analiz Randevusu",
-    testimonials: [
-      {
-        name: "Selin A.",
-        role: "Yüz Yüze Diyet Danışanı (-14 kg)",
-        quote:
-          "Hiçbir yasak listesi olmadan, sosyal hayatımdan kopmadan 3,5 ayda tamamen yağdan 14 kilo verdim. Haftalık InBody ölçümleri çok motive edici.",
-      },
-      {
-        name: "Burak Y.",
-        role: "Online Beslenme Takibi",
-        quote:
-          "Yoğun iş temposunda WhatsApp üzerinden her öğünümü takip etmesi sayesinde insülin direncimi kırdık.",
-      },
-    ],
-    processSteps: [
-      {
-        num: "01",
-        title: "Segmental Yağ & Kas Analizi",
-        detail: "Profesyonel klinik cihazla metabolizma hızı, ödem ve iç yağlanma ölçümü.",
-      },
-      {
-        num: "02",
-        title: "Yaşam Tarzına Uygun Planlama",
-        detail: "Kan tahlilleriniz ve sevdiğiniz besinlere göre sıfırdan kurgulanan liste.",
-      },
-      {
-        num: "03",
-        title: "Birebir WhatsApp & Haftalık Kontrol",
-        detail: "Günlük öğün değerlendirmesi ve her hafta güncellenen dinamik program.",
-      },
-    ],
-  },
-  therapy: {
-    isDark: false,
-    pageBg: "bg-[#FBF9F6]",
-    surfaceBg: "bg-[#F3EFEA]",
-    cardBg: "bg-white shadow-[0_14px_36px_-10px_rgba(49,46,129,0.06)]",
-    textPrimary: "text-[#1E1B2E]",
-    textSecondary: "text-[#4A4458]",
-    textMuted: "text-[#7A7389]",
-    borderSubtle: "border-[#E6E0D6]",
-    primaryBtn: "bg-[#4338CA] hover:bg-[#3730A3] text-white shadow-sm",
-    secondaryBtn: "bg-white hover:bg-[#F3EFEA] text-[#1E1B2E] border border-[#D8D0C5]",
-    accentColor: "text-[#4338CA]",
-    accentBadge: "bg-[#EEF2FF] text-[#3730A3] border-[#E0E7FF]",
-    headingFontClass: "font-serif tracking-tight",
-    heroImage:
-      "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=1200&q=85",
-    secondaryImage:
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80",
-    editorialKicker: "ETİK, GİZLİLİK ESASLI & BİLİMSEL YAKLAŞIM",
-    ctaLabel: "Seans & Ön Değerlendirme Al",
-    formTitle: "Seans & Değerlendirme Randevusu",
-    testimonials: [
-      {
-        name: "Danışan Yorumu",
-        role: "Bireysel Danışmanlık / Terapi",
-        quote:
-          "İlk seanstan itibaren yargılanmadığımı ve gerçekten anlaşıldığımı hissettiğim, çok huzurlu ve profesyonel bir ortam.",
-      },
-      {
-        name: "Ebeveyn Geri Bildirimi",
-        role: "Ergen & Aile Danışmanlığı",
-        quote:
-          "Sınav senesinde yaşadığımız yoğun kaygı sürecini bilimsel ve sakin yönlendirmelerle çok sağlıklı atlattık.",
-      },
-    ],
-    processSteps: [
-      {
-        num: "01",
-        title: "İlk Değerlendirme Görüşmesi",
-        detail: "İhtiyaçların, beklentilerin ve uygun terapi/rehabilitasyon ekolünün belirlenmesi.",
-      },
-      {
-        num: "02",
-        title: "Kişiye Özel Süreç Haritası",
-        detail: "Haftalık seans sıklığı ve bilimsel protokollerin yapılandırılması.",
-      },
-      {
-        num: "03",
-        title: "Düzenli Takip & Kalıcı Kazanım",
-        detail: "Yüz yüze veya online seanslarla sürdürülebilir iyilik halinin korunması.",
-      },
-    ],
-  },
-  beauty: {
-    isDark: false,
-    pageBg: "bg-[#FFFBFD]",
-    surfaceBg: "bg-[#FDF2F7]",
-    cardBg: "bg-white shadow-[0_14px_38px_-10px_rgba(131,24,67,0.07)]",
-    textPrimary: "text-[#3B0A26]",
-    textSecondary: "text-[#64324C]",
-    textMuted: "text-[#8F657B]",
-    borderSubtle: "border-[#F5D6E6]",
-    primaryBtn: "bg-[#9D174D] hover:bg-[#831843] text-white shadow-sm",
-    secondaryBtn: "bg-white hover:bg-[#FDF2F7] text-[#3B0A26] border border-[#EBC5D8]",
-    accentColor: "text-[#9D174D]",
-    accentBadge: "bg-[#FCE7F3] text-[#831843] border-[#FBCFE8]",
-    headingFontClass: "font-serif tracking-tight",
-    heroImage:
-      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=85",
-    secondaryImage:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80",
-    editorialKicker: "MEDİKAL ESTETİK & İLERİ CİLT PROTOKOLÜ",
-    ctaLabel: "Ücretsiz Cilt Analizi & Randevu",
-    formTitle: "Ücretsiz Ön Analiz & Kampanya Randevusu",
-    testimonials: [
-      {
-        name: "Zeynep D.",
-        role: "Hydrafacial & Buz Lazer Paketi",
-        quote:
-          "Çamlık'ta gittiğim en steril ve ilgili merkez. Cihazlar orijinal ve ilk seanstan itibaren cildimdeki farkı herkes sordu.",
-      },
-      {
-        name: "Elif S.",
-        role: "Bölgesel İncelme & Bakım",
-        quote:
-          "Randevu saatleri çok düzenli, işlem öncesi ücretsiz cilt analizi yapıp ihtiyacım olmayan hiçbir paketi önermediler.",
-      },
-    ],
-    processSteps: [
-      {
-        num: "01",
-        title: "Ücretsiz Dijital Cilt & Kıl Analizi",
-        detail: "Cilt tipinize ve ihtiyacınıza en uygun cihaz protokolünün uzman tarafından seçilmesi.",
-      },
-      {
-        num: "02",
-        title: "FDA Onaylı Cihaz Uygulaması",
-        detail: "Yüksek hijyen standartlarında, acısız ve konforlu seans deneyimi.",
-      },
-      {
-        num: "03",
-        title: "Seans Sonrası Kontrol & Bakım",
-        detail: "Kalıcı sonuç için düzenli kontrol seansları ve ev devam ürünü rehberliği.",
-      },
-    ],
-  },
-  realestate: {
-    isDark: false,
-    pageBg: "bg-[#F7F6F2]",
-    surfaceBg: "bg-[#EFECE6]",
-    cardBg: "bg-white shadow-[0_14px_36px_-10px_rgba(15,118,110,0.07)]",
-    textPrimary: "text-[#111827]",
-    textSecondary: "text-[#374151]",
-    textMuted: "text-[#6B7280]",
-    borderSubtle: "border-[#E5E0D5]",
-    primaryBtn: "bg-[#0F766E] hover:bg-[#115E59] text-white shadow-sm",
-    secondaryBtn: "bg-white hover:bg-[#EFECE6] text-[#111827] border border-[#D1CBC0]",
-    accentColor: "text-[#0F766E]",
-    accentBadge: "bg-[#CCFBF1] text-[#115E59] border-[#99F6E4]",
-    headingFontClass: "font-serif tracking-tight",
-    heroImage:
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85",
-    secondaryImage:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
-    editorialKicker: "GAYRİMENKUL YATIRIM & PORTFÖY YÖNETİMİ",
-    ctaLabel: "Ücretsiz Ekspertiz & Portföy Al",
-    formTitle: "Gayrimenkul Değerleme & Portföy Talebi",
-    testimonials: [
-      {
-        name: "Murat B.",
-        role: "Konut Satışı — Merkezefendi",
-        quote:
-          "Aylarca satılamayan dairemizi doğru ekspertiz fiyatı ve profesyonel çekimle 12 gün içinde sorunsuz tapuya taşıdılar.",
-      },
-      {
-        name: "Serkan Ö.",
-        role: "Arsa & Ticari Yatırım",
-        quote:
-          "Denizli'nin gelişim bölgelerine çok hakimler. Şeffaf pazarlık süreciyle alıcı ve satıcıyı yüz yüze getirdiler.",
-      },
-    ],
-    processSteps: [
-      {
-        num: "01",
-        title: "Ücretsiz Bölge & Emsal Ekspertizi",
-        detail: "Mülkünüzün gerçekleşmiş tapu satış verilerine göre gerçek piyasa değerinin tespiti.",
-      },
-      {
-        num: "02",
-        title: "Profesyonel Çekim & Nitelikli Pazarlama",
-        detail: "Hazır yatırımcı ağımız ve dijital portallarda hedef odaklı sunum.",
-      },
-      {
-        num: "03",
-        title: "Güvenli Sözleşme, Kredi & Tapu",
-        detail: "Kapora, konut kredisi ve tapu devir işlemlerinin sıfır riskle tamamlanması.",
-      },
-    ],
-  },
+const PALETTES: Record<SectorType, EditorialPalette> = {
   auto: {
-    isDark: true,
-    pageBg: "bg-[#0B0C0E]",
-    surfaceBg: "bg-[#121418]",
-    cardBg: "bg-[#16191F] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7)]",
-    textPrimary: "text-[#F8FAFC]",
-    textSecondary: "text-[#CBD5E1]",
-    textMuted: "text-[#94A3B8]",
-    borderSubtle: "border-[#262A34]",
-    primaryBtn: "bg-[#D97706] hover:bg-[#B45309] text-white shadow-sm",
-    secondaryBtn: "bg-[#16191F] hover:bg-[#1E222A] text-white border border-[#333846]",
-    accentColor: "text-[#F59E0B]",
-    accentBadge: "bg-[#D97706]/15 text-[#FBBF24] border-[#D97706]/30",
-    headingFontClass: "font-sans tracking-tight",
-    heroImage:
-      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1200&q=85",
-    secondaryImage:
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",
-    editorialKicker: "BOYA KORUMA MÜHENDİSLİĞİ & DETAY STÜDYOSU",
-    ctaLabel: "Araç Ekspertiz & Fiyat Teklifi Al",
-    formTitle: "Uygulama Fiyatı & Randevu Sorgulama",
-    testimonials: [
+    bg: "#090A0C",
+    surface: "#101216",
+    surfaceAlt: "#15181E",
+    ink: "#F4F6F8",
+    inkSecondary: "#B4BCC4",
+    inkMuted: "#6E7781",
+    line: "rgba(255, 255, 255, 0.09)",
+    lineStrong: "rgba(255, 255, 255, 0.2)",
+    accent: "#E5A93C",
+    accentContrast: "#090A0C",
+    accentSoft: "rgba(229, 169, 60, 0.12)",
+    fontDisplay: "'Plus Jakarta Sans', -apple-system, sans-serif",
+    kicker: "STUDIO PROTECTION & DETAILING ENGINEERING",
+    heroPhoto:
+      "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1600&q=85",
+    galleryPhotos: [
       {
-        name: "Emre K.",
-        role: "Komple TPU PPF Şeffaf Kaplama",
-        quote:
-          "Sıfır aldığım aracımı bayiden çıkar çıkmaz teslim ettim. Köşe dönüş işçiliği ve parlaklık kusursuz, film olduğu bile belli olmuyor.",
+        url: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=900&q=80",
+        caption: "Tozsuz Kabinde %100 Poliüretan TPU PPF Uygulaması",
+        tag: "01 / Yüzey Zırhlama",
       },
       {
-        name: "Onur Ç.",
-        role: "Polisaj & 9H Seramik Kaplama",
-        quote:
-          "Yıkama çizikleri tamamen gitmiş, ayna gibi teslim aldım. Su ve çamur tutmuyor, işçilik 10 numara.",
+        url: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=900&q=80",
+        caption: "Çok Aşamalı Boya Düzeltme & 9H Kristal Seramik",
+        tag: "02 / Optik Parlaklık",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",
+        caption: "Detaylı İç Kuaför, Deri Koruma ve Antibakteriyel Bakım",
+        tag: "03 / Kabin Restorasyonu",
       },
     ],
-    processSteps: [
+    metrics: [
+      ["190 Mikron", "Kendini Onaran (Self-Healing) TPU Film"],
+      ["9H Sertlik", "Kimyasal & UV Dirençli Kristal Seramik"],
+      ["Yazılı Garanti", "Sararma ve Kalkmaya Karşı Sertifikalı"],
+      ["Aynı Gün", "Ücretsiz Mikron Boya Ölçümü & Ekspertiz"],
+    ],
+    process: [
+      [
+        "01",
+        "Dekontaminasyon & Mikron Analizi",
+        "Demir tozu, reçine ve yüzey kalıntıları pH nötr kimyasallarla arındırılır; her panelin vernik kalınlığı dijital olarak ölçülür.",
+      ],
+      [
+        "02",
+        "Hologramsız Optik Polisaj",
+        "Kılcal yıkama çizikleri ve matlaşmış katmanlar çok aşamalı pasta-cila protokolüyle ayna netliğine kavuşturulur.",
+      ],
+      [
+        "03",
+        "Kürleşme & Garanti Teslimatı",
+        "Kapalı stüdyo ortamında PPF veya seramik kaplama uygulanır, kızılötesi kürleşme sonrası garanti belgesiyle teslim edilir.",
+      ],
+    ],
+    quotes: [
       {
-        num: "01",
-        title: "Mikron Boya Ölçümü & Demir Tozu Temizliği",
-        detail: "Yüzeydeki reçine ve endüstriyel kalıntıların kil ve kimyasal arındırma ile temizlenmesi.",
+        text: "Sıfır kilometre aldığım aracımı bayiden çıkar çıkmaz teslim ettim. Kaput ve çamurluk köşe dönüşlerinde film olduğu dışarıdan kesinlikle anlaşılmıyor.",
+        author: "Emre K.",
+        detail: "Komple TPU PPF Kaplama",
       },
       {
-        num: "02",
-        title: "Çok Aşamalı Hologramsız Polisaj",
-        detail: "Kılcal çiziklerin vernik kalınlığını koruyarak optik berraklığa kavuşturulması.",
+        text: "Yıkama çiziklerinden matlaşmış siyah aracım ilk günkü derinliğine kavuştu. İşçilik ve teslimat disiplini gerçekten üst düzey.",
+        author: "Onur Ç.",
+        detail: "Polisaj & 9H Seramik Kaplama",
+      },
+    ],
+  },
+
+  dental: {
+    bg: "#F6F7F9",
+    surface: "#FFFFFF",
+    surfaceAlt: "#EEF1F5",
+    ink: "#0C1524",
+    inkSecondary: "#3B495E",
+    inkMuted: "#6C7A8E",
+    line: "rgba(12, 21, 36, 0.09)",
+    lineStrong: "rgba(12, 21, 36, 0.18)",
+    accent: "#0B6BCB",
+    accentContrast: "#FFFFFF",
+    accentSoft: "rgba(11, 107, 203, 0.08)",
+    fontDisplay: "'Plus Jakarta Sans', -apple-system, sans-serif",
+    kicker: "DİJİTAL DİŞ HEKİMLİĞİ & AĞIZ SAĞLIĞI MERKEZİ",
+    heroPhoto:
+      "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=85",
+    galleryPhotos: [
+      {
+        url: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=900&q=80",
+        caption: "3 Boyutlu Dijital Gülüş Tasarımı & CAD/CAM Ölçü",
+        tag: "01 / Dijital Protokol",
       },
       {
-        num: "03",
-        title: "Kürleşme & Dijital Garanti Sertifikası",
-        detail: "Tozsuz kabinde TPU PPF / 9H Seramik uygulaması ve yazılı garanti belgesi teslimi.",
+        url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=900&q=80",
+        caption: "Sertifikalı İmplant Cerrahisi & Zirkonyum Restorasyon",
+        tag: "02 / Estetik & Fonksiyon",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=80",
+        caption: "Uluslararası Otoklav Sterilizasyon & Konforlu Klinik",
+        tag: "03 / Steril Altyapı",
+      },
+    ],
+    metrics: [
+      ["3D CAD/CAM", "Dijital Ağız İçi Tarama & Hassas Ölçü"],
+      ["%100 Steril", "Uluslararası Otoklav & Hijyen Protokolü"],
+      ["Sertifikalı", "Ömür Boyu Garantili İmplant Sistemleri"],
+      ["Aynı Gün", "Hızlı Muayene & Şeffaf Tedavi Planı"],
+    ],
+    process: [
+      [
+        "01",
+        "Panoramik Görüntüleme & Muayene",
+        "İlk randevuda dijital röntgen ve ağız içi kamera ile mevcut durum detaylıca incelenir, alternatif tedavi yolları anlatılır.",
+      ],
+      [
+        "02",
+        "Dijital Ölçü & Prova Süreci",
+        "Yüz hatlarınıza en uygun diş formu dijital ortamda tasarlanır; işlem sonunda nasıl bir gülüşe kavuşacağınız önceden planlanır.",
+      ],
+      [
+        "03",
+        "Ağrısız Tedavi & Periyodik Kontrol",
+        "Modern lokal anestezi altında konforlu uygulama tamamlanır ve düzenli kontrol randevularıyla uzun ömürlü kullanım güvenceye alınır.",
+      ],
+    ],
+    quotes: [
+      {
+        text: "Dişçi koltuğu korkumu tamamen yenmemi sağladılar. Zirkonyum kaplamalarım o kadar doğal oldu ki kimse işlem yapıldığını anlamıyor.",
+        author: "Merve K.",
+        detail: "Zirkonyum & Gülüş Tasarımı",
+      },
+      {
+        text: "İmplant sürecim beklediğimden çok daha rahat ve ağrısız geçti. Randevu saatlerine gösterilen özen ve klinik temizliği kusursuz.",
+        author: "Hakan T.",
+        detail: "Dental İmplant Tedavisi",
+      },
+    ],
+  },
+
+  diet: {
+    bg: "#F8F6F1",
+    surface: "#FFFFFF",
+    surfaceAlt: "#EFECE4",
+    ink: "#162A1F",
+    inkSecondary: "#3F5448",
+    inkMuted: "#6E8075",
+    line: "rgba(22, 42, 31, 0.09)",
+    lineStrong: "rgba(22, 42, 31, 0.18)",
+    accent: "#1F6E43",
+    accentContrast: "#FFFFFF",
+    accentSoft: "rgba(31, 110, 67, 0.09)",
+    fontDisplay: "'Playfair Display', Georgia, serif",
+    kicker: "KLİNİK BESLENME & SÜRDÜRÜLEBİLİR KİLO YÖNETİMİ",
+    heroPhoto:
+      "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=85",
+    galleryPhotos: [
+      {
+        url: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
+        caption: "Kan Tahlili ve Metabolizma Hızına Özel Beslenme Planı",
+        tag: "01 / Kişisel Planlama",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80",
+        caption: "Profesyonel Segmental Yağ, Kas ve Ödem Analizi",
+        tag: "02 / Klinik Ölçüm",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80",
+        caption: "Yüz Yüze Görüşme ve WhatsApp Üzerinden Günlük Öğün Takibi",
+        tag: "03 / Aktif Motivasyon",
+      },
+    ],
+    metrics: [
+      ["InBody Analiz", "Bölgesel Yağ, Kas & Bazal Metabolizma Ölçümü"],
+      ["Yasaksız Liste", "Sosyal Hayata Uyumlu Sürdürülebilir Beslenme"],
+      ["Birebir Takip", "WhatsApp Üzerinden Günlük Öğün Kontrolü"],
+      ["Yüz Yüze & Online", "Kliniğimizde veya Uzaktan Esnek Program"],
+    ],
+    process: [
+      [
+        "01",
+        "Vücut Kompozisyonu & Kan Tahlili İncelemesi",
+        "İlk görüşmede profesyonel cihazla yağ-kas oranınız ölçülür, güncel kan değerleriniz ve beslenme alışkanlıklarınız analiz edilir.",
+      ],
+      [
+        "02",
+        "Size Özel Beslenme Programı",
+        "Hazır şablon listeler yerine çalışma saatlerinize, sevdiğiniz tatlara ve metabolik ihtiyacınıza uygun haftalık liste hazırlanır.",
+      ],
+      [
+        "03",
+        "Haftalık Tartım & Kilo Koruma Eğitimi",
+        "Her hafta yapılan ölçümlerle liste güncellenir; hedef kiloya ulaşıldığında kalıcı koruma programı uygulanır.",
+      ],
+    ],
+    quotes: [
+      {
+        text: "Aç kalmadan ve sevdiğim yemeklerden mahrum olmadan 3 ayda 12 kilo verdim. Her hafta yapılan yağ-kas analizleri motivasyonumu çok yüksek tuttu.",
+        author: "Selin A.",
+        detail: "Yüz Yüze Beslenme Danışanı",
+      },
+      {
+        text: "İnsülin direncim nedeniyle yıllardır veremediğim kiloları doğru beslenme planlaması ve günlük WhatsApp takibi sayesinde sağlıklı şekilde geride bıraktım.",
+        author: "Burak Y.",
+        detail: "Klinik & Online Diyet",
+      },
+    ],
+  },
+
+  therapy: {
+    bg: "#F9F7F3",
+    surface: "#FFFFFF",
+    surfaceAlt: "#F0ECE3",
+    ink: "#1E1D24",
+    inkSecondary: "#494754",
+    inkMuted: "#787585",
+    line: "rgba(30, 29, 36, 0.09)",
+    lineStrong: "rgba(30, 29, 36, 0.18)",
+    accent: "#3E387E",
+    accentContrast: "#FFFFFF",
+    accentSoft: "rgba(62, 56, 126, 0.08)",
+    fontDisplay: "'Playfair Display', Georgia, serif",
+    kicker: "BİLİMSEL DANIŞMANLIK, TERAPİ & REHABİLİTASYON",
+    heroPhoto:
+      "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=1600&q=85",
+    galleryPhotos: [
+      {
+        url: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80",
+        caption: "Birebir Uzman Değerlendirmesi ve Kişiye Özel Seans Planı",
+        tag: "01 / Bireysel Yaklaşım",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80",
+        caption: "Kanıta Dayalı Uygulamalar ve Sakin, Güvenli Merkez Ortamı",
+        tag: "02 / Bilimsel Protokol",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&w=900&q=80",
+        caption: "Yüz Yüze ve Online Seans Seçenekleriyle Düzenli Takip",
+        tag: "03 / Süreklilik",
+      },
+    ],
+    metrics: [
+      ["%100 Gizlilik", "Mesleki Etik İlkeler & Güvenli Danışan Alanı"],
+      ["Uzman Kadro", "Akademik ve Klinik Deneyimli Uygulayıcılar"],
+      ["50 Dk Birebir", "Tamamen Size Ayrılmış Yapılandırılmış Seans"],
+      ["Esnek Takvim", "Yüz Yüze ve Online Randevu Alternatifleri"],
+    ],
+    process: [
+      [
+        "01",
+        "Ön Değerlendirme & İhtiyaç Analizi",
+        "İlk seansta yaşadığınız süreç, beklentileriniz ve hedefleriniz detaylıca dinlenerek size en uygun bilimsel yöntem belirlenir.",
+      ],
+      [
+        "02",
+        "Yapılandırılmış Seans Süreci",
+        "Belirlenen hedefler doğrultusunda haftalık veya ihtiyaca göre planlanan birebir seanslarla kalıcı gelişim desteklenir.",
+      ],
+      [
+        "03",
+        "Süreç Takibi & Kazanımların Korunması",
+        "Düzenli değerlendirmelerle ilerleme izlenir ve günlük yaşam kalitenizi artıracak pratik araçlar kazandırılır.",
+      ],
+    ],
+    quotes: [
+      {
+        text: "Merkeze adım attığınız andan itibaren huzurlu, sakin ve son derece profesyonel bir yaklaşımla karşılaşıyorsunuz. Süreç boyunca kendimi çok güvende hissettim.",
+        author: "Danışan Geri Bildirimi",
+        detail: "Bireysel Seans Programı",
+      },
+      {
+        text: "Bilimsel açıklamaları, güler yüzlü iletişimi ve randevu disipliniyle Denizli'de gönül rahatlığıyla tavsiye edebileceğim tek adres.",
+        author: "Danışan Yorumu",
+        detail: "Uzman Danışmanlık",
+      },
+    ],
+  },
+
+  beauty: {
+    bg: "#FCF9F8",
+    surface: "#FFFFFF",
+    surfaceAlt: "#F5ECE8",
+    ink: "#26171E",
+    inkSecondary: "#59434D",
+    inkMuted: "#8C737E",
+    line: "rgba(38, 23, 30, 0.09)",
+    lineStrong: "rgba(38, 23, 30, 0.18)",
+    accent: "#8E2A52",
+    accentContrast: "#FFFFFF",
+    accentSoft: "rgba(142, 42, 82, 0.08)",
+    fontDisplay: "'Playfair Display', Georgia, serif",
+    kicker: "MEDİKAL ESTETİK, CİLT BAKIMI & LAZER TEKNOLOJİLERİ",
+    heroPhoto:
+      "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1600&q=85",
+    galleryPhotos: [
+      {
+        url: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80",
+        caption: "Hydrafacial & Profesyonel Anti-Aging Cilt Protokolleri",
+        tag: "01 / Cilt Yenileme",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=900&q=80",
+        caption: "Son Nesil Buz Başlıklı Lazer & Bölgesel İncelme Sistemleri",
+        tag: "02 / İleri Cihaz Parkuru",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=900&q=80",
+        caption: "Steril VIP Kabinler ve Ücretsiz Dijital Cilt Analizi",
+        tag: "03 / Butik Konfor",
+      },
+    ],
+    metrics: [
+      ["FDA Onaylı", "Orijinal ve Yeni Nesil Cihaz Teknolojisi"],
+      ["Ücretsiz Analiz", "İşlem Öncesi Dijital Cilt & Kıl Köku Tespiti"],
+      ["VIP Kabinler", "Tek Kullanımlık Hijyenik Uygulama Alanları"],
+      ["Garantili Paket", "Şeffaf Seans Planlaması & Kampanyalı Fiyat"],
+    ],
+    process: [
+      [
+        "01",
+        "Ücretsiz Cilt & Uygunluk Analizi",
+        "Uzman estetisyenlerimiz tarafından cilt ve kıl yapınız incelenir; ihtiyacınız olmayan hiçbir işlem önerilmeden en doğru protokol seçilir.",
+      ],
+      [
+        "02",
+        "Kişiye Özel Seans Uygulaması",
+        "Steril özel odalarda, soğutmalı ve acısız son teknoloji cihazlarla konforlu seansınız gerçekleştirilir.",
+      ],
+      [
+        "03",
+        "Kontrol Seansı & Bakım Takibi",
+        "Uygulama sonrası gelişim takip edilir ve kalıcı etki için kontrol seanslarınız düzenli olarak planlanır.",
+      ],
+    ],
+    quotes: [
+      {
+        text: "Denizli'de gittiğim en temiz ve düzenli merkez. İlk ücretsiz cilt analizinden itibaren çok ilgiliydiler, ilk seansta bile cildimdeki ışıltı fark edildi.",
+        author: "Zeynep D.",
+        detail: "Hydrafacial & Lazer Epilasyon",
+      },
+      {
+        text: "Randevu saatlerinde hiç bekletilmiyorsunuz, cihazlar son teknoloji ve personel işini gerçekten severek yapıyor.",
+        author: "Elif S.",
+        detail: "Bölgesel İncelme & Bakım",
+      },
+    ],
+  },
+
+  realestate: {
+    bg: "#F6F5F0",
+    surface: "#FFFFFF",
+    surfaceAlt: "#ECE9E0",
+    ink: "#14181D",
+    inkSecondary: "#3E4650",
+    inkMuted: "#6F7882",
+    line: "rgba(20, 24, 29, 0.09)",
+    lineStrong: "rgba(20, 24, 29, 0.18)",
+    accent: "#125B50",
+    accentContrast: "#FFFFFF",
+    accentSoft: "rgba(18, 91, 80, 0.08)",
+    fontDisplay: "'Playfair Display', Georgia, serif",
+    kicker: "GAYRİMENKUL YATIRIM, PORTFÖY & EKSPERTİZ YÖNETİMİ",
+    heroPhoto:
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85",
+    galleryPhotos: [
+      {
+        url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
+        caption: "Merkezefendi & Pamukkale Seçkin Konut ve Villa Portföyü",
+        tag: "01 / Nitelikli Konut",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80",
+        caption: "Yüksek Kira Getirili Ticari Mağaza & Arsa Yatırımları",
+        tag: "02 / Ticari & Arsa",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80",
+        caption: "Ücretsiz Piyasa Değerlemesi ve Güvenli Tapu/Kredi Süreci",
+        tag: "03 / Şeffaf Ekspertiz",
+      },
+    ],
+    metrics: [
+      ["Ücretsiz Ekspertiz", "Güncel Tapu Emsalleriyle Doğru Fiyatlandırma"],
+      ["4K Çekim & Sunum", "Profesyonel Fotoğraf, Drone ve Dijital İlan"],
+      ["Doğrudan Pazarlık", "Alıcı ve Satıcıyı Şeffaf Masada Buluşturma"],
+      ["Tam Güvence", "Kredi, Sözleşme ve Tapu Devir Takibi"],
+    ],
+    process: [
+      [
+        "01",
+        "Ücretsiz Yerinde Değerleme (Ekspertiz)",
+        "Satmak veya kiralamak istediğiniz mülkü yerinde inceliyor, bölgedeki gerçek satış rakamlarına göre en doğru piyasa değerini raporluyoruz.",
+      ],
+      [
+        "02",
+        "Profesyonel Görsel Prodüksiyon & Pazarlama",
+        "Mülkünüzü profesyonel çekimlerle hem hazır yatırımcı portföyümüze hem de tüm ulusal ilan portallarına vitrin ilanı olarak sunuyoruz.",
+      ],
+      [
+        "03",
+        "Şeffaf Pazarlık & Sorunsuz Tapu Devri",
+        "Nitelikli alıcılarla güvenli sözleşme, banka kredi süreci ve tapu randevusunu baştan sona sizin adınıza yönetiyoruz.",
+      ],
+    ],
+    quotes: [
+      {
+        text: "Aylarca bekleyen dairemizi doğru ekspertiz fiyatı ve profesyonel tanıtımla 2 hafta içinde gerçek değerinden tapuya taşıdılar.",
+        author: "Murat B.",
+        detail: "Konut Satışı — Merkezefendi",
+      },
+      {
+        text: "Denizli'nin prim yapan bölgelerine çok hakimler. Alıcı ve satıcıyı şeffaf şekilde bir araya getirip tüm tapu sürecini sorunsuz çözdüler.",
+        author: "Serkan Ö.",
+        detail: "Arsa & Yatırım Danışmanlığı",
       },
     ],
   },
 };
 
 export default function ClientShowcase({ business }: { business: BusinessLead }) {
-  const ds = DESIGN_SYSTEMS[business.sector] || DESIGN_SYSTEMS.dental;
+  const p = PALETTES[business.sector] || PALETTES.dental;
 
   const [selectedService, setSelectedService] = useState(
     business.services[0]?.title || "Genel Bilgi & Randevu"
   );
-  const [selectedTime, setSelectedTime] = useState("Bu Hafta İçi");
-  const [visitorName, setVisitorName] = useState("");
-  const [hideBanner, setHideBanner] = useState(false);
+  const [selectedDay, setSelectedDay] = useState("Bu Hafta İçi");
+  const [clientName, setClientName] = useState("");
+  const [hidePreviewBar, setHidePreviewBar] = useState(false);
 
-  // Interactive Sector Widget States (Before/After Slider & Calculators)
-  const [sliderPos, setSliderPos] = useState(58);
-  const [heightCm, setHeightCm] = useState(168);
-  const [weightKg, setWeightKg] = useState(74);
-  const [propSqm, setPropSqm] = useState(135);
-  const [propType, setPropType] = useState("3+1 Daire");
-
-  const bmiValue = (weightKg / Math.pow(heightCm / 100, 2)).toFixed(1);
-  const idealWeight = Math.round(21.5 * Math.pow(heightCm / 100, 2));
-
-  const buildWhatsAppUrl = (customText?: string) => {
-    const text =
-      customText ||
+  const buildWaLink = (customMsg?: string) => {
+    const msg =
+      customMsg ||
       `Merhaba ${business.shortName}, web siteniz üzerinden ulaşıyorum.\n\n` +
-        `• İlgilendiğim Hizmet: ${selectedService}\n` +
-        `• Tercih Edilen Zaman: ${selectedTime}\n` +
-        (visitorName.trim() ? `• İsim: ${visitorName.trim()}\n\n` : "\n") +
+        `• Hizmet / Konu: ${selectedService}\n` +
+        `• Tercih Edilen Zaman: ${selectedDay}\n` +
+        (clientName.trim() ? `• Ad Soyad: ${clientName.trim()}\n\n` : "\n") +
         `Müsaitlik ve detaylar hakkında bilgi alabilir miyim?`;
-    return `https://wa.me/${business.phoneClean}?text=${encodeURIComponent(text)}`;
+    return `https://wa.me/${business.phoneClean}?text=${encodeURIComponent(msg)}`;
   };
 
   const mapQuery = encodeURIComponent(`${business.name} ${business.address}`);
 
   return (
-    <div className={`min-h-screen ${ds.pageBg} ${ds.textPrimary} antialiased transition-colors`}>
-      {/* Google Fonts Editorial Import (Playfair Display + Lora + Plus Jakarta Sans) */}
+    <div
+      style={{
+        backgroundColor: p.bg,
+        color: p.ink,
+        fontFamily: "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+      }}
+      className="min-h-screen antialiased selection:bg-black selection:text-white"
+    >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-        .font-editorial-serif { font-family: 'Playfair Display', 'Lora', Georgia, serif; }
-        .font-editorial-sans { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        .vitrin-shell {
+          width: min(calc(100% - 40px), 1200px);
+          margin: 0 auto;
+        }
+        @media (max-width: 640px) {
+          .vitrin-shell {
+            width: calc(100% - 28px);
+          }
+        }
       `}</style>
 
-      {/* İşletme Sahibi İçin Üst Önizleme Bandı */}
-      {!hideBanner && (
-        <div className="bg-[#0F172A] text-slate-100 border-b border-slate-800 px-4 py-2.5 text-xs font-editorial-sans">
-          <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      {/* İŞLETME SAHİBİ İÇİN İNCE ÜST ÖNİZLEME BANDI */}
+      {!hidePreviewBar && (
+        <div
+          style={{
+            backgroundColor: "#0C1117",
+            color: "#E2E8F0",
+            borderBottom: "1px solid rgba(255,255,255,0.12)",
+          }}
+          className="px-4 py-2.5 text-xs"
+        >
+          <div className="vitrin-shell flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2.5">
-              <span className="inline-block w-2 h-2 rounded-full bg-emerald-400" />
+              <span
+                style={{ backgroundColor: "#10B981" }}
+                className="inline-block w-2 h-2 rounded-full"
+              />
               <span>
-                <strong className="font-semibold text-white">{business.shortName}</strong> için özel hazırlanan kurumsal web sitesi önizlemesi. Sitedeki tüm butonlar doğrudan{" "}
-                <strong className="underline text-emerald-300">{business.phoneDisplay}</strong> hattınıza bağlıdır.
+                <strong className="text-white">{business.shortName}</strong> için hazırlanan özel web sitesi önizlemesi — Tüm randevu ve arama butonları doğrudan{" "}
+                <strong className="text-emerald-300 underline">{business.phoneDisplay}</strong> hattınıza bağlıdır.
               </span>
             </div>
             <button
-              onClick={() => setHideBanner(true)}
-              className="cursor-pointer text-slate-300 hover:text-white text-[11px] px-2.5 py-1 rounded border border-slate-700 transition"
+              onClick={() => setHidePreviewBar(true)}
+              className="cursor-pointer text-[11px] text-slate-400 hover:text-white px-2.5 py-0.5 rounded border border-slate-700"
             >
-              Bandı Gizle
+              Önizleme Çubuğunu Kapat
             </button>
           </div>
         </div>
       )}
 
-      {/* Üst Kurumsal Navigasyon */}
+      {/* MİMARİ ÜST NAVİGASYON (altancelik.dev / Studio Standardı) */}
       <header
-        className={`sticky top-0 z-40 backdrop-blur-md ${
-          ds.isDark ? "bg-[#0B0C0E]/90" : "bg-white/90"
-        } border-b ${ds.borderSubtle} font-editorial-sans`}
+        style={{
+          borderBottom: `1px solid ${p.line}`,
+          backgroundColor: p.bg,
+        }}
+        className="sticky top-0 z-40 backdrop-blur-md bg-opacity-90"
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3.5 min-w-0">
-            <div
-              className={`w-11 h-11 rounded-xl flex items-center justify-center font-bold text-base shrink-0 ${ds.primaryBtn}`}
+        <div className="vitrin-shell h-20 flex items-center justify-between gap-4">
+          <a href="#top" className="flex items-center gap-3.5 min-w-0">
+            <span
+              style={{
+                border: `1px solid ${p.lineStrong}`,
+                backgroundColor: p.surface,
+                color: p.ink,
+                fontFamily: "'JetBrains Mono', monospace",
+              }}
+              className="w-10 h-10 rounded-xl grid place-items-center text-xs font-semibold shrink-0"
             >
-              {business.shortName.charAt(0)}
-            </div>
+              {business.shortName.slice(0, 2).toUpperCase()}
+            </span>
             <div className="truncate">
-              <div className={`font-bold text-base sm:text-lg ${ds.textPrimary} truncate`}>
+              <div className="font-bold text-base sm:text-lg tracking-tight truncate">
                 {business.shortName}
               </div>
-              <div className={`flex items-center gap-2 text-xs ${ds.textMuted} truncate`}>
-                <span>{business.district}</span>
-                <span>•</span>
-                <span className="inline-flex items-center gap-1 font-medium text-amber-500">
-                  <Icons.Star className="w-3.5 h-3.5" />
-                  <span>{business.rating}</span>
-                </span>
-                <span>({business.reviewCount}+ değerlendirme)</span>
+              <div
+                style={{ color: p.inkMuted }}
+                className="text-[11px] tracking-wide truncate"
+              >
+                {business.district} · Google {business.rating} / 5.0 ({business.reviewCount}+ Yorum)
               </div>
             </div>
-          </div>
+          </a>
 
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium">
-            <a href="#hizmetler" className={`${ds.textSecondary} hover:opacity-75 transition`}>
-              Hizmetlerimiz
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+            <a
+              href="#hizmetler"
+              style={{ color: p.inkSecondary }}
+              className="hover:opacity-70 transition"
+            >
+              Hizmetler
             </a>
-            <a href="#surec" className={`${ds.textSecondary} hover:opacity-75 transition`}>
-              Çalışma Süreci
+            <a
+              href="#galeri"
+              style={{ color: p.inkSecondary }}
+              className="hover:opacity-70 transition"
+            >
+              Stüdyo & Yaklaşım
             </a>
-            <a href="#yorumlar" className={`${ds.textSecondary} hover:opacity-75 transition`}>
-              Danışan Yorumları
+            <a
+              href="#surec"
+              style={{ color: p.inkSecondary }}
+              className="hover:opacity-70 transition"
+            >
+              Süreç
             </a>
-            <a href="#iletisim" className={`${ds.textSecondary} hover:opacity-75 transition`}>
-              Konum & İletişim
+            <a
+              href="#iletisim"
+              style={{ color: p.inkSecondary }}
+              className="hover:opacity-70 transition"
+            >
+              İletişim & Harita
             </a>
           </nav>
 
           <div className="flex items-center gap-2.5 shrink-0">
             <a
               href={`tel:+${business.phoneClean}`}
-              className={`hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold transition cursor-pointer ${ds.secondaryBtn}`}
+              style={{
+                border: `1px solid ${p.lineStrong}`,
+                backgroundColor: p.surface,
+                color: p.ink,
+              }}
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold hover:opacity-80 transition"
             >
-              <Icons.Phone className="w-3.5 h-3.5" />
               <span>{business.phoneDisplay}</span>
             </a>
             <a
-              href={buildWhatsAppUrl()}
+              href={buildWaLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition cursor-pointer ${ds.primaryBtn}`}
+              style={{
+                backgroundColor: p.accent,
+                color: p.accentContrast,
+              }}
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold hover:opacity-90 transition"
             >
-              <Icons.WhatsApp className="w-4 h-4" />
-              <span>Randevu Al</span>
+              <span>Randevu & Bilgi Al</span>
+              <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
       </header>
 
-      {/* HERO SECTION — Editorial Asymmetric Grid */}
-      <section className={`py-12 sm:py-20 border-b ${ds.borderSubtle} font-editorial-sans`}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-12 items-center">
-          {/* Sol Sütun: Kurumsal Tipografi & Değer Önerisi */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="flex flex-wrap items-center gap-2.5">
+      {/* EDITORIAL HERO SECTION */}
+      <main id="top">
+        <section
+          style={{ borderBottom: `1px solid ${p.line}` }}
+          className="pt-12 pb-16 sm:pt-20 sm:pb-24"
+        >
+          <div className="vitrin-shell">
+            {/* Üst Kicker Etiketi */}
+            <div className="flex flex-wrap items-center gap-3 mb-7">
               <span
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest border ${ds.accentBadge}`}
+                style={{
+                  border: `1px solid ${p.lineStrong}`,
+                  backgroundColor: p.surface,
+                  color: p.inkSecondary,
+                  fontFamily: "'JetBrains Mono', monospace",
+                }}
+                className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-[11px] uppercase tracking-widest"
               >
-                {ds.editorialKicker}
+                <span
+                  style={{ backgroundColor: p.accent }}
+                  className="w-2 h-2 rounded-full"
+                />
+                {p.kicker}
               </span>
               <span
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border ${ds.borderSubtle} ${ds.cardBg}`}
+                style={{
+                  color: p.inkMuted,
+                  fontFamily: "'JetBrains Mono', monospace",
+                }}
+                className="text-xs uppercase tracking-wider"
               >
-                <Icons.MapPin className={`w-3.5 h-3.5 ${ds.accentColor}`} />
-                <span>{business.district}</span>
+                {business.district}
               </span>
             </div>
 
+            {/* Devasa Editorial Başlık */}
             <h1
-              className={`text-3xl sm:text-5xl font-bold leading-[1.12] ${
-                ds.headingFontClass === "font-serif tracking-tight"
-                  ? "font-editorial-serif"
-                  : "font-editorial-sans"
-              } ${ds.textPrimary}`}
+              style={{
+                fontFamily: p.fontDisplay,
+                letterSpacing: "-0.035em",
+                lineHeight: 1.03,
+              }}
+              className="text-4xl sm:text-6xl lg:text-[68px] font-semibold max-w-4xl"
             >
               {business.heroTagline}
             </h1>
 
-            <p className={`text-base sm:text-lg ${ds.textSecondary} leading-relaxed max-w-2xl`}>
-              {business.heroSubtitle}
-            </p>
+            {/* Alt Açıklama ve Aksiyon Satırı */}
+            <div className="mt-8 sm:mt-10 grid lg:grid-cols-12 gap-8 items-end">
+              <p
+                style={{ color: p.inkSecondary }}
+                className="lg:col-span-7 text-base sm:text-xl leading-relaxed m-0"
+              >
+                {business.heroSubtitle}
+              </p>
 
-            {/* Kurumsal Güvence Rozetleri (SVG İkonlu) */}
-            <div className="grid sm:grid-cols-3 gap-3 pt-1">
-              {business.badges.map((badge, i) => (
-                <div
-                  key={i}
-                  className={`flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border ${ds.borderSubtle} ${ds.cardBg}`}
+              <div className="lg:col-span-5 flex flex-wrap lg:justify-end gap-3">
+                <a
+                  href={buildWaLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    backgroundColor: p.accent,
+                    color: p.accentContrast,
+                  }}
+                  className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl text-sm font-semibold hover:opacity-90 transition"
                 >
-                  <span className={`p-1 rounded-md ${ds.accentBadge}`}>
-                    <Icons.Check className="w-3.5 h-3.5" />
-                  </span>
-                  <span className="text-xs font-semibold">{badge}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Ana Aksiyon Butonları */}
-            <div className="flex flex-col sm:flex-row gap-3.5 pt-2">
-              <a
-                href={buildWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl text-sm sm:text-base font-semibold transition cursor-pointer ${ds.primaryBtn}`}
-              >
-                <Icons.WhatsApp className="w-5 h-5" />
-                <span>{ds.ctaLabel}</span>
-              </a>
-              <a
-                href={`tel:+${business.phoneClean}`}
-                className={`inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl text-sm sm:text-base font-semibold transition cursor-pointer ${ds.secondaryBtn}`}
-              >
-                <Icons.Phone className="w-4 h-4" />
-                <span>{business.phoneDisplay}</span>
-              </a>
-            </div>
-
-            {/* Kurumsal Kimlik & Sosyal Kanıt Şeridi */}
-            <div className={`pt-6 border-t ${ds.borderSubtle} grid grid-cols-3 gap-6`}>
-              <div>
-                <div className={`text-2xl font-bold ${ds.textPrimary}`}>
-                  {business.rating} / 5.0
-                </div>
-                <div className={`text-xs ${ds.textMuted} mt-0.5`}>
-                  Doğrulanmış Danışan Puanı
-                </div>
-              </div>
-              <div>
-                <div className={`text-2xl font-bold ${ds.textPrimary}`}>
-                  {business.reviewCount}+
-                </div>
-                <div className={`text-xs ${ds.textMuted} mt-0.5`}>
-                  Mutlu Müşteri & Danışan
-                </div>
-              </div>
-              <div>
-                <div className={`text-2xl font-bold ${ds.textPrimary}`}>Aynı Gün</div>
-                <div className={`text-xs ${ds.textMuted} mt-0.5`}>
-                  Hızlı Randevu & Dönüş
-                </div>
+                  <span>WhatsApp&apos;tan Randevu Oluştur</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  href={`tel:+${business.phoneClean}`}
+                  style={{
+                    border: `1px solid ${p.lineStrong}`,
+                    backgroundColor: p.surface,
+                    color: p.ink,
+                  }}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-sm font-semibold hover:opacity-80 transition"
+                >
+                  <span>Hemen Ara · {business.phoneDisplay}</span>
+                </a>
               </div>
             </div>
-          </div>
 
-          {/* Sağ Sütun: Görsel Kompozisyon + Online Randevu Kartı */}
-          <div className="lg:col-span-5 space-y-5">
-            {/* Editorial Fotoğraf Çerçevesi */}
-            <div className={`relative rounded-2xl overflow-hidden border ${ds.borderSubtle} h-56 sm:h-64 shadow-md`}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+            {/* Geniş Sinematik Hero Görseli */}
+            <div
+              style={{ border: `1px solid ${p.line}` }}
+              className="mt-12 rounded-2xl overflow-hidden relative aspect-[16/9] sm:aspect-[21/9]"
+            >
               <img
-                src={ds.heroImage}
+                src={p.heroPhoto}
                 alt={business.name}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-white">
+              <div
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.72) 100%)",
+                }}
+                className="absolute inset-0"
+              />
+              <div className="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-8 sm:right-8 flex flex-wrap items-end justify-between gap-4 text-white">
                 <div>
-                  <div className="text-[11px] uppercase tracking-wider text-white/80 font-medium">
+                  <div
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    className="text-[11px] uppercase tracking-widest text-white/75"
+                  >
                     {business.categoryLabel}
                   </div>
-                  <div className="text-base font-bold">{business.shortName}</div>
+                  <div className="text-lg sm:text-2xl font-semibold mt-0.5">
+                    {business.name}
+                  </div>
                 </div>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/90 text-white text-[11px] font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                  Randevuya Açık
-                </span>
+                <div className="flex flex-wrap gap-2">
+                  {business.badges.map((b, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1.5 rounded-lg bg-black/55 backdrop-blur-md border border-white/20 text-xs font-medium text-white"
+                    >
+                      {b}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Online Randevu & Ön Görüşme Kartı */}
-            <div className={`rounded-2xl border ${ds.borderSubtle} ${ds.cardBg} p-6`}>
-              <div className={`flex items-center justify-between pb-3.5 mb-4 border-b ${ds.borderSubtle}`}>
-                <div>
-                  <h2 className="text-base font-bold">{ds.formTitle}</h2>
-                  <p className={`text-xs ${ds.textMuted}`}>
-                    Bilgilerinizi seçin, saniyeler içinde WhatsApp hattımıza bağlanın
-                  </p>
+            {/* Mimari 4'lü Standart Şeridi (Hairline Grid) */}
+            <div
+              style={{
+                border: `1px solid ${p.line}`,
+                backgroundColor: p.surface,
+              }}
+              className="mt-6 rounded-2xl grid sm:grid-cols-2 lg:grid-cols-4 overflow-hidden"
+            >
+              {p.metrics.map(([val, label], idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    borderRight: idx < 3 ? `1px solid ${p.line}` : "none",
+                    borderBottom: `1px solid ${p.line}`,
+                  }}
+                  className="p-6"
+                >
+                  <div
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: p.inkMuted,
+                    }}
+                    className="text-[11px] uppercase tracking-widest"
+                  >
+                    0{idx + 1} / STANDART
+                  </div>
+                  <div
+                    style={{ color: p.ink }}
+                    className="text-xl font-bold mt-2 tracking-tight"
+                  >
+                    {val}
+                  </div>
+                  <div
+                    style={{ color: p.inkSecondary }}
+                    className="text-xs mt-1 leading-relaxed"
+                  >
+                    {label}
+                  </div>
                 </div>
-                <Icons.Clock className={`w-5 h-5 ${ds.accentColor}`} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* HİZMETLERİMİZ — MİMARİ İNDEKS TABLOSU (No Cheap SaaS Boxes) */}
+        <section
+          id="hizmetler"
+          style={{ borderBottom: `1px solid ${p.line}` }}
+          className="py-20 sm:py-28"
+        >
+          <div className="vitrin-shell">
+            <div className="grid lg:grid-cols-12 gap-8 items-end mb-14">
+              <div className="lg:col-span-8">
+                <span
+                  style={{
+                    color: p.inkMuted,
+                    fontFamily: "'JetBrains Mono', monospace",
+                  }}
+                  className="text-xs uppercase tracking-widest block mb-3"
+                >
+                  01 / UZMANLIK & HİZMETLERİMİZ
+                </span>
+                <h2
+                  style={{
+                    fontFamily: p.fontDisplay,
+                    letterSpacing: "-0.03em",
+                  }}
+                  className="text-3xl sm:text-5xl font-semibold m-0"
+                >
+                  {business.shortName} Uygulama Alanları
+                </h2>
+              </div>
+              <p
+                style={{ color: p.inkSecondary }}
+                className="lg:col-span-4 text-sm sm:text-base leading-relaxed m-0"
+              >
+                Detaylı bilgi veya randevu almak istediğiniz hizmet satırına tıklayarak doğrudan uzman ekibimize ulaşabilirsiniz.
+              </p>
+            </div>
+
+            {/* İndeks Satırları */}
+            <div style={{ borderTop: `1px solid ${p.lineStrong}` }}>
+              {business.services.map((srv, idx) => (
+                <a
+                  key={idx}
+                  href={buildWaLink(
+                    `Merhaba ${business.shortName}, "${srv.title}" hizmetiniz hakkında detaylı bilgi ve randevu almak istiyorum.`
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ borderBottom: `1px solid ${p.line}` }}
+                  className="group py-7 sm:py-9 grid md:grid-cols-12 gap-4 items-center transition hover:opacity-85"
+                >
+                  <div
+                    style={{
+                      color: p.inkMuted,
+                      fontFamily: "'JetBrains Mono', monospace",
+                    }}
+                    className="md:col-span-1 text-xs"
+                  >
+                    0{idx + 1}
+                  </div>
+                  <div className="md:col-span-4">
+                    <h3 className="text-xl sm:text-2xl font-semibold tracking-tight m-0">
+                      {srv.title}
+                    </h3>
+                  </div>
+                  <div
+                    style={{ color: p.inkSecondary }}
+                    className="md:col-span-5 text-sm sm:text-base leading-relaxed"
+                  >
+                    {srv.desc}
+                  </div>
+                  <div className="md:col-span-2 flex md:justify-end items-center gap-3">
+                    <span
+                      style={{
+                        border: `1px solid ${p.lineStrong}`,
+                        backgroundColor: p.surface,
+                        color: p.inkSecondary,
+                        fontFamily: "'JetBrains Mono', monospace",
+                      }}
+                      className="px-3 py-1 rounded-lg text-[11px]"
+                    >
+                      {srv.highlight}
+                    </span>
+                    <span
+                      style={{
+                        border: `1px solid ${p.lineStrong}`,
+                        color: p.ink,
+                      }}
+                      className="w-9 h-9 rounded-full grid place-items-center text-sm shrink-0"
+                    >
+                      ↗
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* GÖRSEL STÜDYO & KLİNİK GALERİSİ (3'lü Editorial Grid) */}
+        <section
+          id="galeri"
+          style={{ borderBottom: `1px solid ${p.line}` }}
+          className="py-20 sm:py-28"
+        >
+          <div className="vitrin-shell">
+            <div className="mb-12">
+              <span
+                style={{
+                  color: p.inkMuted,
+                  fontFamily: "'JetBrains Mono', monospace",
+                }}
+                className="text-xs uppercase tracking-widest block mb-3"
+              >
+                02 / KALİTE & DETAY YAKLAŞIMIMIZ
+              </span>
+              <h2
+                style={{
+                  fontFamily: p.fontDisplay,
+                  letterSpacing: "-0.03em",
+                }}
+                className="text-3xl sm:text-5xl font-semibold m-0"
+              >
+                Her Aşamada Şeffaf ve Belgeli Uygulama
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {p.galleryPhotos.map((item, idx) => (
+                <article
+                  key={idx}
+                  style={{
+                    border: `1px solid ${p.line}`,
+                    backgroundColor: p.surface,
+                  }}
+                  className="rounded-2xl overflow-hidden flex flex-col justify-between"
+                >
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={item.url}
+                      alt={item.caption}
+                      className="w-full h-full object-cover transition duration-500 hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <span
+                      style={{
+                        color: p.inkMuted,
+                        fontFamily: "'JetBrains Mono', monospace",
+                      }}
+                      className="text-[11px] uppercase tracking-widest block mb-2"
+                    >
+                      {item.tag}
+                    </span>
+                    <h3 className="text-base sm:text-lg font-semibold leading-snug m-0">
+                      {item.caption}
+                    </h3>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ÇALIŞMA SÜRECİ & DANIŞAN DENEYİMLERİ */}
+        <section
+          id="surec"
+          style={{
+            borderBottom: `1px solid ${p.line}`,
+            backgroundColor: p.surfaceAlt,
+          }}
+          className="py-20 sm:py-28"
+        >
+          <div className="vitrin-shell space-y-20">
+            {/* 3 Adımlı Mimari Grid */}
+            <div>
+              <span
+                style={{
+                  color: p.inkMuted,
+                  fontFamily: "'JetBrains Mono', monospace",
+                }}
+                className="text-xs uppercase tracking-widest block mb-3"
+              >
+                03 / ÇALIŞMA PROTOKOLÜ
+              </span>
+              <h2
+                style={{
+                  fontFamily: p.fontDisplay,
+                  letterSpacing: "-0.03em",
+                }}
+                className="text-3xl sm:text-5xl font-semibold mb-10"
+              >
+                İlk Görüşmeden Teslime 3 Adım
+              </h2>
+
+              <div
+                style={{
+                  border: `1px solid ${p.line}`,
+                  backgroundColor: p.surface,
+                }}
+                className="rounded-2xl grid md:grid-cols-3 overflow-hidden"
+              >
+                {p.process.map(([num, title, desc], idx) => (
+                  <article
+                    key={idx}
+                    style={{
+                      borderRight: idx < 2 ? `1px solid ${p.line}` : "none",
+                      borderBottom: `1px solid ${p.line}`,
+                    }}
+                    className="p-7 sm:p-9 flex flex-col justify-between min-h-[240px]"
+                  >
+                    <span
+                      style={{
+                        color: p.inkMuted,
+                        fontFamily: "'JetBrains Mono', monospace",
+                      }}
+                      className="text-xs"
+                    >
+                      ADIM {num}
+                    </span>
+                    <div className="mt-10">
+                      <h3 className="text-xl font-semibold tracking-tight mb-3">
+                        {title}
+                      </h3>
+                      <p
+                        style={{ color: p.inkSecondary }}
+                        className="text-sm leading-relaxed m-0"
+                      >
+                        {desc}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            {/* Müşteri / Danışan Deneyimleri */}
+            <div>
+              <span
+                style={{
+                  color: p.inkMuted,
+                  fontFamily: "'JetBrains Mono', monospace",
+                }}
+                className="text-xs uppercase tracking-widest block mb-3"
+              >
+                04 / REFERANS & MEMNUNİYET
+              </span>
+              <div className="grid md:grid-cols-2 gap-6 mt-6">
+                {p.quotes.map((q, idx) => (
+                  <blockquote
+                    key={idx}
+                    style={{
+                      border: `1px solid ${p.line}`,
+                      backgroundColor: p.surface,
+                    }}
+                    className="rounded-2xl p-7 sm:p-9 m-0 flex flex-col justify-between gap-6"
+                  >
+                    <p
+                      style={{
+                        fontFamily: p.fontDisplay,
+                        color: p.ink,
+                      }}
+                      className="text-lg sm:text-2xl leading-relaxed m-0"
+                    >
+                      &ldquo;{q.text}&rdquo;
+                    </p>
+                    <footer
+                      style={{ borderTop: `1px solid ${p.line}` }}
+                      className="pt-4 flex items-center justify-between text-xs"
+                    >
+                      <strong className="font-semibold">{q.author}</strong>
+                      <span
+                        style={{
+                          color: p.inkMuted,
+                          fontFamily: "'JetBrains Mono', monospace",
+                        }}
+                      >
+                        {q.detail}
+                      </span>
+                    </footer>
+                  </blockquote>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* RANDEVU, HARİTA & İLETİŞİM BÖLÜMÜ */}
+        <section id="iletisim" className="py-20 sm:py-28">
+          <div className="vitrin-shell grid lg:grid-cols-12 gap-12 items-start">
+            {/* Sol: Hızlı Randevu & İletişim Bilgileri */}
+            <div className="lg:col-span-5 space-y-8">
+              <div>
+                <span
+                  style={{
+                    color: p.inkMuted,
+                    fontFamily: "'JetBrains Mono', monospace",
+                  }}
+                  className="text-xs uppercase tracking-widest block mb-3"
+                >
+                  05 / RANDEVU & İLETİŞİM
+                </span>
+                <h2
+                  style={{
+                    fontFamily: p.fontDisplay,
+                    letterSpacing: "-0.03em",
+                  }}
+                  className="text-3xl sm:text-4xl font-semibold m-0"
+                >
+                  Hızlı Randevu Oluşturun
+                </h2>
+                <p
+                  style={{ color: p.inkSecondary }}
+                  className="text-sm sm:text-base mt-3 leading-relaxed"
+                >
+                  Hizmeti seçip doğrudan <strong>{business.shortName}</strong> WhatsApp hattına mesaj gönderebilir veya telefonla arayabilirsiniz.
+                </p>
               </div>
 
-              <div className="space-y-3.5">
+              {/* Sade, Şık Randevu Formu */}
+              <div
+                style={{
+                  border: `1px solid ${p.lineStrong}`,
+                  backgroundColor: p.surface,
+                }}
+                className="rounded-2xl p-6 space-y-4"
+              >
                 <div>
-                  <label className={`block text-xs font-semibold ${ds.textSecondary} mb-1.5`}>
-                    Hizmet veya Tedavi Seçimi
+                  <label
+                    style={{
+                      color: p.inkMuted,
+                      fontFamily: "'JetBrains Mono', monospace",
+                    }}
+                    className="block text-[11px] uppercase tracking-wider mb-2"
+                  >
+                    Hizmet Seçimi
                   </label>
                   <select
                     value={selectedService}
                     onChange={(e) => setSelectedService(e.target.value)}
-                    className={`w-full rounded-xl border ${ds.borderSubtle} ${
-                      ds.isDark ? "bg-[#0B0C0E] text-white" : "bg-[#F8FAFC] text-[#0F172A]"
-                    } px-3.5 py-2.5 text-sm font-medium focus:outline-none`}
+                    style={{
+                      border: `1px solid ${p.lineStrong}`,
+                      backgroundColor: p.bg,
+                      color: p.ink,
+                    }}
+                    className="w-full rounded-xl px-3.5 py-3 text-sm font-medium focus:outline-none"
                   >
                     {business.services.map((s, idx) => (
                       <option key={idx} value={s.title}>
-                        {s.title} — {s.highlight}
+                        {s.title} ({s.highlight})
                       </option>
                     ))}
-                    <option value="Genel Bilgi & Fiyat Talebi">
+                    <option value="Genel Bilgi & Randevu">
                       Genel Bilgi & Fiyat Talebi
                     </option>
                   </select>
                 </div>
 
                 <div>
-                  <label className={`block text-xs font-semibold ${ds.textSecondary} mb-1.5`}>
-                    Tercih Ettiğiniz Gün
+                  <label
+                    style={{
+                      color: p.inkMuted,
+                      fontFamily: "'JetBrains Mono', monospace",
+                    }}
+                    className="block text-[11px] uppercase tracking-wider mb-2"
+                  >
+                    Tercih Edilen Gün
                   </label>
                   <div className="grid grid-cols-3 gap-2">
-                    {["Bugün / Acil", "Yarın", "Bu Hafta İçi"].map((t) => (
+                    {["Bugün", "Yarın", "Bu Hafta İçi"].map((d) => (
                       <button
-                        key={t}
+                        key={d}
                         type="button"
-                        onClick={() => setSelectedTime(t)}
-                        className={`cursor-pointer py-2 px-2 rounded-lg text-xs font-semibold border transition ${
-                          selectedTime === t
-                            ? ds.accentBadge
-                            : `${ds.borderSubtle} ${ds.textMuted} hover:opacity-80`
-                        }`}
+                        onClick={() => setSelectedDay(d)}
+                        style={{
+                          border: `1px solid ${
+                            selectedDay === d ? p.accent : p.line
+                          }`,
+                          backgroundColor:
+                            selectedDay === d ? p.accentSoft : p.bg,
+                          color: p.ink,
+                        }}
+                        className="cursor-pointer py-2.5 px-2 rounded-xl text-xs font-semibold transition"
                       >
-                        {t}
+                        {d}
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <label className={`block text-xs font-semibold ${ds.textSecondary} mb-1.5`}>
+                  <label
+                    style={{
+                      color: p.inkMuted,
+                      fontFamily: "'JetBrains Mono', monospace",
+                    }}
+                    className="block text-[11px] uppercase tracking-wider mb-2"
+                  >
                     Adınız Soyadınız (İsteğe Bağlı)
                   </label>
                   <input
                     type="text"
-                    placeholder="Örn: Ahmet Yılmaz"
-                    value={visitorName}
-                    onChange={(e) => setVisitorName(e.target.value)}
-                    className={`w-full rounded-xl border ${ds.borderSubtle} ${
-                      ds.isDark ? "bg-[#0B0C0E] text-white" : "bg-[#F8FAFC] text-[#0F172A]"
-                    } px-3.5 py-2.5 text-sm focus:outline-none`}
+                    placeholder="Adınız Soyadınız"
+                    value={clientName}
+                    onChange={(e) => setClientName(e.target.value)}
+                    style={{
+                      border: `1px solid ${p.lineStrong}`,
+                      backgroundColor: p.bg,
+                      color: p.ink,
+                    }}
+                    className="w-full rounded-xl px-3.5 py-2.5 text-sm focus:outline-none"
                   />
                 </div>
 
                 <a
-                  href={buildWhatsAppUrl()}
+                  href={buildWaLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl font-semibold text-sm transition cursor-pointer ${ds.primaryBtn}`}
+                  style={{
+                    backgroundColor: p.accent,
+                    color: p.accentContrast,
+                  }}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl font-semibold text-sm hover:opacity-90 transition"
                 >
-                  <Icons.WhatsApp className="w-4 h-4" />
-                  <span>WhatsApp ile Randevu Talebi Gönder</span>
+                  <span>WhatsApp ile Gönder</span>
+                  <span aria-hidden="true">↗</span>
                 </a>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* İNTERAKTİF SEKTÖREL MODÜL (Diyetisyen VKİ / Emlak Değerleme / Görsel Karşılaştırma) */}
-      <section className={`py-14 ${ds.surfaceBg} border-b ${ds.borderSubtle} font-editorial-sans`}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          {business.sector === "diet" ? (
-            <div className={`rounded-2xl border ${ds.borderSubtle} ${ds.cardBg} p-6 sm:p-8 grid md:grid-cols-12 gap-8 items-center`}>
-              <div className="md:col-span-6 space-y-3">
-                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${ds.accentBadge}`}>
-                  <Icons.Sliders className="w-3.5 h-3.5" />
-                  <span>İnteraktif Vücut Analiz Aracı</span>
-                </span>
-                <h2 className="text-2xl font-bold font-editorial-serif">
-                  İdeal Kilo & Vücut Kitle İndeksi (VKİ) Hesaplayıcı
-                </h2>
-                <p className={`text-sm ${ds.textSecondary} leading-relaxed`}>
-                  Boy ve kilo değerlerinizi kaydırarak ön analizinizi görün ve sonucu tek tıkla{" "}
-                  <strong>{business.shortName}</strong> WhatsApp hattına göndererek kişisel beslenme planınızı başlatın.
-                </p>
-
-                <div className="space-y-4 pt-2">
-                  <div>
-                    <div className="flex justify-between text-xs font-semibold mb-1">
-                      <span>Boyunuz</span>
-                      <span className={ds.accentColor}>{heightCm} cm</span>
-                    </div>
-                    <input
-                      type="range"
-                      min={145}
-                      max={200}
-                      value={heightCm}
-                      onChange={(e) => setHeightCm(Number(e.target.value))}
-                      className="w-full accent-[#15803D] cursor-pointer"
-                    />
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-xs font-semibold mb-1">
-                      <span>Mevcut Kilonuz</span>
-                      <span className={ds.accentColor}>{weightKg} kg</span>
-                    </div>
-                    <input
-                      type="range"
-                      min={45}
-                      max={140}
-                      value={weightKg}
-                      onChange={(e) => setWeightKg(Number(e.target.value))}
-                      className="w-full accent-[#15803D] cursor-pointer"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="md:col-span-6">
-                <div className={`rounded-2xl p-6 border ${ds.borderSubtle} ${ds.pageBg} space-y-4`}>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-xl bg-white border border-[#E3DFD5]">
-                      <div className={`text-xs ${ds.textMuted}`}>VKİ Değeriniz</div>
-                      <div className="text-2xl font-bold text-[#143326] mt-0.5">{bmiValue}</div>
-                    </div>
-                    <div className="p-4 rounded-xl bg-white border border-[#E3DFD5]">
-                      <div className={`text-xs ${ds.textMuted}`}>Hedef İdeal Kilo</div>
-                      <div className="text-2xl font-bold text-[#15803D] mt-0.5">~{idealWeight} kg</div>
-                    </div>
-                  </div>
-                  <a
-                    href={buildWhatsAppUrl(
-                      `Merhaba ${business.shortName}, web sitenizdeki hesaplayıcıdan ulaşıyorum.\n• Boy: ${heightCm} cm\n• Mevcut Kilo: ${weightKg} kg (VKİ: ${bmiValue}, İdeal Hedef: ~${idealWeight} kg)\nYüz yüze / online diyet programlarınız hakkında bilgi alabilir miyim?`
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl font-semibold text-sm transition cursor-pointer ${ds.primaryBtn}`}
-                  >
-                    <Icons.WhatsApp className="w-4 h-4" />
-                    <span>Analiz Sonucumu WhatsApp&apos;tan Gönder</span>
+              {/* Adres ve Telefon Satırları */}
+              <div style={{ borderTop: `1px solid ${p.line}` }} className="pt-4 space-y-3 text-sm">
+                <div className="flex justify-between gap-4 py-2" style={{ borderBottom: `1px solid ${p.line}` }}>
+                  <span style={{ color: p.inkMuted, fontFamily: "'JetBrains Mono', monospace" }} className="text-xs uppercase">
+                    Telefon
+                  </span>
+                  <a href={`tel:+${business.phoneClean}`} className="font-semibold hover:underline">
+                    {business.phoneDisplay}
                   </a>
                 </div>
-              </div>
-            </div>
-          ) : business.sector === "realestate" ? (
-            <div className={`rounded-2xl border ${ds.borderSubtle} ${ds.cardBg} p-6 sm:p-8 grid md:grid-cols-12 gap-8 items-center`}>
-              <div className="md:col-span-7 space-y-3">
-                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${ds.accentBadge}`}>
-                  <Icons.Sliders className="w-3.5 h-3.5" />
-                  <span>Ücretsiz Gayrimenkul Ekspertiz Modülü</span>
-                </span>
-                <h2 className="text-2xl font-bold font-editorial-serif">
-                  Mülkünüzün Güncel Piyasa Değerini Öğrenin
-                </h2>
-                <p className={`text-sm ${ds.textSecondary} leading-relaxed`}>
-                  Denizli genelinde satmak veya kiraya vermek istediğiniz konut, arsa ya da ticari mülkün kriterlerini seçin; bölge emsal raporumuzu aynı gün ücretsiz paylaşalım.
-                </p>
-                <div className="grid sm:grid-cols-2 gap-4 pt-2">
-                  <div>
-                    <label className="block text-xs font-semibold mb-1">Gayrimenkul Tipi</label>
-                    <select
-                      value={propType}
-                      onChange={(e) => setPropType(e.target.value)}
-                      className="w-full rounded-xl border border-[#D1CBC0] bg-[#F7F6F2] px-3.5 py-2.5 text-sm font-medium"
-                    >
-                      <option value="2+1 Daire">2+1 Daire</option>
-                      <option value="3+1 Daire">3+1 Daire</option>
-                      <option value="4+1 / Dublex / Villa">4+1 / Dublex / Villa</option>
-                      <option value="İmarlı Arsa / Tarla">İmarlı Arsa / Tarla</option>
-                      <option value="Ticari Dükkan / İş Yeri">Ticari Dükkan / İş Yeri</option>
-                    </select>
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-xs font-semibold mb-1">
-                      <span>Yaklaşık Brüt Alan</span>
-                      <span className={ds.accentColor}>{propSqm} m²</span>
-                    </div>
-                    <input
-                      type="range"
-                      min={50}
-                      max={500}
-                      step={5}
-                      value={propSqm}
-                      onChange={(e) => setPropSqm(Number(e.target.value))}
-                      className="w-full accent-[#0F766E] cursor-pointer mt-2"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="md:col-span-5">
-                <div className="rounded-2xl p-6 bg-[#F7F6F2] border border-[#E5E0D5] space-y-4">
-                  <div className="text-xs font-semibold text-[#6B7280] uppercase tracking-wider">
-                    Ekspertiz Özeti
-                  </div>
-                  <div className="text-lg font-bold text-[#111827]">
-                    {propType} • {propSqm} m² ({business.district})
-                  </div>
-                  <p className="text-xs text-[#374151]">
-                    Güncel tapu satış emsalleriyle ücretsiz değerleme için talebinizi doğrudan iletin:
-                  </p>
-                  <a
-                    href={buildWhatsAppUrl(
-                      `Merhaba ${business.shortName}, Denizli'deki ${propSqm} m² ${propType} mülküm için ücretsiz piyasa değerlemesi (ekspertiz) ve satış/kiralama bilgisi almak istiyorum.`
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl font-semibold text-sm transition cursor-pointer ${ds.primaryBtn}`}
-                  >
-                    <Icons.WhatsApp className="w-4 h-4" />
-                    <span>Ücretsiz Ekspertiz Raporu İste</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          ) : (
-            /* İnteraktif Öncesi / Sonrası & Kalite Karşılaştırma Slider'ı (Auto, Dental, Beauty, Therapy) */
-            <div className={`rounded-2xl border ${ds.borderSubtle} ${ds.cardBg} p-6 sm:p-8 grid md:grid-cols-12 gap-8 items-center`}>
-              <div className="md:col-span-6 space-y-3">
-                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${ds.accentBadge}`}>
-                  <Icons.Shield className="w-3.5 h-3.5" />
-                  <span>Uygulama Standartlarımız</span>
-                </span>
-                <h2 className="text-2xl font-bold">
-                  {business.sector === "auto"
-                    ? "Boya Koruma & Ayna Parlaklığı Karşılaştırması"
-                    : "Detaylı Planlama ve Kusursuz Sonuç Odaklı Süreç"}
-                </h2>
-                <p className={`text-sm ${ds.textSecondary} leading-relaxed`}>
-                  {business.sector === "auto"
-                    ? "Kaydırıcıyı sağa-sola hareket ettirerek matlaşmış/çizikli yüzey ile çok aşamalı polisaj + TPU PPF / 9H Seramik kaplama sonrası oluşan derin parlaklık farkını inceleyin."
-                    : `${business.shortName} bünyesinde gerçekleştirilen tüm işlemler uluslararası hijyen, sertifikalı materyal ve birebir uzman kontrolü altında yürütülür.`}
-                </p>
-                <div className="pt-2">
-                  <div className="flex justify-between text-xs font-semibold mb-1.5">
-                    <span>Uygulama Öncesi / Sonrası Görünüm</span>
-                    <span className={ds.accentColor}>%{sliderPos}</span>
-                  </div>
-                  <input
-                    type="range"
-                    min={15}
-                    max={85}
-                    value={sliderPos}
-                    onChange={(e) => setSliderPos(Number(e.target.value))}
-                    className="w-full cursor-pointer"
-                  />
-                </div>
-              </div>
-
-              <div className="md:col-span-6">
-                <div className={`relative rounded-2xl overflow-hidden h-56 sm:h-64 border ${ds.borderSubtle} select-none`}>
-                  {/* Sonrası (Tam Parlak / Net) */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={ds.secondaryImage}
-                    alt="Uygulama Sonrası"
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Öncesi (Sol Katman - Filtreli) */}
-                  <div
-                    style={{ width: `${sliderPos}%` }}
-                    className="absolute inset-y-0 left-0 overflow-hidden border-r-2 border-white shadow-xl"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={ds.secondaryImage}
-                      alt="Uygulama Öncesi"
-                      className="w-full h-full object-cover grayscale contrast-75 brightness-75"
-                    />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/70 text-white text-[11px] font-semibold">
-                      Standart / İşlem Öncesi
-                    </span>
-                  </div>
-                  <span className="absolute top-3 right-3 px-2.5 py-1 rounded bg-emerald-600 text-white text-[11px] font-semibold">
-                    {business.shortName} Uygulaması
+                <div className="flex justify-between gap-4 py-2" style={{ borderBottom: `1px solid ${p.line}` }}>
+                  <span style={{ color: p.inkMuted, fontFamily: "'JetBrains Mono', monospace" }} className="text-xs uppercase shrink-0">
+                    Adres
                   </span>
+                  <span className="text-right font-medium">{business.address}</span>
                 </div>
               </div>
             </div>
-          )}
-        </div>
-      </section>
 
-      {/* HİZMETLERİMİZ BÖLÜMÜ */}
-      <section id="hizmetler" className="py-16 sm:py-20 max-w-6xl mx-auto px-4 sm:px-6 font-editorial-sans">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
-          <div>
-            <span className={`text-xs font-bold uppercase tracking-widest ${ds.accentColor}`}>
-              Uzmanlık Alanlarımız
-            </span>
-            <h2
-              className={`text-2xl sm:text-4xl font-bold mt-1.5 ${
-                ds.headingFontClass === "font-serif tracking-tight"
-                  ? "font-editorial-serif"
-                  : "font-editorial-sans"
-              }`}
-            >
-              {business.shortName} Hizmetleri
-            </h2>
-          </div>
-          <p className={`text-sm ${ds.textMuted} max-w-md`}>
-            İlgilendiğiniz hizmet kaleminin altındaki bağlantıya tıklayarak doğrudan fiyat ve müsaitlik sorgulayabilirsiniz.
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-6">
-          {business.services.map((srv, idx) => (
-            <div
-              key={idx}
-              className={`rounded-2xl border ${ds.borderSubtle} ${ds.cardBg} p-6 sm:p-7 flex flex-col justify-between transition hover:-translate-y-0.5`}
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className={`text-xs font-bold ${ds.textMuted}`}>
-                    HİZMET 0{idx + 1}
-                  </span>
-                  <span
-                    className={`text-xs font-semibold px-3 py-1 rounded-full border ${ds.accentBadge}`}
-                  >
-                    {srv.highlight}
-                  </span>
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold mb-2.5">
-                  {srv.title}
-                </h3>
-                <p className={`text-sm ${ds.textSecondary} leading-relaxed`}>
-                  {srv.desc}
-                </p>
-              </div>
-
-              <div className={`mt-6 pt-4 border-t ${ds.borderSubtle} flex items-center justify-between`}>
-                <a
-                  href={buildWhatsAppUrl(
-                    `Merhaba ${business.shortName}, "${srv.title}" hizmetiniz hakkında detaylı bilgi ve randevu almak istiyorum.`
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`text-xs sm:text-sm font-bold inline-flex items-center gap-1.5 ${ds.accentColor} hover:underline cursor-pointer`}
-                >
-                  <span>Fiyat & Randevu Sorgula</span>
-                  <Icons.ArrowUpRight className="w-4 h-4" />
-                </a>
-                <span className={`text-xs ${ds.textMuted}`}>Hızlı Yanıt</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ÇALIŞMA SÜRECİ & DANIŞAN YORUMLARI */}
-      <section id="surec" className={`py-16 ${ds.surfaceBg} border-t border-b ${ds.borderSubtle} font-editorial-sans`}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-16">
-          {/* 3 Adımlı Süreç */}
-          <div>
-            <div className="mb-8">
-              <span className={`text-xs font-bold uppercase tracking-widest ${ds.accentColor}`}>
-                Nasıl Çalışıyoruz?
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold mt-1">
-                3 Adımda Şeffaf ve Güvenilir Süreç
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              {ds.processSteps.map((st, i) => (
-                <div
-                  key={i}
-                  className={`rounded-2xl border ${ds.borderSubtle} ${ds.cardBg} p-6 space-y-2.5`}
-                >
-                  <div className={`text-xs font-bold uppercase tracking-widest ${ds.accentColor}`}>
-                    ADIM {st.num}
-                  </div>
-                  <h3 className="text-base sm:text-lg font-bold">{st.title}</h3>
-                  <p className={`text-sm ${ds.textSecondary} leading-relaxed`}>{st.detail}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Danışan / Müşteri Yorumları */}
-          <div id="yorumlar">
-            <div className="mb-8">
-              <span className={`text-xs font-bold uppercase tracking-widest ${ds.accentColor}`}>
-                Memnuniyet & Sosyal Kanıt
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold mt-1">
-                Danışan ve Müşteri Deneyimleri
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              {ds.testimonials.map((t, idx) => (
-                <div
-                  key={idx}
-                  className={`rounded-2xl border ${ds.borderSubtle} ${ds.cardBg} p-6 space-y-4`}
-                >
-                  <div className="flex items-center gap-1 text-amber-500">
-                    <Icons.Star />
-                    <Icons.Star />
-                    <Icons.Star />
-                    <Icons.Star />
-                    <Icons.Star />
-                  </div>
-                  <p className={`text-sm sm:text-base ${ds.textSecondary} italic leading-relaxed`}>
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <div className={`pt-3 border-t ${ds.borderSubtle} flex items-center justify-between text-xs`}>
-                    <strong className={ds.textPrimary}>{t.name}</strong>
-                    <span className={ds.textMuted}>{t.role}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* KONUM, HARİTA & İLETİŞİM */}
-      <section id="iletisim" className="py-16 sm:py-20 max-w-6xl mx-auto px-4 sm:px-6 font-editorial-sans">
-        <div className="grid lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-5 space-y-5">
-            <span className={`text-xs font-bold uppercase tracking-widest ${ds.accentColor}`}>
-              Konum & İletişim Bilgileri
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold">
-              {business.shortName} İletişim
-            </h2>
-            <p className={`text-sm ${ds.textSecondary} leading-relaxed`}>
-              Randevu planlamak, fiyat bilgisi almak veya harita üzerinden yol tarifi başlatmak için aşağıdaki kanallardan bize doğrudan ulaşabilirsiniz.
-            </p>
-
-            <div className="space-y-3 pt-1">
-              <div className={`p-4 rounded-2xl border ${ds.borderSubtle} ${ds.cardBg} flex items-start gap-3`}>
-                <Icons.MapPin className={`w-5 h-5 shrink-0 mt-0.5 ${ds.accentColor}`} />
-                <div>
-                  <div className={`text-xs font-medium ${ds.textMuted}`}>Açık Adres</div>
-                  <div className="text-sm font-semibold mt-0.5">{business.address}</div>
-                </div>
-              </div>
-
-              <div className={`p-4 rounded-2xl border ${ds.borderSubtle} ${ds.cardBg} flex items-center justify-between gap-3`}>
-                <div className="flex items-center gap-3">
-                  <Icons.Phone className={`w-5 h-5 shrink-0 ${ds.accentColor}`} />
-                  <div>
-                    <div className={`text-xs font-medium ${ds.textMuted}`}>Telefon & WhatsApp</div>
-                    <div className="text-base font-bold mt-0.5">{business.phoneDisplay}</div>
-                  </div>
-                </div>
-                <a
-                  href={`tel:+${business.phoneClean}`}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${ds.primaryBtn}`}
-                >
-                  Hemen Ara
-                </a>
+            {/* Sağ: Canlı Google Haritası */}
+            <div className="lg:col-span-7">
+              <div
+                style={{ border: `1px solid ${p.lineStrong}` }}
+                className="rounded-2xl overflow-hidden h-[420px] sm:h-[520px]"
+              >
+                <iframe
+                  title={`${business.shortName} Harita Konumu`}
+                  src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+                  className="w-full h-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
           </div>
+        </section>
+      </main>
 
-          <div className="lg:col-span-7">
-            <div className={`rounded-2xl overflow-hidden border ${ds.borderSubtle} h-[340px] sm:h-[400px] shadow-md`}>
-              <iframe
-                title={`${business.shortName} Harita Konumu`}
-                src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
-                className="w-full h-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Kurumsal Alt Bilgi (Footer) */}
-      <footer className={`py-8 border-t ${ds.borderSubtle} text-xs ${ds.textMuted} px-4 font-editorial-sans`}>
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div>
-            © {new Date().getFullYear()} <strong className={ds.textPrimary}>{business.name}</strong>. Tüm hakları saklıdır.
-          </div>
-          <div>
-            {business.district} • Tel: {business.phoneDisplay}
-          </div>
+      {/* MİMARİ ALT BİLGİ (Footer) */}
+      <footer
+        style={{
+          borderTop: `1px solid ${p.line}`,
+          color: p.inkMuted,
+          fontFamily: "'JetBrains Mono', monospace",
+        }}
+        className="py-10 text-[11px] uppercase tracking-wider"
+      >
+        <div className="vitrin-shell flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span>© {new Date().getFullYear()} {business.name}</span>
+          <span>{business.district}</span>
+          <span>İLETİŞİM: {business.phoneDisplay}</span>
         </div>
       </footer>
-
-      {/* Sağ Alt Sabit WhatsApp Aksiyonu (SVG İkonlu) */}
-      <a
-        href={buildWhatsAppUrl()}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`fixed bottom-5 right-5 z-50 inline-flex items-center gap-2.5 px-5 py-3.5 rounded-full font-editorial-sans font-bold text-xs sm:text-sm shadow-xl transition transform hover:-translate-y-0.5 cursor-pointer ${ds.primaryBtn}`}
-      >
-        <Icons.WhatsApp className="w-4 h-4" />
-        <span>WhatsApp Randevu Hattı</span>
-      </a>
     </div>
   );
 }
