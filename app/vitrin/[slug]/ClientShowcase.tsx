@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import type { BusinessLead, SectorType } from "../businesses";
+import SectorInteractiveLab from "./SectorInteractiveLab";
 
 interface EditorialPalette {
   bg: string;
@@ -23,6 +24,7 @@ interface EditorialPalette {
   metrics: [string, string][];
   process: [string, string, string][];
   quotes: { text: string; author: string; detail: string }[];
+  faqs: [string, string][];
 }
 
 const PALETTES: Record<SectorType, EditorialPalette> = {
@@ -94,6 +96,20 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
         detail: "Polisaj & 9H Seramik Kaplama",
       },
     ],
+    faqs: [
+      [
+        "TPU PPF kaplama sökülürken aracın orijinal boyasına zarar verir mi?",
+        "Hayır. Kullandığımız %100 poliüretan (TPU) filmler boya dostu akrilik yapışkan katmana sahiptir. Yıllar sonra söküldüğünde dahi orijinal fabrika verniğine zarar vermez ve iz bırakmaz.",
+      ],
+      [
+        "Uygulama ne kadar sürüyor, aracı ne zaman teslim alabilirim?",
+        "Seramik kaplama ve polisaj işlemleri ortalama 1–2 iş günü, komple TPU PPF zırhlama ise kusursuz köşe dönüşleri ve kürleşme süreciyle birlikte 2–3 iş günü içinde yazılı garantisiyle teslim edilir.",
+      ],
+      [
+        "Ekspertizde PPF kaplama sorun yaratır mı?",
+        "Kesinlikle hayır. Şeffaf TPU PPF kaplama mikron ölçüm cihazlarında boya koruma filmi olarak net biçimde görülür ve aracınızın boyasız/orijinal değerini koruduğunu kanıtlar.",
+      ],
+    ],
   },
 
   dental: {
@@ -163,6 +179,20 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
         author: "Hakan T.",
         detail: "Dental İmplant Tedavisi",
       },
+    ],
+    faqs: [
+      [
+        "İmplant ve zirkonyum işlemlerinde ağrı hisseder miyim?",
+        "Uygulamalarımız modern lokal anestezi altında tamamen ağrısız gerçekleştirilir. Tedavi sonrasında da konforunuz için gerekli tüm medikal protokoller adım adım planlanır.",
+      ],
+      [
+        "Zirkonyum gülüş tasarımı kaç günde tamamlanır?",
+        "Dijital ağız içi tarama ve prova süreçleriyle birlikte ortalama 4 ila 5 gün içerisinde yeni gülüşünüz prova edilerek teslim edilir.",
+      ],
+      [
+        "İlk muayenede tedavi planı ve maliyet netleşiyor mu?",
+        "Evet. İlk muayenede dijital görüntüleme sonrası ihtiyaç duyulan tüm işlemler şeffaf biçimde listelenir ve sürpriz maliyet olmadan net tedavi takvimi sunulur.",
+      ],
     ],
   },
 
@@ -234,6 +264,20 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
         detail: "Klinik & Online Diyet",
       },
     ],
+    faqs: [
+      [
+        "İlk görüşmeye gelirken kan tahlili getirmem gerekiyor mu?",
+        "Son 6 ay içinde yapılmış kan tahlilleriniz varsa yanınızda getirebilirsiniz. Yoksa ilk görüşmemizde vücut analizinizi yapıp ihtiyaç duyulan parametreleri birlikte belirleyebiliriz.",
+      ],
+      [
+        "Diyet listelerinde bulunması zor veya pahalı ürünler var mı?",
+        "Hayır. Listelerimiz tamamen evinizde pişen yemeklere, bütçenize ve çalışma saatlerinize uygun, sürdürülebilir besinlerden oluşturulur.",
+      ],
+      [
+        "Yoğun çalışıyorum, online diyet takibi nasıl işliyor?",
+        "Kliniğe gelemediğiniz haftalarda görüntülü veya sesli görüşme ile listeleriniz yenilenir ve WhatsApp üzerinden günlük öğün fotoğraflarıyla birebir motivasyon takibi yapılır.",
+      ],
+    ],
   },
 
   therapy: {
@@ -303,6 +347,20 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
         author: "Danışan Yorumu",
         detail: "Uzman Danışmanlık",
       },
+    ],
+    faqs: [
+      [
+        "Seans içerikleri ve kişisel bilgilerim tamamen gizli tutuluyor mu?",
+        "Evet. Tüm görüşmelerimiz mesleki etik ilkeler ve KVKK kapsamında %100 gizlilik güvencesi altında gerçekleştirilir.",
+      ],
+      [
+        "Seans süresi ne kadardır ve hangi sıklıkla planlanır?",
+        "Birebir seanslarımız ortalama 50 dakika sürmektedir. İlk değerlendirme seansı sonrasında ihtiyacınıza göre haftalık veya iki haftada bir olacak şekilde planlanır.",
+      ],
+      [
+        "İlk randevu öncesinde kısa bilgi alabilir miyim?",
+        "Elbette. WhatsApp veya telefon hattımız üzerinden bize ulaşarak süreç, uzmanlık alanlarımız ve müsait seans saatlerimiz hakkında hemen bilgi alabilirsiniz.",
+      ],
     ],
   },
 
@@ -374,6 +432,20 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
         detail: "Bölgesel İncelme & Bakım",
       },
     ],
+    faqs: [
+      [
+        "İşlem öncesinde ücretsiz cilt ve uygunluk analizi yapıyor musunuz?",
+        "Evet. Merkezimizde tüm işlemler öncesinde uzmanlarımız tarafından ücretsiz cilt ve kıl tipi analizi yapılır, size en uygun cihaz ve seans protokolü belirlenir.",
+      ],
+      [
+        "Lazer epilasyon dört mevsim uygulanabilir mi?",
+        "Yeni nesil buz başlıklı soğutma teknolojimiz sayesinde bronzlaşmamış ciltlerde yaz-kış güvenli ve konforlu biçimde seanslara devam edilebilir.",
+      ],
+      [
+        "Kabinlerde hijyen nasıl sağlanıyor?",
+        "Her danışanımız için tek kullanımlık örtü ve sarf malzemeleri kullanılır; tüm cihaz başlıkları her seans sonrasında medikal dezenfektanlarla sterilize edilir.",
+      ],
+    ],
   },
 
   realestate: {
@@ -444,6 +516,20 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
         detail: "Arsa & Yatırım Danışmanlığı",
       },
     ],
+    faqs: [
+      [
+        "Mülkümün değerini öğrenmek için ekspertiz ücreti ödüyor muyum?",
+        "Hayır. Denizli genelindeki konut, ticari mülk ve arsalarınız için sunduğumuz yerinde inceleme ve emsal değerleme hizmetimiz tamamen ücretsizdir.",
+      ],
+      [
+        "Mülkümü ne kadar sürede satabilir veya kiralayabilirsiniz?",
+        "Doğru piyasa fiyatlandırması, 4K profesyonel çekim ve hazır yatırımcı portföyümüz sayesinde mülkler ortalama 15 ila 45 gün içinde gerçek değerinden sonuçlandırılır.",
+      ],
+      [
+        "Tapu devri ve konut kredisi işlemlerini siz mi takip ediyorsunuz?",
+        "Evet. Alıcı-satıcı sözleşmesinden banka ekspertizine, WebTapu başvurusundan güvenli para transferine kadar tüm resmi süreci yanınızda yönetiyoruz.",
+      ],
+    ],
   },
 };
 
@@ -456,6 +542,7 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
   const [selectedDay, setSelectedDay] = useState("Bu Hafta İçi");
   const [clientName, setClientName] = useState("");
   const [hidePreviewBar, setHidePreviewBar] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const buildWaLink = (customMsg?: string) => {
     const msg =
@@ -884,6 +971,13 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
           </div>
         </section>
 
+        {/* SEKTÖRE ÖZEL İNTERAKTİF LABORATUVAR / SİMÜLATÖR (3dviz-pro-max & ui-ux-pro-max) */}
+        <SectorInteractiveLab
+          business={business}
+          palette={p}
+          buildWaLink={buildWaLink}
+        />
+
         {/* GÖRSEL STÜDYO & KLİNİK GALERİSİ (3'lü Editorial Grid) */}
         <section
           id="galeri"
@@ -949,7 +1043,7 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
           </div>
         </section>
 
-        {/* ÇALIŞMA SÜRECİ & DANIŞAN DENEYİMLERİ */}
+        {/* ÇALIŞMA SÜRECİ, DANIŞAN DENEYİMLERİ & SIKÇA SORULAN SORULAR */}
         <section
           id="surec"
           style={{
@@ -1069,6 +1163,76 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
                 ))}
               </div>
             </div>
+
+            {/* Sıkça Sorulan Sorular (İnteraktif Akordeon) */}
+            <div>
+              <span
+                style={{
+                  color: p.inkMuted,
+                  fontFamily: "'JetBrains Mono', monospace",
+                }}
+                className="text-xs uppercase tracking-widest block mb-3"
+              >
+                05 / SIKÇA SORULAN SORULAR
+              </span>
+              <h3
+                style={{
+                  fontFamily: p.fontDisplay,
+                  letterSpacing: "-0.025em",
+                }}
+                className="text-2xl sm:text-4xl font-semibold mb-8"
+              >
+                Merak Edilen Detaylar
+              </h3>
+              <div
+                style={{
+                  border: `1px solid ${p.lineStrong}`,
+                  backgroundColor: p.surface,
+                }}
+                className="rounded-2xl overflow-hidden"
+              >
+                {p.faqs.map(([question, answer], idx) => {
+                  const isOpen = openFaq === idx;
+                  return (
+                    <div
+                      key={idx}
+                      style={{
+                        borderBottom:
+                          idx < p.faqs.length - 1 ? `1px solid ${p.line}` : "none",
+                      }}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setOpenFaq(isOpen ? null : idx)}
+                        className="cursor-pointer w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:opacity-85 transition"
+                      >
+                        <span className="font-semibold text-sm sm:text-base">
+                          {question}
+                        </span>
+                        <span
+                          style={{
+                            border: `1px solid ${p.lineStrong}`,
+                            color: p.ink,
+                            fontFamily: "'JetBrains Mono', monospace",
+                          }}
+                          className="w-7 h-7 rounded-full grid place-items-center text-xs shrink-0"
+                        >
+                          {isOpen ? "−" : "+"}
+                        </span>
+                      </button>
+                      {isOpen && (
+                        <div
+                          style={{ color: p.inkSecondary }}
+                          className="px-6 pb-6 text-sm leading-relaxed"
+                        >
+                          {answer}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -1085,7 +1249,7 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
                   }}
                   className="text-xs uppercase tracking-widest block mb-3"
                 >
-                  05 / RANDEVU & İLETİŞİM
+                  06 / RANDEVU & İLETİŞİM
                 </span>
                 <h2
                   style={{
@@ -1214,7 +1378,7 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
                 </a>
               </div>
 
-              {/* Adres ve Telefon Satırları */}
+              {/* Adres, Çalışma Saatleri ve Telefon Satırları */}
               <div style={{ borderTop: `1px solid ${p.line}` }} className="pt-4 space-y-3 text-sm">
                 <div className="flex justify-between gap-4 py-2" style={{ borderBottom: `1px solid ${p.line}` }}>
                   <span style={{ color: p.inkMuted, fontFamily: "'JetBrains Mono', monospace" }} className="text-xs uppercase">
@@ -1223,6 +1387,12 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
                   <a href={`tel:+${business.phoneClean}`} className="font-semibold hover:underline">
                     {business.phoneDisplay}
                   </a>
+                </div>
+                <div className="flex justify-between gap-4 py-2" style={{ borderBottom: `1px solid ${p.line}` }}>
+                  <span style={{ color: p.inkMuted, fontFamily: "'JetBrains Mono', monospace" }} className="text-xs uppercase">
+                    Çalışma Saatleri
+                  </span>
+                  <span className="font-medium">Pzt – Cmt · 09:00 – 19:30</span>
                 </div>
                 <div className="flex justify-between gap-4 py-2" style={{ borderBottom: `1px solid ${p.line}` }}>
                   <span style={{ color: p.inkMuted, fontFamily: "'JetBrains Mono', monospace" }} className="text-xs uppercase shrink-0">
@@ -1234,7 +1404,7 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
             </div>
 
             {/* Sağ: Canlı Google Haritası */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 space-y-3">
               <div
                 style={{ border: `1px solid ${p.lineStrong}` }}
                 className="rounded-2xl overflow-hidden h-[420px] sm:h-[520px]"
@@ -1246,6 +1416,18 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
+              </div>
+              <div className="flex items-center justify-between text-xs px-1">
+                <span style={{ color: p.inkMuted }}>{business.address}</span>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: p.ink }}
+                  className="font-semibold underline"
+                >
+                  Google Haritalar&apos;da Yol Tarifi Al ↗
+                </a>
               </div>
             </div>
           </div>
@@ -1259,7 +1441,7 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
           color: p.inkMuted,
           fontFamily: "'JetBrains Mono', monospace",
         }}
-        className="py-10 text-[11px] uppercase tracking-wider"
+        className="py-10 pb-24 sm:pb-10 text-[11px] uppercase tracking-wider"
       >
         <div className="vitrin-shell flex flex-col sm:flex-row items-center justify-between gap-3">
           <span>© {new Date().getFullYear()} {business.name}</span>
@@ -1267,6 +1449,40 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
           <span>İLETİŞİM: {business.phoneDisplay}</span>
         </div>
       </footer>
+
+      {/* MOBİL SABİT ALT DÖNÜŞÜM ÇUBUĞU (Telefon Ekranında Tek Parmakla Arama / WhatsApp) */}
+      <div
+        style={{
+          backgroundColor: p.surface,
+          borderTop: `1px solid ${p.lineStrong}`,
+        }}
+        className="sm:hidden fixed bottom-0 inset-x-0 z-50 p-3 grid grid-cols-2 gap-2.5 shadow-2xl"
+      >
+        <a
+          href={`tel:+${business.phoneClean}`}
+          style={{
+            border: `1px solid ${p.lineStrong}`,
+            backgroundColor: p.bg,
+            color: p.ink,
+          }}
+          className="py-3 px-3 rounded-xl text-xs font-semibold text-center flex items-center justify-center"
+        >
+          Hemen Ara
+        </a>
+        <a
+          href={buildWaLink()}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            backgroundColor: p.accent,
+            color: p.accentContrast,
+          }}
+          className="py-3 px-3 rounded-xl text-xs font-semibold text-center flex items-center justify-center gap-1"
+        >
+          <span>WhatsApp Randevu</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
   );
 }
