@@ -14,9 +14,10 @@ export default function VitrinControlPanel() {
       return {};
     }
   });
-  const [priceText, setPriceText] = useState("3.500 TL");
+  const [priceText, setPriceText] = useState("fiyatsiz");
   const [filterSector, setFilterSector] = useState<string>("all");
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null);
+  const [copiedImgSlug, setCopiedImgSlug] = useState<string | null>(null);
 
   // Anlık Yeni İşletme Üretici State
   const [customName, setCustomName] = useState("");
@@ -37,13 +38,13 @@ export default function VitrinControlPanel() {
   const buildPitchText = (b: BusinessLead, liveUrl: string) => {
     const closingLine =
       priceText === "fiyatsiz"
-        ? `Hoşunuza giderse kendi .com / .com.tr alan adınıza bağlayıp (veya mevcut sitenizi yenileyip) her şeyiyle anahtar teslim bugün aktif edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar, iyi haftalar dilerim!`
-        : `Hoşunuza giderse kendi .com / .com.tr alan adınıza bağlayıp (veya mevcut sitenizi yenileyip) her şeyiyle anahtar teslim ${priceText}'ye bugün aktif edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar, iyi haftalar dilerim!`;
+        ? `Hoşunuza giderse kendi .com / .com.tr alan adınıza bağlayıp her şeyiyle anahtar teslim bugün aktif edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar dilerim!`
+        : `Hoşunuza giderse kendi .com / .com.tr alan adınıza bağlayıp her şeyiyle anahtar teslim ${priceText}'ye bugün aktif edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar dilerim!`;
 
     return (
-      `Merhabalar, iyi çalışmalar dilerim. Ben Altan, Pamukkale Üniversitesi'nde mühendislik öğrencisiyim.\n\n` +
-      `Denizli'de ${b.shortName} için doğrudan ${b.phoneDisplay} WhatsApp randevu hattınıza ve Google Harita konumunuza bağlı, mobil uyumlu yeni nesil bir web sitesi tasarımı hazırladım.\n\n` +
-      `Şu linke tıklayıp telefonunuzdan canlı olarak inceleyebilirsiniz:\n` +
+      `Selamlar, Google'da ${b.shortName} olarak arattığımda aktif bir web sitenizin olmadığını fark ettim.\n\n` +
+      `Kusura bakmayın rahatsız ettiğim için. Bir kendimi minik tanıtayım, ben Altan, Pamukkale Üniversitesi'nde mühendislik öğrencisiyim. Sizin ve işletmenizin kendi adı, ${b.phoneDisplay} WhatsApp randevu hattı ve harita konumuyla çalışan mobil uyumlu sitenizi örnek olarak hazırladım.\n\n` +
+      `Ekte sitenin ekran görüntüsünü de bıraktım; şu linke tıklayıp telefonunuzdan canlı olarak da inceleyebilirsiniz:\n` +
       `${liveUrl}\n\n` +
       closingLine
     );
@@ -56,6 +57,23 @@ export default function VitrinControlPanel() {
     await navigator.clipboard.writeText(text);
     setCopiedSlug(b.slug);
     setTimeout(() => setCopiedSlug(null), 2000);
+  };
+
+  const handleCopyImage = async (slug: string) => {
+    try {
+      const res = await fetch(`/vitrin-shots/${slug}.png`);
+      const blob = await res.blob();
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          "image/png": blob,
+        }),
+      ]);
+      setCopiedImgSlug(slug);
+      setTimeout(() => setCopiedImgSlug(null), 2500);
+    } catch {
+      // Fallback: open image in new tab if clipboard API is restricted
+      window.open(`/vitrin-shots/${slug}.png`, "_blank");
+    }
   };
 
   const filteredList =
@@ -80,12 +98,12 @@ export default function VitrinControlPanel() {
 
   const customClosing =
     priceText === "fiyatsiz"
-      ? `Hoşunuza giderse kendi .com alan adınıza bağlayıp (veya mevcut sitenizi yenileyip) her şeyiyle anahtar teslim bugün teslim edebilirim. İyi çalışmalar, iyi haftalar dilerim!`
-      : `Hoşunuza giderse kendi .com alan adınıza bağlayıp (veya mevcut sitenizi yenileyip) her şeyiyle anahtar teslim ${priceText}'ye bugün teslim edebilirim. İyi çalışmalar, iyi haftalar dilerim!`;
+      ? `Hoşunuza giderse kendi .com alan adınıza bağlayıp her şeyiyle anahtar teslim bugün teslim edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar dilerim!`
+      : `Hoşunuza giderse kendi .com alan adınıza bağlayıp her şeyiyle anahtar teslim ${priceText}'ye bugün teslim edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar dilerim!`;
 
   const customPitch =
-    `Merhabalar, iyi çalışmalar dilerim. Ben Altan, Pamukkale Üniversitesi'nde mühendislik öğrencisiyim.\n\n` +
-    `Denizli'de ${customName || "işletmeniz"} için doğrudan WhatsApp randevu hattınıza ve Google Harita konumunuza bağlı, mobil uyumlu yeni nesil bir web sitesi tasarımı hazırladım.\n\n` +
+    `Selamlar, Google'da ${customName || "işletmeniz"} olarak arattığımda aktif bir web sitenizin olmadığını fark ettim.\n\n` +
+    `Kusura bakmayın rahatsız ettiğim için. Bir kendimi minik tanıtayım, ben Altan, Pamukkale Üniversitesi'nde mühendislik öğrencisiyim. Sizin ve işletmenizin kendi adı, WhatsApp randevu hattı ve harita konumuyla çalışan mobil uyumlu sitenizi örnek olarak hazırladım.\n\n` +
     `Şu linke tıklayıp telefonunuzdan canlı olarak inceleyebilirsiniz:\n` +
     `${customLiveUrl}\n\n` +
     customClosing;
@@ -97,13 +115,13 @@ export default function VitrinControlPanel() {
         <div className="rounded-3xl bg-zinc-900 border border-white/10 p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
-              Canlı Demo & Tek Tık WhatsApp Operasyon Paneli
+              Canlı Demo & Tek Tık WhatsApp + Görsel Operasyon Paneli
             </span>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
               Denizli Hazır Web Sitesi Satış Merkezi ({DENIZLI_BUSINESSES.length} İşletme)
             </h1>
             <p className="text-sm text-zinc-400 mt-1 max-w-2xl">
-              Listedeki her işletmenin <strong>kendi adıyla, kendi 05xx numarasıyla ve kendi Google Harita konumuyla</strong> çalışan canlı sitesi hazır. Sadece <strong>&ldquo;WhatsApp&apos;tan Gönder&rdquo;</strong> butonuna bas, hazır mesaj ve canlı link otomatik açılır.
+              Önce <strong>&ldquo;🖼️ Görseli Kopyala&rdquo;</strong> (veya direkt <strong>&ldquo;💬 WhatsApp&apos;tan Gönder&rdquo;</strong>) butonuna bas; WhatsApp açılınca sadece <strong>Cmd + V (Yapıştır)</strong> yapıp ekran görüntüsüyle birlikte mesajı gönder!
             </p>
           </div>
 
@@ -117,18 +135,18 @@ export default function VitrinControlPanel() {
             <div className="h-10 w-px bg-white/10" />
             <div>
               <label className="block text-xs text-zinc-400 mb-1">
-                Mesajdaki Teklif Fiyatı
+                Mesajda Fiyat Yazsın mı?
               </label>
               <select
                 value={priceText}
                 onChange={(e) => setPriceText(e.target.value)}
                 className="bg-zinc-900 border border-white/15 rounded-lg px-2.5 py-1.5 text-xs font-bold text-white"
               >
-                <option value="3.500 TL">3.500 TL (Önerilen)</option>
-                <option value="fiyatsiz">Fiyat Yazmadan (Önce İnceletin)</option>
-                <option value="3.000 TL">3.000 TL (Hızlı Sürüm)</option>
-                <option value="4.000 TL">4.000 TL (Standart)</option>
-                <option value="5.000 TL">5.000 TL (Kurumsal)</option>
+                <option value="fiyatsiz">Fiyat Yazmadan Gönder (Önerilen)</option>
+                <option value="3.500 TL">3.500 TL Yazsın</option>
+                <option value="3.000 TL">3.000 TL Yazsın</option>
+                <option value="4.000 TL">4.000 TL Yazsın</option>
+                <option value="5.000 TL">5.000 TL Yazsın</option>
               </select>
             </div>
           </div>
@@ -234,10 +252,11 @@ export default function VitrinControlPanel() {
         </div>
 
         {/* İşletme Kartları Listesi */}
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-5">
           {filteredList.map((b, index) => {
             const isSent = !!sentSlugs[b.slug];
             const liveUrl = getLiveUrl(b.slug);
+            const shotUrl = `/vitrin-shots/${b.slug}.png`;
             const waUrl = `https://wa.me/${b.phoneClean}?text=${encodeURIComponent(
               buildPitchText(b, liveUrl)
             )}`;
@@ -251,7 +270,7 @@ export default function VitrinControlPanel() {
                     : "bg-zinc-900/90 border-white/10 hover:border-white/25"
                 }`}
               >
-                <div>
+                <div className="space-y-3">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
@@ -273,7 +292,41 @@ export default function VitrinControlPanel() {
                     </button>
                   </div>
 
-                  <div className="mt-3 space-y-1 text-xs text-zinc-300">
+                  {/* Site Ekran Görüntüsü Önizlemesi */}
+                  <div className="relative rounded-xl overflow-hidden border border-white/15 bg-zinc-950 aspect-[16/10] group">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={shotUrl}
+                      alt={`${b.shortName} Web Sitesi Ekran Görüntüsü`}
+                      className="w-full h-full object-cover object-top"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-2.5 flex items-center justify-between gap-2">
+                      <span className="text-[11px] font-semibold text-zinc-200 truncate">
+                        📸 {b.shortName} Hazır Ekran Görüntüsü
+                      </span>
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <button
+                          type="button"
+                          onClick={() => handleCopyImage(b.slug)}
+                          className="cursor-pointer px-2.5 py-1 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 text-[11px] font-extrabold transition"
+                        >
+                          {copiedImgSlug === b.slug
+                            ? "✓ Görsel Panoya Kopyalandı (Cmd+V Yap)"
+                            : "🖼️ Görseli Kopyala (Cmd+V)"}
+                        </button>
+                        <a
+                          href={shotUrl}
+                          download={`${b.slug}-site-onizleme.png`}
+                          className="px-2 py-1 rounded-lg bg-zinc-900/90 hover:bg-zinc-800 text-zinc-200 border border-white/15 text-[11px] font-semibold"
+                        >
+                          📥 İndir
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1 text-xs text-zinc-300">
                     <div>
                       📞 WhatsApp: <strong className="text-white">{b.phoneDisplay}</strong>
                       {b.instagram && (
@@ -281,7 +334,7 @@ export default function VitrinControlPanel() {
                       )}
                     </div>
                     <div className="text-zinc-400 truncate">📍 {b.address}</div>
-                    <div className="text-emerald-300 font-mono text-[11px] truncate pt-1">
+                    <div className="text-emerald-300 font-mono text-[11px] truncate pt-0.5">
                       🔗 {liveUrl}
                     </div>
                   </div>
@@ -291,16 +344,16 @@ export default function VitrinControlPanel() {
                   <Link
                     href={`/vitrin/${b.slug}`}
                     target="_blank"
-                    className="px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-bold text-white transition"
+                    className="px-3 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-bold text-white transition"
                   >
-                    👁️ Canlı Siteyi Gör
+                    👁️ Siteyi Aç
                   </Link>
 
                   <button
                     onClick={() => handleCopy(b)}
-                    className="px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-white/15 hover:border-white/30 text-xs font-semibold text-zinc-200 transition"
+                    className="cursor-pointer px-3 py-2.5 rounded-xl bg-zinc-950 border border-white/15 hover:border-white/30 text-xs font-semibold text-zinc-200 transition"
                   >
-                    {copiedSlug === b.slug ? "✓ Kopyalandı!" : "📋 Mesajı Kopyala"}
+                    {copiedSlug === b.slug ? "✓ Yazı Kopyalandı!" : "📋 Yazıyı Kopyala"}
                   </button>
 
                   <a
@@ -308,11 +361,12 @@ export default function VitrinControlPanel() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => {
+                      handleCopyImage(b.slug);
                       if (!isSent) toggleSent(b.slug);
                     }}
                     className="ml-auto px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 text-xs font-extrabold shadow-lg transition"
                   >
-                    💬 WhatsApp&apos;tan Gönder →
+                    💬 WhatsApp&apos;tan Gönder (Görsel Kopyalanır) →
                   </a>
                 </div>
               </div>
