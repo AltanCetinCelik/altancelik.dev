@@ -233,7 +233,7 @@ export default function SectorInteractiveLab({
 
   if (business.sector === "dental") {
     const shades = [
-      { code: "BL1", name: "Hollywood Ekstra Beyaz", hex: "#FBFDFF", note: "Yüksek parlaklık ve estetik kontrast" },
+      { code: "BL1", name: "Ekstra Parlak Beyaz", hex: "#FBFDFF", note: "Yüksek parlaklık ve estetik kontrast" },
       { code: "BL2", name: "Klinik Doğal Beyaz", hex: "#F7F9FC", note: "En çok tercih edilen dengeli ve aydınlık gülüş tonu" },
       { code: "A1", name: "Organik İnci Tonu", hex: "#F4F3EC", note: "Doğal diş minesinin ışık geçirgenliğiyle birebir uyum" },
       { code: "A2", name: "Sıcak Doğal Mine", hex: "#EFECE1", note: "Yumuşak ve doğal görünüm isteyen danışanlar için" },
@@ -252,7 +252,7 @@ export default function SectorInteractiveLab({
         summary: "Modern lokal anestezi altında konforlu biçimde uygulanır; biyouyumlu titanyum altyapı ile doğal diş kökünüzün fonksiyonunu üstlenir.",
       },
       {
-        title: "Ofis Tipi Lazer Diş Beyazlatma",
+        title: "Ofis Tipi Diş Beyazlatma (Bleaching)",
         duration: "Tek Seans (45 Dakika)",
         warranty: "Mine Koruyucu Jel Protokolü",
         summary: "Diş minesini koruyan klinik jel protokolü ile klinik ortamda daha aydınlık ve parlak diş tonu sağlanır.",
