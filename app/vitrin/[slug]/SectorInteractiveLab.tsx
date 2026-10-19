@@ -725,7 +725,195 @@ export default function SectorInteractiveLab({
     );
   }
 
-  /* THERAPY / PHYSIOTHERAPY / PILATES */
+  if (business.sector === "physio") {
+    const physioPrograms = [
+      {
+        title: "Klinik Reformer Pilates & Postür Analizi",
+        format: "50 Dakika · Birebir (1:1) veya Düet (2:1)",
+        note: "Fizyoterapist eşliğinde omurga hizalanması, skolyoz takibi, core güçlendirme ve esneklik odaklı aletli pilates programı.",
+      },
+      {
+        title: "Manuel Terapi & Ağrı Yönetimi",
+        format: "Birebir Fizyoterapist Değerlendirmesi",
+        note: "Bel-boyun fıtığı, kas spazmları, eklem kısıtlılıkları ve duruş bozukluklarında elle uygulanan klinik mobilizasyon protokolü.",
+      },
+      {
+        title: "Ortopedik & Sporcu Rehabilitasyonu",
+        format: "Kişiye Özel Egzersiz Reçetesi",
+        note: "Ameliyat sonrası veya spor yaralanmaları ardından kas kuvvetini ve hareket açıklığını güvenli şekilde geri kazandıran süreç.",
+      },
+    ];
+
+    return (
+      <section
+        style={{ borderBottom: `1px solid ${p.line}`, backgroundColor: p.surfaceAlt }}
+        className="py-20 sm:py-28"
+      >
+        <div className="vitrin-shell grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-5 space-y-4">
+            <span
+              style={{ color: p.accent, fontFamily: "'JetBrains Mono', monospace" }}
+              className="text-xs uppercase tracking-widest block"
+            >
+              POSTÜR ANALİZİ & SEANS PLANLAYICI
+            </span>
+            <h2
+              style={{ fontFamily: p.fontDisplay, letterSpacing: "-0.03em" }}
+              className="text-3xl sm:text-4xl font-semibold m-0"
+            >
+              İhtiyacınıza Uygun Fizyoterapi &amp; Pilates Programı
+            </h2>
+            <p style={{ color: p.inkSecondary }} className="text-sm sm:text-base leading-relaxed m-0">
+              İlk değerlendirme seansında duruş ve hareket analizi yapılarak haftalık seans sıklığınız fizyoterapistimizle birlikte planlanır.
+            </p>
+          </div>
+
+          <div className="lg:col-span-7">
+            <div
+              style={{ border: `1px solid ${p.lineStrong}`, backgroundColor: p.surface }}
+              className="rounded-2xl p-6 sm:p-8 space-y-5"
+            >
+              <div className="grid sm:grid-cols-3 gap-2.5">
+                {physioPrograms.map((pr, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setTherapyFocus(idx)}
+                    style={{
+                      border: `1px solid ${therapyFocus === idx ? p.accent : p.line}`,
+                      backgroundColor: therapyFocus === idx ? p.accentSoft : p.bg,
+                    }}
+                    className="p-3 rounded-xl text-left text-xs font-semibold cursor-pointer transition"
+                  >
+                    {pr.title}
+                  </button>
+                ))}
+              </div>
+
+              <div className="space-y-2 pt-2">
+                <div style={{ color: p.accent, fontFamily: "'JetBrains Mono', monospace" }} className="text-xs">
+                  {physioPrograms[therapyFocus].format}
+                </div>
+                <h3 className="text-xl font-semibold m-0">{physioPrograms[therapyFocus].title}</h3>
+                <p style={{ color: p.inkSecondary }} className="text-sm leading-relaxed m-0">
+                  {physioPrograms[therapyFocus].note}
+                </p>
+              </div>
+
+              <a
+                href={buildWaLink(
+                  `Merhaba ${business.shortName}, "${physioPrograms[therapyFocus].title}" için deneme seansı / değerlendirme randevusu ve paket bilgisi alabilir miyim?`
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ backgroundColor: p.accent, color: p.accentContrast }}
+                className="w-full inline-flex items-center justify-center gap-2 py-4 px-5 rounded-xl text-sm font-semibold transition hover:opacity-90"
+              >
+                <span>Değerlendirme &amp; Deneme Seansı Randevusu Al</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (business.sector === "vet") {
+    const vetPrograms = [
+      {
+        title: "Kedi & Köpek Aşı Takvimi ve Parazit Takibi",
+        format: "Dijital Aşı Karnesi · Periyodik Hatırlatma",
+        note: "Yavru ve yetişkin dostlarımız için iç-dış parazit uygulamaları, karma, kuduz ve lösemi aşılarının zamanında takibi.",
+      },
+      {
+        title: "Klinik Check-Up, Hemogram & Röntgen (CR)",
+        format: "Hızlı Laboratuvar Sonucu · Detaylı Muayene",
+        note: "Kan tahlili, biyokimya, dijital röntgen ve ultrasonografi ile erken teşhis ve kapsamlı sağlık kontrolü.",
+      },
+      {
+        title: "Steril Cerrahi, Kısırlaştırma & Pet Bakım",
+        format: "Gaz Anestezili Cerrahi · Hijyenik Pet Kuaför",
+        note: "Güvenli gaz anestezisi ve hasta başı monitörizasyon eşliğinde kısırlaştırma operasyonları ve makas/tıraş bakımı.",
+      },
+    ];
+
+    return (
+      <section
+        style={{ borderBottom: `1px solid ${p.line}`, backgroundColor: p.surfaceAlt }}
+        className="py-20 sm:py-28"
+      >
+        <div className="vitrin-shell grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-5 space-y-4">
+            <span
+              style={{ color: p.accent, fontFamily: "'JetBrains Mono', monospace" }}
+              className="text-xs uppercase tracking-widest block"
+            >
+              PATİLİ DOSTLAR İÇİN KLİNİK PLANLAYICI
+            </span>
+            <h2
+              style={{ fontFamily: p.fontDisplay, letterSpacing: "-0.03em" }}
+              className="text-3xl sm:text-4xl font-semibold m-0"
+            >
+              Minik Dostunuz İçin Muayene &amp; Bakım Seçimi
+            </h2>
+            <p style={{ color: p.inkSecondary }} className="text-sm sm:text-base leading-relaxed m-0">
+              Kliniğimizde tüm muayene, aşılama ve cerrahi işlemler steril koşullarda ve stres azaltıcı yaklaşımla gerçekleştirilir.
+            </p>
+          </div>
+
+          <div className="lg:col-span-7">
+            <div
+              style={{ border: `1px solid ${p.lineStrong}`, backgroundColor: p.surface }}
+              className="rounded-2xl p-6 sm:p-8 space-y-5"
+            >
+              <div className="grid sm:grid-cols-3 gap-2.5">
+                {vetPrograms.map((pr, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setTherapyFocus(idx)}
+                    style={{
+                      border: `1px solid ${therapyFocus === idx ? p.accent : p.line}`,
+                      backgroundColor: therapyFocus === idx ? p.accentSoft : p.bg,
+                    }}
+                    className="p-3 rounded-xl text-left text-xs font-semibold cursor-pointer transition"
+                  >
+                    {pr.title}
+                  </button>
+                ))}
+              </div>
+
+              <div className="space-y-2 pt-2">
+                <div style={{ color: p.accent, fontFamily: "'JetBrains Mono', monospace" }} className="text-xs">
+                  {vetPrograms[therapyFocus].format}
+                </div>
+                <h3 className="text-xl font-semibold m-0">{vetPrograms[therapyFocus].title}</h3>
+                <p style={{ color: p.inkSecondary }} className="text-sm leading-relaxed m-0">
+                  {vetPrograms[therapyFocus].note}
+                </p>
+              </div>
+
+              <a
+                href={buildWaLink(
+                  `Merhaba ${business.shortName}, "${vetPrograms[therapyFocus].title}" için randevu ve bilgi alabilir miyim?`
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ backgroundColor: p.accent, color: p.accentContrast }}
+                className="w-full inline-flex items-center justify-center gap-2 py-4 px-5 rounded-xl text-sm font-semibold transition hover:opacity-90"
+              >
+                <span>Klinik Muayene &amp; Bilgi Randevusu Al</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  /* THERAPY */
   const tracks = [
     {
       title: "Bireysel Değerlendirme & Seans Planı",

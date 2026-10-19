@@ -364,6 +364,174 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
   },
 
+  physio: {
+    bg: "#F6F7F4",
+    surface: "#FFFFFF",
+    surfaceAlt: "#EBECE6",
+    ink: "#16201B",
+    inkSecondary: "#3F4E46",
+    inkMuted: "#6C7B73",
+    line: "rgba(22, 32, 27, 0.09)",
+    lineStrong: "rgba(22, 32, 27, 0.18)",
+    accent: "#215A46",
+    accentContrast: "#FFFFFF",
+    accentSoft: "rgba(33, 90, 70, 0.08)",
+    fontDisplay: "'Plus Jakarta Sans', -apple-system, sans-serif",
+    kicker: "FİZYOTERAPİ, MANUEL TERAPİ & KLİNİK REFORMER PİLATES",
+    heroPhoto:
+      "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1600&q=85",
+    galleryPhotos: [
+      {
+        url: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80",
+        caption: "Birebir Postür Analizi, Manuel Terapi ve Omurga Mobilizasyonu",
+        tag: "01 / Klinik Değerlendirme",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80",
+        caption: "Uzman Eşliğinde Birebir ve Düet Aletli Reformer Pilates",
+        tag: "02 / Reformer & Cadillac",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80",
+        caption: "Kişiye Özel Fonksiyonel Egzersiz ve Duruş Rehabilitasyonu",
+        tag: "03 / Sağlıklı Hareket",
+      },
+    ],
+    metrics: [
+      ["Postür Analizi", "Detaylı Omurga, Kas & Eklem Değerlendirmesi"],
+      ["Birebir Seans", "Uzman Eşliğinde Kişiye Özel Uygulama"],
+      ["Reformer & FDM", "Modern Ekipmanlı Ferah Stüdyo Ortamı"],
+      ["Esnek Saatler", "Çalışma Temponuza Uygun Randevu Planı"],
+    ],
+    process: [
+      [
+        "01",
+        "Fiziksel Değerlendirme & Postür Analizi",
+        "İlk görüşmede duruş (postür), hareket açıklığı ve kas dengeniz incelenerek ihtiyacınıza en uygun program oluşturulur.",
+      ],
+      [
+        "02",
+        "Birebir Manuel Uygulama & Reformer",
+        "Belirlenen programa göre manuel terapi veya aletli Reformer Pilates seansları uzman gözetiminde birebir uygulanır.",
+      ],
+      [
+        "03",
+        "Kas Güçlendirme & Günlük Ergonomi",
+        "Kazanılan hareket konforunun kalıcı olması için omurga çevresi kaslar güçlendirilir ve günlük yaşam egzersizleri paylaşılır.",
+      ],
+    ],
+    quotes: [
+      {
+        text: "Masa başı çalışmaktan kaynaklanan sırt ve boyun tutulmalarım için başladım. Hem stüdyonun temizliği hem de birebir ilgi gerçekten çok profesyonel.",
+        author: "Ceren T.",
+        detail: "Reformer Pilates & Postür",
+      },
+      {
+        text: "İlk değerlendirmeden itibaren her hareketin mantığını açıklayarak ilerliyorlar. Düzenli seanslarla hareket kabiliyetim ve duruşum gözle görülür şekilde düzeldi.",
+        author: "Ahmet K.",
+        detail: "Fizyoterapi & Klinik Egzersiz",
+      },
+    ],
+    faqs: [
+      [
+        "Daha önce hiç Reformer Pilates yapmadım, başlangıç için uygun mu?",
+        "Evet. Tüm derslerimiz öncesinde vücut ve duruş analizi yapılır; egzersiz dirençleri ve hareket seviyesi tamamen sizin fiziksel kondisyonuza göre ayarlanır.",
+      ],
+      [
+        "Seanslar kaç dakika sürüyor ve haftada kaç gün öneriliyor?",
+        "Seanslarımız ortalama 50 dakika sürmektedir. Hedefinize ve ihtiyacınıza göre haftada 2 veya 3 seanslık periyotlarla düzenli takip önerilir.",
+      ],
+      [
+        "Tanışma dersi veya ön değerlendirme için nasıl randevu alabilirim?",
+        "WhatsApp butonuna tıklayarak veya telefon hattımızdan bize ulaşarak müsait gün ve saatler için hemen randevu oluşturabilirsiniz.",
+      ],
+    ],
+  },
+
+  vet: {
+    bg: "#F5F8F7",
+    surface: "#FFFFFF",
+    surfaceAlt: "#E8F0ED",
+    ink: "#102420",
+    inkSecondary: "#38524C",
+    inkMuted: "#65807A",
+    line: "rgba(16, 36, 32, 0.09)",
+    lineStrong: "rgba(16, 36, 32, 0.18)",
+    accent: "#0E6B58",
+    accentContrast: "#FFFFFF",
+    accentSoft: "rgba(14, 107, 88, 0.08)",
+    fontDisplay: "'Plus Jakarta Sans', -apple-system, sans-serif",
+    kicker: "MODERN VETERİNER KLİNİĞİ, TEŞHİS LABORATUVARI & PET BAKIM",
+    heroPhoto:
+      "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=1600&q=85",
+    galleryPhotos: [
+      {
+        url: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=900&q=80",
+        caption: "Dijital Röntgen, Ultrason ve Hızlı Kan Analiz Laboratuvarı",
+        tag: "01 / Hızlı Teşhis",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=900&q=80",
+        caption: "Kedi ve Köpekler İçin Periyodik Aşı, Mikroçip ve Parazit Takibi",
+        tag: "02 / Koruyucu Hekimlik",
+      },
+      {
+        url: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=900&q=80",
+        caption: "Steril Cerrahi Ünitesi, Yoğun Bakım ve Stressiz Pet Kuaför",
+        tag: "03 / Cerrahi & Bakım",
+      },
+    ],
+    metrics: [
+      ["Dijital Lab", "Hemogram, Biyokimya, Röntgen & Ultrason"],
+      ["Aşı Takvimi", "Düzenli SMS Hatırlatmalı Koruyucu Hekimlik"],
+      ["Steril Cerrahi", "Gaz Anestezisi & Hasta Başı Monitörizasyon"],
+      ["Şefkatli Yaklaşım", "Can Dostlarınız İçin Stressiz Muayene Ortamı"],
+    ],
+    process: [
+      [
+        "01",
+        "Kapsamlı Fiziksel Muayene & Kayıt",
+        "Sevimli dostunuzun genel sağlık durumu, kilosu, ateş ve kalp-akciğer bulguları incelenerek dijital hasta kartı oluşturulur.",
+      ],
+      [
+        "02",
+        "Laboratuvar & Görüntüleme Destekli Tanı",
+        "İhtiyaç halinde kliniğimiz bünyesindeki kan analiz cihazları, röntgen ve ultrason ile dakikalar içinde net teşhis konulur.",
+      ],
+      [
+        "03",
+        "Tedavi, Aşı Takibi & Bakım Planı",
+        "Koruyucu aşıları ve tedavisi tamamlanır; bir sonraki kontrol tarihi sistemimiz üzerinden size düzenli olarak hatırlatılır.",
+      ],
+    ],
+    quotes: [
+      {
+        text: "Kedimizin kısırlaştırma operasyonu ve sonrasındaki kontrollerde o kadar ilgili ve şefkatliydiler ki gözümüz hiç arkada kalmadı.",
+        author: "Büşra M.",
+        detail: "Cerrahi & Aşı Takibi",
+      },
+      {
+        text: "Yenişehir'de tertemiz, donanımlı ve hayvanları gerçekten çok seven bir klinik. Aşı zamanlarını mesajla hatırlatmaları büyük kolaylık.",
+        author: "Kaan D.",
+        detail: "Koruyucu Hekimlik & Muayene",
+      },
+    ],
+    faqs: [
+      [
+        "Aşı takvimi ve iç-dış parazit zamanlarını nasıl takip ediyorsunuz?",
+        "Kliniğimizde kayıtlı tüm can dostlarımızın aşı ve parazit günleri dijital sistemimizde tutulur ve günü geldiğinde telefonunuza hatırlatma bilgisi gönderilir.",
+      ],
+      [
+        "Kısırlaştırma ve cerrahi işlemlerde hangi anestezi yöntemi kullanılıyor?",
+        "Operasyonlarımızda riski en aza indiren modern gaz anestezisi ve hasta başı yaşam monitörü kullanılmakta, işlem öncesi kan tahlili ile uygunluk kontrol edilmektedir.",
+      ],
+      [
+        "Pet kuaför ve tıraş işlemleri için randevu almamız gerekiyor mu?",
+        "Evet. Dostunuzun bekleyerek strese girmemesi için makas/makine tıraşı ve bakım işlemlerimizi randevulu olarak gerçekleştiriyoruz.",
+      ],
+    ],
+  },
+
   beauty: {
     bg: "#FCF9F8",
     surface: "#FFFFFF",

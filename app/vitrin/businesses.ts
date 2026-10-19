@@ -3,7 +3,9 @@ export type SectorType =
   | "dental"
   | "diet"
   | "therapy"
+  | "physio"
   | "beauty"
+  | "vet"
   | "realestate";
 
 export interface BusinessLead {
@@ -550,7 +552,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     slug: "fizyoform-denizli",
     name: "Fizyoform Denizli — Fizyoterapi & Klinik Pilates",
     shortName: "Fizyoform Denizli",
-    sector: "therapy",
+    sector: "physio",
     categoryLabel: "Fizyoterapi ve Klinik Pilates Merkezi",
     phoneDisplay: "0533 154 19 49",
     phoneClean: "905331541949",
@@ -590,7 +592,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     slug: "studio-venti-pilates",
     name: "Studio Venti — Reformer Pilates & Fonksiyonel Egzersiz",
     shortName: "Studio Venti Denizli",
-    sector: "therapy",
+    sector: "physio",
     categoryLabel: "Reformer Pilates Stüdyosu",
     phoneDisplay: "0501 166 20 22",
     phoneClean: "905011662022",
@@ -630,7 +632,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     slug: "fizyosifa-fdm",
     name: "Fizyoşifa FDM Fizyoterapi ve Danışmanlık Merkezi",
     shortName: "Fizyoşifa FDM",
-    sector: "therapy",
+    sector: "physio",
     categoryLabel: "Fizyoterapi ve Manuel Terapi Merkezi",
     phoneDisplay: "0507 041 36 86",
     phoneClean: "905070413686",
@@ -748,7 +750,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     slug: "gd-veteriner-klinigi",
     name: "GD Veteriner Kliniği Denizli",
     shortName: "GD Veteriner Kliniği",
-    sector: "dental",
+    sector: "vet",
     categoryLabel: "Veteriner Kliniği & Pet Sağlık Merkezi",
     phoneDisplay: "0554 370 27 67",
     phoneClean: "905543702767",

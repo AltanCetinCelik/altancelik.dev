@@ -35,12 +35,17 @@ export default function VitrinControlPanel() {
   };
 
   const buildPitchText = (b: BusinessLead, liveUrl: string) => {
+    const closingLine =
+      priceText === "fiyatsiz"
+        ? `Hoşunuza giderse kendi .com / .com.tr alan adınıza bağlayıp her şeyiyle anahtar teslim bugün aktif edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar, iyi haftalar dilerim!`
+        : `Hoşunuza giderse kendi .com / .com.tr alan adınıza bağlayıp her şeyiyle anahtar teslim ${priceText}'ye bugün aktif edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar, iyi haftalar dilerim!`;
+
     return (
-      `Selamlar, Google'da ${b.shortName} olarak arattığımda aktif bir web sitenizin olmadığını fark ettim.\n\n` +
+      `Merhabalar, iyi çalışmalar dilerim. Google'da ${b.shortName} olarak arattığımda aktif bir web sitenizin olmadığını fark ettim.\n\n` +
       `Ben Pamukkale Üniversitesi'nde mühendislik öğrencisiyim; işletmenizin kendi adı, ${b.phoneDisplay} WhatsApp randevu hattı ve harita konumuyla çalışan mobil uyumlu sitenizi örnek olarak hazırladım.\n\n` +
       `Şu linke tıklayıp telefonunuzdan canlı olarak inceleyebilirsiniz:\n` +
       `${liveUrl}\n\n` +
-      `Hoşunuza giderse kendi .com / .com.tr alan adınıza bağlayıp her şeyiyle anahtar teslim ${priceText}'ye bugün aktif edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar dilerim!`
+      closingLine
     );
   };
 
@@ -73,12 +78,17 @@ export default function VitrinControlPanel() {
     customAddress
   )}`;
 
+  const customClosing =
+    priceText === "fiyatsiz"
+      ? `Hoşunuza giderse kendi .com alan adınıza bağlayıp her şeyiyle anahtar teslim bugün teslim edebilirim. İyi çalışmalar, iyi haftalar dilerim!`
+      : `Hoşunuza giderse kendi .com alan adınıza bağlayıp her şeyiyle anahtar teslim ${priceText}'ye bugün teslim edebilirim. İyi çalışmalar, iyi haftalar dilerim!`;
+
   const customPitch =
-    `Selamlar, Google'da ${customName || "işletmeniz"} olarak baktığımda aktif bir web sitenizin olmadığını fark ettim.\n\n` +
+    `Merhabalar, iyi çalışmalar dilerim. Google'da ${customName || "işletmeniz"} olarak baktığımda aktif bir web sitenizin olmadığını fark ettim.\n\n` +
     `Ben Pamukkale Üniversitesi'nde mühendislik öğrencisiyim; işletmenizin kendi adı, WhatsApp randevu hattı ve harita konumuyla çalışan mobil uyumlu sitenizi örnek olarak hazırladım.\n\n` +
     `Şu linke tıklayıp telefonunuzdan canlı olarak inceleyebilirsiniz:\n` +
     `${customLiveUrl}\n\n` +
-    `Hoşunuza giderse kendi .com alan adınıza bağlayıp her şeyiyle anahtar teslim ${priceText}'ye bugün teslim edebilirim. İyi çalışmalar dilerim!`;
+    customClosing;
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 p-4 sm:p-8 font-sans">
@@ -90,7 +100,7 @@ export default function VitrinControlPanel() {
               Canlı Demo & Tek Tık WhatsApp Operasyon Paneli
             </span>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
-              Denizli Hazır Web Sitesi Satış Merkezi (20 İşletme)
+              Denizli Hazır Web Sitesi Satış Merkezi ({DENIZLI_BUSINESSES.length} İşletme)
             </h1>
             <p className="text-sm text-zinc-400 mt-1 max-w-2xl">
               Listedeki her işletmenin <strong>kendi adıyla, kendi 05xx numarasıyla ve kendi Google Harita konumuyla</strong> çalışan canlı sitesi hazır. Sadece <strong>&ldquo;WhatsApp&apos;tan Gönder&rdquo;</strong> butonuna bas, hazır mesaj ve canlı link otomatik açılır.
@@ -114,8 +124,9 @@ export default function VitrinControlPanel() {
                 onChange={(e) => setPriceText(e.target.value)}
                 className="bg-zinc-900 border border-white/15 rounded-lg px-2.5 py-1.5 text-xs font-bold text-white"
               >
-                <option value="3.000 TL">3.000 TL (Hızlı Sürüm)</option>
                 <option value="3.500 TL">3.500 TL (Önerilen)</option>
+                <option value="fiyatsiz">Fiyat Yazmadan (Önce İnceletin)</option>
+                <option value="3.000 TL">3.000 TL (Hızlı Sürüm)</option>
                 <option value="4.000 TL">4.000 TL (Standart)</option>
                 <option value="5.000 TL">5.000 TL (Kurumsal)</option>
               </select>
@@ -152,9 +163,11 @@ export default function VitrinControlPanel() {
               className="rounded-xl bg-zinc-950 border border-white/15 px-3.5 py-2.5 text-xs sm:text-sm text-white"
             >
               <option value="auto">Oto Detailing / PPF / Ekspertiz</option>
-              <option value="dental">Diş Kliniği / Veteriner / Sağlık</option>
+              <option value="dental">Diş Kliniği & Ağız Sağlığı</option>
+              <option value="vet">Veteriner Kliniği & Pet</option>
               <option value="diet">Diyetisyen & Beslenme</option>
-              <option value="therapy">Psikolog / Fizyoterapi / Pilates</option>
+              <option value="physio">Fizyoterapi & Reformer Pilates</option>
+              <option value="therapy">Psikolog & Danışmanlık</option>
               <option value="beauty">Güzellik Merkezi & Estetik</option>
               <option value="realestate">Emlak & Gayrimenkul</option>
             </select>
@@ -198,9 +211,11 @@ export default function VitrinControlPanel() {
           {[
             { id: "all", label: `Tümü (${DENIZLI_BUSINESSES.length})` },
             { id: "auto", label: "🚗 Oto PPF & Detailing" },
-            { id: "dental", label: "🦷 Diş & Veteriner" },
+            { id: "dental", label: "🦷 Diş Kliniği" },
+            { id: "vet", label: "🐾 Veteriner" },
             { id: "diet", label: "🥗 Diyetisyen" },
-            { id: "therapy", label: "🧠 Psikolog & Fizyoterapi" },
+            { id: "physio", label: "🧘‍♀️ Fizyoterapi & Pilates" },
+            { id: "therapy", label: "🧠 Psikolog" },
             { id: "beauty", label: "✨ Güzellik & Estetik" },
             { id: "realestate", label: "🏠 Gayrimenkul & Emlak" },
           ].map((tab) => (
