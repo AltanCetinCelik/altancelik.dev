@@ -86,14 +86,14 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     quotes: [
       {
-        text: "Sıfır kilometre aldığım aracımı bayiden çıkar çıkmaz teslim ettim. Kaput ve çamurluk köşe dönüşlerinde film olduğu dışarıdan hiç anlaşılmıyor.",
-        author: "Emre K.",
-        detail: "Komple TPU PPF Kaplama",
+        text: "Her araç stüdyomuza kabul edildiğinde çok noktalı aydınlatma altında dijital vernik kalınlık ölçümü yapılır; uygulanacak film veya seramik protokolü araç sahibine şeffaf biçimde raporlanır.",
+        author: "Şeffaf Ekspertiz & Teslimat Standardı",
+        detail: "01 / Stüdyo Protokolü",
       },
       {
-        text: "Yıkama çiziklerinden matlaşmış siyah aracım ilk günkü derinliğine kavuştu. İşçilik ve teslimat disiplini gerçekten üst düzey.",
-        author: "Onur Ç.",
-        detail: "Polisaj & 9H Seramik Kaplama",
+        text: "Kaput, çamurluk ve tampon dönüşlerinde bıçaksız kesim ve tozsuz kapalı kabin disiplini uygulanır; her işlem sonunda bakım kılavuzu ve uygulama kaydı teslim edilir.",
+        author: "İzlenebilir Uygulama Disiplini",
+        detail: "02 / Kalite Standardı",
       },
     ],
     faqs: [
@@ -170,14 +170,14 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     quotes: [
       {
-        text: "Dişçi koltuğu çekincemi tamamen yenmemi sağladılar. Zirkonyum kaplamalarım o kadar doğal oldu ki kimse işlem yapıldığını anlamıyor.",
-        author: "Merve K.",
-        detail: "Zirkonyum & Gülüş Tasarımı",
+        text: "Kliniğimizde tüm cerrahi ve protetik işlemler öncesinde dijital görüntüleme ile yazılı tedavi planı oluşturulur; kullanılacak tüm materyallerin barkod ve sertifika bilgileri şeffaf biçimde paylaşılır.",
+        author: "Şeffaf Tedavi Planlaması",
+        detail: "01 / Klinik İlkemiz",
       },
       {
-        text: "İmplant sürecim beklediğimden çok daha rahat ve konforlu geçti. Randevu saatlerine gösterilen özen ve klinik temizliği çok iyi.",
-        author: "Hakan T.",
-        detail: "Dental İmplant Tedavisi",
+        text: "Her hasta sonrasında tüm ünit ve el aletleri B sınıfı otoklav protokolleriyle sterilize edilir; randevu saatleri hastalarımızın beklemeden birebir hizmet alacağı şekilde planlanır.",
+        author: "Sterilizasyon & Randevu Disiplini",
+        detail: "02 / Hijyen Standardı",
       },
     ],
     faqs: [
@@ -254,14 +254,14 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     quotes: [
       {
-        text: "Aç kalmadan ve sevdiğim yemeklerden mahrum olmadan 3 ayda 12 kilo verdim. Her hafta yapılan yağ-kas analizleri motivasyonumu çok yüksek tuttu.",
-        author: "Selin A.",
-        detail: "Yüz Yüze Beslenme Danışanı",
+        text: "Beslenme planlarımızda tek tip hazır listeler kullanılmaz; kan biyokimyanız, çalışma saatleriniz ve mutfak alışkanlıklarınıza göre her hafta yenilenen sürdürülebilir bir model uygulanır.",
+        author: "Kişiye Özel Bilimsel Planlama",
+        detail: "01 / Beslenme İlkemiz",
       },
       {
-        text: "İnsülin direncim nedeniyle yıllardır veremediğim kiloları doğru beslenme planlaması ve günlük WhatsApp takibi sayesinde sağlıklı şekilde geride bıraktım.",
-        author: "Burak Y.",
-        detail: "Klinik & Online Diyet",
+        text: "Sadece tartıdaki rakama değil; kas kütlesinin korunmasına, ödem dengesine ve sağlıklı beslenme alışkanlığının kalıcı hale gelmesine odaklanan birebir takip yürütülür.",
+        author: "Bütüncül Metabolik Takip",
+        detail: "02 / Klinik Yaklaşım",
       },
     ],
     faqs: [
@@ -293,7 +293,7 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     accentContrast: "#FFFFFF",
     accentSoft: "rgba(62, 56, 126, 0.08)",
     fontDisplay: "'Playfair Display', Georgia, serif",
-    kicker: "BİLİMSEL DANIŞMANLIK, TERAPİ & REHABİLİTASYON",
+    kicker: "BİLİMSEL DANIŞMANLIK & PSİKOTERAPİ MERKEZİ",
     heroPhoto:
       "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=1600&q=85",
     galleryPhotos: [
@@ -315,7 +315,7 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     metrics: [
       ["Etik Gizlilik", "Mesleki Etik İlkeler & Güvenli Danışan Alanı"],
-      ["Uzman Kadro", "Akademik ve Klinik Deneyimli Uygulayıcılar"],
+      ["Uzman Yaklaşım", "Bilimsel Ekoller ve Yapılandırılmış Süreç"],
       ["50 Dk Birebir", "Tamamen Size Ayrılmış Yapılandırılmış Seans"],
       ["Esnek Takvim", "Yüz Yüze ve Online Randevu Alternatifleri"],
     ],
@@ -338,14 +338,14 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     quotes: [
       {
-        text: "Merkeze adım attığınız andan itibaren huzurlu, sakin ve son derece profesyonel bir yaklaşımla karşılaşıyorsunuz. Süreç boyunca kendimi çok güvende hissettim.",
-        author: "Danışan Geri Bildirimi",
-        detail: "Bireysel Seans Programı",
+        text: "Merkezimizde gerçekleştirilen tüm bireysel, çift ve çocuk-ergen görüşmeleri Türk Psikologlar Derneği etik yönetmeliği ve tam mahremiyet ilkeleri çerçevesinde yürütülür.",
+        author: "Etik Gizlilik & Mahremiyet İlkemiz",
+        detail: "01 / Mesleki Etik",
       },
       {
-        text: "Bilimsel açıklamaları, güler yüzlü iletişimi ve randevu disipliniyle Denizli'de gönül rahatlığıyla tavsiye edebileceğim tek adres.",
-        author: "Danışan Yorumu",
-        detail: "Uzman Danışmanlık",
+        text: "Danışmanlık süreçlerimizde bilimsel geçerliliği kanıtlanmış çağdaş terapi ekolleri uygulanır; her seans diğer danışanlarla karşılaşmayacağınız şekilde özel zaman aralığıyla planlanır.",
+        author: "Bilimsel Ekol & Güvenli Alan",
+        detail: "02 / Klinik Standart",
       },
     ],
     faqs: [
@@ -422,14 +422,14 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     quotes: [
       {
-        text: "Masa başı çalışmaktan kaynaklanan sırt ve boyun tutulmalarım için başladım. Hem stüdyonun temizliği hem de birebir ilgi gerçekten çok profesyonel.",
-        author: "Ceren T.",
-        detail: "Reformer Pilates & Postür",
+        text: "Merkezimizde her danışan için seans öncesinde postür ve hareket açıklığı değerlendirmesi yapılır; tüm egzersiz ve manuel uygulamalar omurga biyomekaniğine uygun olarak birebir takip edilir.",
+        author: "Biyomekanik Değerlendirme & Birebir Takip",
+        detail: "01 / Uygulama İlkemiz",
       },
       {
-        text: "İlk değerlendirmeden itibaren her hareketin mantığını açıklayarak ilerliyorlar. Düzenli seanslarla hareket kabiliyetim ve duruşum gözle görülür şekilde düzeldi.",
-        author: "Ahmet K.",
-        detail: "Fizyoterapi & Klinik Egzersiz",
+        text: "Kullanılan tüm Reformer/Cadillac ekipmanları ve uygulama alanları her seans sonrasında dezenfekte edilir; seans içerikleri danışanımızın günlük yaşam ergonomisini destekleyecek şekilde planlanır.",
+        author: "Hijyenik Stüdyo & Sürdürülebilir Hareket",
+        detail: "02 / Merkez Standardı",
       },
     ],
     faqs: [
@@ -506,14 +506,14 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     quotes: [
       {
-        text: "Kedimizin kısırlaştırma operasyonu ve sonrasındaki kontrollerde o kadar ilgili ve şefkatliydiler ki gözümüz hiç arkada kalmadı.",
-        author: "Büşra M.",
-        detail: "Cerrahi & Aşı Takibi",
+        text: "Kliniğimizde tüm cerrahi müdahaleler öncesinde hemogram ve biyokimya kontrolleri yapılır; operasyonlar güvenli gaz anestezisi ve hasta başı monitörizasyon eşliğinde gerçekleştirilir.",
+        author: "Güvenli Cerrahi & Laboratuvar Protokolü",
+        detail: "01 / Hekimlik İlkemiz",
       },
       {
-        text: "Yenişehir'de tertemiz, donanımlı ve hayvanları gerçekten çok seven bir klinik. Aşı zamanlarını mesajla hatırlatmaları büyük kolaylık.",
-        author: "Kaan D.",
-        detail: "Koruyucu Hekimlik & Muayene",
+        text: "Kedi ve köpek dostlarımızın muayene sırasında strese girmemesi için sakin klinik yaklaşımı uygulanır; tüm aşı ve parazit takvimleri dijital kayıt sistemiyle düzenli olarak takip edilir.",
+        author: "Kedi/Köpek Dostu Muayene & Dijital Takip",
+        detail: "02 / Klinik Standardı",
       },
     ],
     faqs: [
@@ -590,14 +590,14 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     quotes: [
       {
-        text: "Denizli'de gittiğim en temiz ve düzenli merkez. İlk cilt analizinden itibaren çok ilgiliydiler, ilk seansta bile cildimdeki ışıltı fark edildi.",
-        author: "Zeynep D.",
-        detail: "Hydrafacial & Lazer Epilasyon",
+        text: "Merkezimizde her uygulama öncesinde cilt bariyeri ve kıl kökü yapısı analiz edilir; kullanılan tüm dermokozmetik ürünler ve cihaz başlıkları danışanımıza şeffaf biçimde tanıtılır.",
+        author: "Dijital Ön Analiz & Şeffaf Protokol",
+        detail: "01 / Merkez İlkemiz",
       },
       {
-        text: "Randevu saatlerinde hiç bekletilmiyorsunuz, cihazlar son teknoloji ve personel işini gerçekten severek yapıyor.",
-        author: "Elif S.",
-        detail: "Bölgesel İncelme & Bakım",
+        text: "Uygulama kabinlerimizde her danışan için tek kullanımlık sarf malzemeleri tercih edilir ve tüm cihaz başlıkları seans aralarında medikal dezenfeksiyon işleminden geçirilir.",
+        author: "VIP Kabin & Hijyen Standardı",
+        detail: "02 / Kalite Standardı",
       },
     ],
     faqs: [
@@ -674,14 +674,14 @@ const PALETTES: Record<SectorType, EditorialPalette> = {
     ],
     quotes: [
       {
-        text: "Aylarca bekleyen dairemizi doğru emsal fiyatlandırma ve profesyonel tanıtımla 2 hafta içinde gerçek değerinden tapuya taşıdılar.",
-        author: "Murat B.",
-        detail: "Konut Satışı — Merkezefendi",
+        text: "Portföyümüze alınan tüm konut, ticari mülk ve arsalar için güncel mahalle tapu emsalleri incelenir; hem mülk sahibini hem alıcıyı koruyan şeffaf fiyatlandırma politikası uygulanır.",
+        author: "Gerçekçi Emsal & Şeffaf Pazarlık İlkemiz",
+        detail: "01 / Kurumsal İlkemiz",
       },
       {
-        text: "Denizli'nin gelişen bölgelerine çok hakimler. Alıcı ve satıcıyı şeffaf şekilde bir araya getirip tüm tapu sürecini sorunsuz çözdüler.",
-        author: "Serkan Ö.",
-        detail: "Arsa & Yatırım Danışmanlığı",
+        text: "Kapora sözleşmesinden eksper sürecine, WebTapu başvurusundan güvenli banka transferine kadar tüm resmi işlemler kurumsal danışmanlarımız eşliğinde kayıt altında yürütülür.",
+        author: "Hukuki Güvenlik & Tapu Süreç Yönetimi",
+        detail: "02 / Hizmet Standardı",
       },
     ],
     faqs: [
@@ -807,7 +807,7 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
                 style={{ color: p.inkMuted }}
                 className="text-[11px] tracking-wide truncate"
               >
-                {business.district} · Google {business.rating} / 5.0 ({business.reviewCount}+ Yorum)
+                {business.district} · {business.categoryLabel}
               </div>
             </div>
           </a>
@@ -1283,7 +1283,7 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
               </div>
             </div>
 
-            {/* Müşteri / Danışan Deneyimleri */}
+            {/* Kurumsal İlkelerimiz & Kalite Standartlarımız */}
             <div>
               <span
                 style={{
@@ -1292,7 +1292,7 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
                 }}
                 className="text-xs uppercase tracking-widest block mb-3"
               >
-                04 / REFERANS & MEMNUNİYET
+                04 / KURUMSAL İLKELERİMİZ & STANDARTLARIMIZ
               </span>
               <div className="grid md:grid-cols-2 gap-6 mt-6">
                 {p.quotes.map((q, idx) => (
@@ -1309,9 +1309,9 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
                         fontFamily: p.fontDisplay,
                         color: p.ink,
                       }}
-                      className="text-lg sm:text-2xl leading-relaxed m-0"
+                      className="text-lg sm:text-xl leading-relaxed m-0"
                     >
-                      &ldquo;{q.text}&rdquo;
+                      {q.text}
                     </p>
                     <footer
                       style={{ borderTop: `1px solid ${p.line}` }}
@@ -1558,9 +1558,9 @@ export default function ClientShowcase({ business }: { business: BusinessLead })
                 </div>
                 <div className="flex justify-between gap-4 py-2" style={{ borderBottom: `1px solid ${p.line}` }}>
                   <span style={{ color: p.inkMuted, fontFamily: "'JetBrains Mono', monospace" }} className="text-xs uppercase">
-                    Çalışma Saatleri
+                    Çalışma Düzeni
                   </span>
-                  <span className="font-medium">Pzt – Cmt · 09:00 – 19:30</span>
+                  <span className="font-medium">Pazartesi – Cumartesi · Randevulu Hizmet</span>
                 </div>
                 <div className="flex justify-between gap-4 py-2" style={{ borderBottom: `1px solid ${p.line}` }}>
                   <span style={{ color: p.inkMuted, fontFamily: "'JetBrains Mono', monospace" }} className="text-xs uppercase shrink-0">

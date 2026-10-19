@@ -95,13 +95,13 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
         highlight: "Sertifikalı İmplant",
       },
       {
-        title: "Zirkonyum & Hollywood Smile",
-        desc: "Yüz hatlarınıza özel dijital ölçü ile doğal ışık geçirgenliğine sahip zirkonyum ve emax lamine kaplamalar.",
+        title: "Zirkonyum & Estetik Gülüş Tasarımı",
+        desc: "Yüz hatlarınıza özel dijital ölçü ile doğal ışık geçirgenliğine sahip zirkonyum ve lamine porselen uygulamaları.",
         highlight: "Dijital Tasarım",
       },
       {
-        title: "Lazerle Diş Beyazlatma (Bleaching)",
-        desc: "Diş minesini koruyan klinik protokollerle daha beyaz ve parlak gülüş.",
+        title: "Ofis Tipi Diş Beyazlatma (Bleaching)",
+        desc: "Diş minesini koruyan klinik protokollerle kontrollü diş rengi açma uygulaması.",
         highlight: "Klinik Uygulama",
       },
       {
@@ -328,7 +328,7 @@ export const DENIZLI_BUSINESSES: BusinessLead[] = [
     services: [
       {
         title: "Birebir Klinik Diyet Takibi",
-        desc: "Haftalık profesyonel tartım, сегmental yağ-kas analizi ve size özel yeni liste planlaması.",
+        desc: "Haftalık profesyonel tartım, segmental yağ-kas analizi ve size özel yeni liste planlaması.",
         highlight: "Yüz Yüze Görüşme",
       },
       {

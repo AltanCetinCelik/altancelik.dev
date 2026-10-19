@@ -37,12 +37,12 @@ export default function VitrinControlPanel() {
   const buildPitchText = (b: BusinessLead, liveUrl: string) => {
     const closingLine =
       priceText === "fiyatsiz"
-        ? `Hoşunuza giderse kendi .com / .com.tr alan adınıza bağlayıp her şeyiyle anahtar teslim bugün aktif edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar, iyi haftalar dilerim!`
-        : `Hoşunuza giderse kendi .com / .com.tr alan adınıza bağlayıp her şeyiyle anahtar teslim ${priceText}'ye bugün aktif edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar, iyi haftalar dilerim!`;
+        ? `Hoşunuza giderse kendi .com / .com.tr alan adınıza bağlayıp (veya mevcut sitenizi yenileyip) her şeyiyle anahtar teslim bugün aktif edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar, iyi haftalar dilerim!`
+        : `Hoşunuza giderse kendi .com / .com.tr alan adınıza bağlayıp (veya mevcut sitenizi yenileyip) her şeyiyle anahtar teslim ${priceText}'ye bugün aktif edebilirim. Beğenmezseniz de hiç sorun değil, fikir olması için paylaştım. İyi çalışmalar, iyi haftalar dilerim!`;
 
     return (
-      `Merhabalar, iyi çalışmalar dilerim. Google'da ${b.shortName} olarak arattığımda aktif bir web sitenizin olmadığını fark ettim.\n\n` +
-      `Ben Pamukkale Üniversitesi'nde mühendislik öğrencisiyim; işletmenizin kendi adı, ${b.phoneDisplay} WhatsApp randevu hattı ve harita konumuyla çalışan mobil uyumlu sitenizi örnek olarak hazırladım.\n\n` +
+      `Merhabalar, iyi çalışmalar dilerim. Ben Altan, Pamukkale Üniversitesi'nde mühendislik öğrencisiyim.\n\n` +
+      `Denizli'de ${b.shortName} için doğrudan ${b.phoneDisplay} WhatsApp randevu hattınıza ve Google Harita konumunuza bağlı, mobil uyumlu yeni nesil bir web sitesi tasarımı hazırladım.\n\n` +
       `Şu linke tıklayıp telefonunuzdan canlı olarak inceleyebilirsiniz:\n` +
       `${liveUrl}\n\n` +
       closingLine
@@ -80,12 +80,12 @@ export default function VitrinControlPanel() {
 
   const customClosing =
     priceText === "fiyatsiz"
-      ? `Hoşunuza giderse kendi .com alan adınıza bağlayıp her şeyiyle anahtar teslim bugün teslim edebilirim. İyi çalışmalar, iyi haftalar dilerim!`
-      : `Hoşunuza giderse kendi .com alan adınıza bağlayıp her şeyiyle anahtar teslim ${priceText}'ye bugün teslim edebilirim. İyi çalışmalar, iyi haftalar dilerim!`;
+      ? `Hoşunuza giderse kendi .com alan adınıza bağlayıp (veya mevcut sitenizi yenileyip) her şeyiyle anahtar teslim bugün teslim edebilirim. İyi çalışmalar, iyi haftalar dilerim!`
+      : `Hoşunuza giderse kendi .com alan adınıza bağlayıp (veya mevcut sitenizi yenileyip) her şeyiyle anahtar teslim ${priceText}'ye bugün teslim edebilirim. İyi çalışmalar, iyi haftalar dilerim!`;
 
   const customPitch =
-    `Merhabalar, iyi çalışmalar dilerim. Google'da ${customName || "işletmeniz"} olarak baktığımda aktif bir web sitenizin olmadığını fark ettim.\n\n` +
-    `Ben Pamukkale Üniversitesi'nde mühendislik öğrencisiyim; işletmenizin kendi adı, WhatsApp randevu hattı ve harita konumuyla çalışan mobil uyumlu sitenizi örnek olarak hazırladım.\n\n` +
+    `Merhabalar, iyi çalışmalar dilerim. Ben Altan, Pamukkale Üniversitesi'nde mühendislik öğrencisiyim.\n\n` +
+    `Denizli'de ${customName || "işletmeniz"} için doğrudan WhatsApp randevu hattınıza ve Google Harita konumunuza bağlı, mobil uyumlu yeni nesil bir web sitesi tasarımı hazırladım.\n\n` +
     `Şu linke tıklayıp telefonunuzdan canlı olarak inceleyebilirsiniz:\n` +
     `${customLiveUrl}\n\n` +
     customClosing;
