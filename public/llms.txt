@@ -1,0 +1,29 @@
+# Altan Çetin Çelik
+
+> AI Systems, LLM Evaluation & Backend Engineer | Final-Year Electrical-Electronics Engineering Student (Pamukkale University, Expected Jun 2027)
+
+Canonical Website: https://altancelik.dev
+GitHub: https://github.com/AltanCetinCelik
+LinkedIn: https://www.linkedin.com/in/altan-celik-004bb1248/
+Email: altancelik35@gmail.com
+Languages: Turkish (native), English (C1, fluent)
+
+## Summary
+Building and evaluating AI systems end to end: adaptive LLM inference, automated benchmarking pipelines, local-first agent architectures, Python/FastAPI backends, and hardware-adjacent embedded/IIoT systems. Combines an electrical engineering background (STM32, CAN bus, PCB design) with reproducible experimentation and honest reporting of negative results. Open to remote contract, AI/ML evaluation, and backend engineering roles.
+
+## Experience
+- Co-founder & Software / AI Lead — PinShift (Oct 2026 – Present): Architecting a supply-chain and datasheet-aware copilot for KiCad and Altium Designer backed by a FastAPI core engine, Nexar/Octopart + LCSC live distributor matching, deterministic hardware rule linter curated from 99 documented real-world hardware failure cases, and a 45° octile A* local rerouter.
+- AI Training Writer (Contract) — Mercor (Oct 2026 – Present): Authoring, evaluating, and refining LLM training data and prompt-response pairs under strict rubric, factual accuracy, and style guidelines.
+- Freelance Software Developer (2023 – Present): Built the core of a real-time factory-network monitoring dashboard prototype taken to production by the client's in-house engineers; built and shipped a commissioned 3D game (Unity + Python).
+
+## Selected Open Source & Engineering Projects
+- SelectiveLLM (https://github.com/AltanCetinCelik/SelectiveLLM, Apache-2.0): Adaptive model-capacity orchestration for language models. Semantic routing on Qwen2.5-1.5B-Instruct (Apple M4) achieved 0.83 routing F1 (vs. 0.61 keyword, 0.28 random) using ~286 MB less live accelerator memory; reproducible benchmark pipeline, ruff/mypy/pytest (>=70% coverage) CI, and preregistered causal experiments with negative results published.
+- Seed / seed-showcase (https://github.com/AltanCetinCelik/seed-showcase): Dependency-free public core of a local-first agent architecture featuring an LLM gateway (Ollama, Groq) with routing, health checks, retries, provider failover, hybrid semantic + keyword memory, risk-tiered human approval gates, and recoverable self-editing.
+- ROTA (https://github.com/AltanCetinCelik/rota): Cross-border payment requests on Solana built with Next.js 16, TypeScript, and @solana/web3.js (non-custodial Solana Pay links/QR codes, on-chain receipts, live FX comparison vs. SWIFT/Wise/Western Union).
+- Industrial IIoT & MCT (https://github.com/AltanCetinCelik/My-Projects): Telemetry dashboards, FastAPI services, and undergraduate thesis predictive-maintenance platform using a multi-master CAN bus (Raspberry Pi 5 master, STM32 nodes, ESP32 IoT gateway) with FFT-based motor vibration analysis.
+
+## Technical Stack
+- Languages: Python, TypeScript, C, C++, C#, SQL
+- AI / ML: PyTorch, Hugging Face Transformers, PEFT / LoRA, LLM Evaluation, Benchmarking, RAG, Agent Systems, Ollama
+- Backend & Data: FastAPI, asyncio, Pydantic, Pandas, REST, WebSockets, Next.js, React, Docker, Linux, Git, GitHub Actions, pytest
+- Embedded & Hardware: STM32, ESP32, Raspberry Pi, CAN bus, MQTT, Modbus, OPC UA, KiCad, Altium Designer, Unity
