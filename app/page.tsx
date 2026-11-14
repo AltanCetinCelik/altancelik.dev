@@ -289,7 +289,8 @@ export default function Home() {
         name: "Altan Çetin Çelik — AI Systems, LLM Evaluation & Backend Engineer",
         isPartOf: { "@id": websiteId },
         mainEntity: { "@id": personId },
-        dateModified: "2026-11-13",
+        dateCreated: "2026-10-19T12:00:00+03:00",
+        dateModified: "2026-11-14T11:20:00+03:00",
       },
       {
         "@type": "Person",
